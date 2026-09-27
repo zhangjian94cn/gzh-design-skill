@@ -16,9 +16,12 @@ import argparse
 import re
 import sys
 from html.parser import HTMLParser
+from pathlib import Path
 
 # (正则, 级别, 说明) —— ERROR 会被公众号编辑器过滤掉或导致样式失效
 FORBIDDEN = [
+    (re.compile(r"white-space\s*:\s*(?:pre(?:-wrap|-line)?|break-spaces)\b", re.I), "ERROR",
+     "保留源码空白的 white-space 会放大缩进/换行；代码改用逐行 margin:0 的 p"),
     (re.compile(r"<style[\s>]", re.I), "ERROR", "<style> 标签会被过滤，样式必须内联"),
     (re.compile(r"<script[\s>]", re.I), "ERROR", "<script> 标签会被过滤"),
     (re.compile(r"</?div[\s>]", re.I), "ERROR", "<div> 会被改写，请用 <section>"),
@@ -44,6 +47,26 @@ HALF_PUNCT = re.compile(r"[一-鿿㐀-䶿][,;!?]")
 ASCII_QUOTE = re.compile(r"[\"']")
 # 代码区特征：等宽字体或 white-space:pre —— 其内半角符号是正常的
 CODE_STYLE = re.compile(r"monospace|white-space\s*:\s*pre|courier|consolas|sf mono", re.I)
+VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input",
+             "link", "meta", "param", "source", "track", "wbr"}
+HEX_COLOR = re.compile(r"#[0-9a-fA-F]{3,8}\b")
+
+
+def hex_color(value):
+    value = value.lower()
+    if len(value) in (4, 5):
+        value = "#" + "".join(c * 2 for c in value[1:])
+    return value
+
+
+def theme_colors(theme):
+    """Read the existing component libraries; do not maintain another palette."""
+    if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", theme):
+        raise ValueError("主题标识只能包含小写字母、数字和连字符")
+    refs = Path(__file__).resolve().parent.parent / "references"
+    source = (refs / f"theme-{theme}.md").read_text(encoding="utf-8")
+    source += (refs / "common-components.md").read_text(encoding="utf-8")
+    return {hex_color(c) for c in HEX_COLOR.findall(source)}
 
 
 class LeafChecker(HTMLParser):
@@ -57,9 +80,13 @@ class LeafChecker(HTMLParser):
         self.span_leaf_count = 0  # 全文 span leaf 总数
         self.unwrapped = []       # (文本片段, 父标签) —— 未被 leaf 包裹的中文文本
         self.half_punct = []      # 正文里疑似半角标点的片段
+        self.styles = []
 
     def handle_starttag(self, tag, attrs):
         ad = dict(attrs)
+        self.styles.append(ad.get("style", "") or "")
+        if tag in VOID_TAGS:
+            return
         is_leaf = tag == "span" and "leaf" in ad
         is_code = bool(CODE_STYLE.search(ad.get("style", "") or ""))
         if is_leaf:
@@ -68,6 +95,11 @@ class LeafChecker(HTMLParser):
         if is_code:
             self.code_depth += 1
         self.stack.append((tag, is_leaf, is_code))
+
+    def handle_startendtag(self, tag, attrs):
+        self.handle_starttag(tag, attrs)
+        if tag not in VOID_TAGS:
+            self.handle_endtag(tag)
 
     def handle_endtag(self, tag):
         for i in range(len(self.stack) - 1, -1, -1):
@@ -96,7 +128,7 @@ class LeafChecker(HTMLParser):
             self.half_punct.append(snippet)
 
 
-def validate(html, name="<input>"):
+def validate(html, name="<input>", theme=None, publish_ready=False):
     errors, warnings = [], []
 
     for rx, level, msg in FORBIDDEN:
@@ -128,6 +160,24 @@ def validate(html, name="<input>"):
             f"{len(checker.half_punct)} 处正文疑似半角标点/英文引号，应改中文全角"
             f"（代码块内不计）。例：{sample}")
 
+    if theme:
+        allowed = theme_colors(theme)
+        actual = {hex_color(c) for style in checker.styles for c in HEX_COLOR.findall(style)}
+        foreign = sorted(actual - allowed)
+        if foreign:
+            errors.append(f"存在所选主题 {theme} 和通用组件库之外的内联色值：" + ", ".join(foreign))
+    if publish_ready:
+        if re.search(r">[\t \r\n]*[\r\n][\t \r\n]*<", html):
+            errors.append("发布正文存在标签间源码换行；只压缩标签间空白，不改动代码文本")
+        if any(re.search(r"text-align\s*:\s*justify\b", s, re.I) for s in checker.styles):
+            errors.append("发布正文存在两端对齐，会拉大中英文词间空格；使用 text-align:left")
+        if re.search(r"<p\b[^>]*>\s*(?:<br\s*/?>\s*)*</p>", html, re.I):
+            errors.append("发布正文存在空 p；段距应由组件 margin/padding 表达")
+        if re.search(r"<br\s*/?>\s*<br\s*/?>", html, re.I):
+            errors.append("发布正文存在连续 br；请使用有明确间距的段落")
+        errors.extend(warnings)
+        warnings = []
+
     return errors, warnings, checker.span_leaf_count
 
 
@@ -135,6 +185,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("file", nargs="?", help="HTML 文件路径")
     ap.add_argument("--stdin", action="store_true", help="从标准输入读取")
+    ap.add_argument("--theme", help="核对所选 theme 标识及通用组件库中的内联十六进制色值")
+    ap.add_argument("--publish-ready", action="store_true", help="检查发布空白/对齐，warning 也阻断")
     args = ap.parse_args()
 
     if args.stdin or not args.file:
@@ -145,7 +197,10 @@ def main():
             html = f.read()
         name = args.file
 
-    errors, warnings, leaf_n = validate(html, name)
+    try:
+        errors, warnings, leaf_n = validate(html, name, args.theme, args.publish_ready)
+    except (OSError, ValueError) as exc:
+        ap.error(str(exc))
 
     print(f"📋 公众号 HTML 合规校验: {name}")
     print(f"   span leaf 包裹: {leaf_n} 处")

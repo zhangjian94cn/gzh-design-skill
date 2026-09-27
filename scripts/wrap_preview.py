@@ -15,6 +15,8 @@ validate_gzh_html.py（本预览页含 script/style，不参与校验）。
 
 import os
 import sys
+from html import escape
+from validate_gzh_html import validate
 
 
 def main():
@@ -27,14 +29,22 @@ def main():
         sys.exit(1)
 
     content = open(src, encoding="utf-8").read().strip()
+    if not content.startswith("<section") or any(
+            tag in content.lower() for tag in ("<!doctype", "<html", "<body")):
+        sys.exit("✗ 输入必须是干净 section 正文，不接受旧主题完整 HTML 或预览页")
+    errors, warnings, _ = validate(content)
+    if errors or warnings:
+        sys.exit("✗ 正文校验未通过：" + "；".join(errors + warnings))
     tpl_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                             "..", "assets", "preview-template.html")
     tpl = open(tpl_path, encoding="utf-8").read()
 
     title = os.path.splitext(os.path.basename(src))[0]
-    out_html = tpl.replace("{{TITLE}}", title).replace("<!--GZH_CONTENT-->", content)
+    out_html = tpl.replace("{{TITLE}}", escape(title)).replace("<!--GZH_CONTENT-->", content)
 
     out = sys.argv[2] if len(sys.argv) > 2 else os.path.splitext(src)[0] + "_预览.html"
+    if os.path.realpath(src) == os.path.realpath(out):
+        sys.exit("✗ 预览输出不能覆盖正文输入")
     open(out, "w", encoding="utf-8").write(out_html)
     print(f"✓ 已生成带「复制」按钮的预览页: {out}")
     print("  用浏览器打开它，点右上角「复制到公众号」，再去公众号编辑器 Ctrl/⌘+V 粘贴。")

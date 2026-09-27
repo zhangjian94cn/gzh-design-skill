@@ -30,12 +30,12 @@
 标签浅底：                     #e5e7e0
 强调橙（关键词下划线/前导词/CTA）： #ed7b2f
 陶土棕装饰（进行中/次强调）：       #d4c9b8（配边框 #b17816）
-正文字号：                     14px
-正文行高：                     1.9
-全局行高：                     1.75
+正文字号：                     15px
+正文行高：                     1.95
+全局行高：                     1.95
 最大宽度：                     677px
 容器内边距：                   8px
-区块间距：                     margin-top: 24px（首块头图卡除外）
+区块间距：                     margin-top: 24px（紧凑正文可16px；Part章节44px独立保留）
 圆角：                         6px（统一小圆角，不用大圆角）
 阴影：                         整体几乎无阴影，靠边框 + 色块分层，仅头图卡的插画占位区可有极轻装饰
 ```
@@ -49,9 +49,9 @@
 ## 组件 1 全局容器
 
 ```html
-<section style="max-width:677px;margin:0 auto;padding:8px;box-sizing:border-box;background:#fdfdf8;color:#4d4f46;font-family:'IBM Plex Sans',-apple-system,system-ui,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.75;">
+<section style="width:100%;max-width:677px;margin:0 auto;padding:8px;box-sizing:border-box;background:#fdfdf8;color:#4d4f46;font-family:'IBM Plex Sans',-apple-system,system-ui,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.95;">
 
-  <!-- 所有组件放在这里，第一个子元素是组件 2 头图卡，其余组件均自带 margin-top:24px -->
+  <!-- 所有组件放在这里，第一个子元素按导读语义选择组件 2 或组件 14b，正文组件自带 margin-top:24px；组件3章节间距44px独立保留 -->
 
 </section>
 ```
@@ -113,12 +113,12 @@
 
 ## 组件 3 章节标题 section-title
 
-**用途**：大章节分隔，默认编号形式 01/02/03…，本主题最常用的章节标题。
+**用途**：大章节分隔，默认编号形式 01/02/03…。顶部44px比正文段距多约一行，Part切换不插空p；紧凑变体也不得把章节间距压回正文16px。
 
 **可替换字段**：`{{编号}}` `{{标题}}` `{{副标题}}`
 
 ```html
-<section style="margin-top:24px;">
+<section style="margin-top:44px;">
   <section style="font-family:'IBM Plex Sans',-apple-system,sans-serif;">
     <section style="display:flex;align-items:center;gap:14px;">
       <section style="text-align:center;flex-shrink:0;">
@@ -263,7 +263,7 @@
 ```html
 <section style="margin-top:24px;">
   <section style="font-family:'IBM Plex Sans',-apple-system,sans-serif;">
-    <p style="margin:0;font-size:14px;line-height:1.9;text-align:justify;color:#4d4f46;">
+    <p style="margin:0;font-size:15px;line-height:1.95;text-align:left;color:#4d4f46;">
       <span leaf="">{{正文内容}}</span>
     </p>
   </section>
@@ -331,7 +331,7 @@
 ```html
 <section style="margin-top:24px;">
   <section style="font-family:'IBM Plex Sans',-apple-system,sans-serif;">
-    <p style="margin:0;font-size:14px;line-height:1.9;text-align:justify;color:#4d4f46;">
+    <p style="margin:0;font-size:14px;line-height:1.9;text-align:left;color:#4d4f46;">
       <span style="font-size:14px;color:#9ea096;letter-spacing:0.3px;text-decoration:line-through;"><span leaf="">{{旧表述}}</span></span>
       <span style="margin-left:6px;font-weight:700;color:#23251d;"><span leaf="">{{新表述}}</span></span>
       <span style="margin-left:6px;background:#e5e7e0;padding:1px 5px;border-radius:4px;font-weight:600;color:#23251d;border:1px solid #bfc1b7;"><span leaf="">{{差异点}}</span></span>
@@ -376,7 +376,7 @@
       <span style="font-size:10px;color:rgba(255,255,255,0.65);"><span leaf="">{{批注小字}}</span></span>
     </section>
     <section style="padding:16px 18px 18px;background:#eeefe9;">
-      <p style="margin:0;font-size:14px;line-height:1.9;color:#4d4f46;text-align:justify;"><span leaf="">{{编者按正文}}</span></p>
+      <p style="margin:0;font-size:15px;line-height:1.95;color:#4d4f46;text-align:left;"><span leaf="">{{编者按正文}}</span></p>
     </section>
   </section>
 </section>
@@ -384,9 +384,49 @@
 
 ---
 
+### 14b. 阅读导读卡（已有摘要时的开篇变体）
+
+已有阅读时长、摘要和标签时，用此卡作为唯一开篇组件，直接填原文元信息；不再另加头图卡重复标题/重写摘要。没有阅读时长/字数就省略对应字段，不编造期号。主题色、边框与组件 14 同源。
+
+```html
+<section style="background:#fdfdf8;border:1px solid #bfc1b7;border-radius:6px;overflow:hidden;">
+  <section style="padding:12px 16px;background:#1e1f23;">
+    <p style="margin:0;color:#ffffff;font-size:12px;line-height:1.6;text-align:left;"><span leaf="">{{阅读信息}}</span></p>
+  </section>
+  <section style="padding:16px 18px;background:#eeefe9;">
+    <p style="margin:0;color:#4d4f46;font-size:15px;line-height:1.95;text-align:left;"><span leaf="">{{原摘要}}</span></p>
+  </section>
+  <section style="padding:10px 18px;border-top:1px solid #bfc1b7;">
+    <p style="margin:0;color:#65675e;font-size:12px;line-height:1.7;text-align:left;"><span leaf="">{{原标签}}</span></p>
+  </section>
+</section>
+```
+
+### 14c. 行动建议（轻量收尾变体）
+
+适用于原文已有的操作/互动建议。标签由Agent按用途选择，可省略；不写“引用”，不额外添加营销文案。`{{行动内容}}` 可换为正文段落，内部各段margin:0，按需加8px段距。
+
+```html
+<section style="margin-top:24px;padding:16px 18px;background:#eeefe9;border-left:3px solid #ed7b2f;border-radius:4px;">
+  <p style="margin:0 0 8px;font-size:12px;font-weight:700;color:#65675e;line-height:1.6;"><span leaf="">{{行动标签}}</span></p>
+  <p style="margin:0;font-size:15px;line-height:1.95;color:#23251d;"><span leaf="">{{行动内容}}</span></p>
+</section>
+```
+
+### 14d. 自然语言提示词（可直接发送）
+
+用于原文可发送给模型的自然语言指令；正常正文文字，不整段斜体。代码/配置仍用通用代码块。`{{提示词内容}}` 可放保持顺序的多个正文段落，内部margin:0，不再套外层正文段距。
+
+```html
+<section style="margin-top:24px;padding:16px 18px;background:#fdfdf8;border:1px solid #bfc1b7;border-radius:6px;">
+  <p style="margin:0 0 10px;font-size:12px;font-weight:700;color:#65675e;line-height:1.6;"><span leaf="">{{提示词标签}}</span></p>
+  <p style="margin:0;font-size:15px;line-height:1.95;color:#4d4f46;text-align:left;"><span leaf="">{{提示词内容}}</span></p>
+</section>
+```
+
 ## 组件 15 重点观点卡 key-point-card
 
-**用途**：段落级重点强调，比正文强调更完整——独立成一张卡片，内部用橙色下划线扣题。
+**用途**：段落级重点强调，比正文强调更完整——独立成一张卡片，内部用橙色下划线扣题。`[!IMPORTANT]` 映射到此卡，去掉语法标记；不额外生成一个带正文 margin 的“重点”标题。没有补充说明时删掉对应 span，不留空格占位。
 
 **可替换字段**：`{{重点观点}}` `{{补充说明}}`
 
@@ -394,7 +434,7 @@
 <section style="margin-top:24px;">
   <section style="font-family:'IBM Plex Sans',-apple-system,sans-serif;">
     <section style="background:#fdfdf8;border-radius:6px;padding:16px 18px;border:1px solid #bfc1b7;">
-      <p style="font-size:14px;color:#4d4f46;margin:0;line-height:1.8;text-align:justify;">
+      <p style="font-size:14px;color:#4d4f46;margin:0;line-height:1.8;text-align:left;">
         <strong style="color:#23251d;border-bottom:3px solid #ed7b2f;"><span leaf="">{{重点观点}}</span></strong><span leaf="">&nbsp;{{补充说明}}</span>
       </p>
     </section>
@@ -605,7 +645,7 @@
           <span style="display:inline-block;width:6px;height:6px;background:#ed7b2f;border-radius:50%;margin-right:5px;vertical-align:middle;overflow:hidden;font-size:0;line-height:0;"><span leaf="">&nbsp;</span></span><span leaf="">&nbsp;{{条目标题}}&nbsp;</span>
         </span>
       </p>
-      <p style="font-size:13px;color:#4d4f46;margin:0;line-height:1.7;text-align:justify;"><span leaf="">{{条目说明}}</span></p>
+      <p style="font-size:13px;color:#4d4f46;margin:0;line-height:1.7;text-align:left;"><span leaf="">{{条目说明}}</span></p>
     </section>
   </section>
 </section>
@@ -657,11 +697,11 @@
           <h4 style="font-size:15px;font-weight:800;color:#23251d;margin:0;"><span leaf="">{{案例标题}}</span></h4>
         </section>
         <p style="font-size:11px;font-weight:600;color:#65675e;letter-spacing:1px;margin:0 0 12px;"><span leaf="">{{行业规模}}</span></p>
-        <p style="font-size:14px;margin:0 0 14px;color:#4d4f46;line-height:1.7;text-align:justify;"><span leaf="">{{案例描述}}</span></p>
+        <p style="font-size:14px;margin:0 0 14px;color:#4d4f46;line-height:1.7;text-align:left;"><span leaf="">{{案例描述}}</span></p>
         <section style="text-align:center;margin-bottom:4px;">
           <span leaf=""><img src="{{图片URL}}" alt="案例配图" style="max-width:100%;height:auto;display:block;margin:0 auto;border-radius:6px;border:1px solid #bfc1b7;"></span>
         </section>
-        <p style="font-size:14px;margin:12px 0 0;color:#4d4f46;line-height:1.7;text-align:justify;"><strong style="color:#23251d;"><span leaf="">{{结果总结}}</span></strong></p>
+        <p style="font-size:14px;margin:12px 0 0;color:#4d4f46;line-height:1.7;text-align:left;"><strong style="color:#23251d;"><span leaf="">{{结果总结}}</span></strong></p>
       </section>
     </section>
   </section>
@@ -859,8 +899,8 @@
         <p style="margin:0;font-size:11px;font-weight:600;color:#65675e;letter-spacing:1.2px;"><span leaf="">{{结尾说明}}</span></p>
       </section>
     </section>
-    <p style="margin:0 0 14px;font-size:14px;line-height:1.9;text-align:justify;color:#4d4f46;"><span leaf="">{{收尾段落1}}</span></p>
-    <p style="margin:0 0 14px;font-size:14px;line-height:1.9;text-align:justify;color:#4d4f46;"><span leaf="">{{收尾段落2}}</span></p>
+    <p style="margin:0 0 14px;font-size:14px;line-height:1.9;text-align:left;color:#4d4f46;"><span leaf="">{{收尾段落1}}</span></p>
+    <p style="margin:0 0 14px;font-size:14px;line-height:1.9;text-align:left;color:#4d4f46;"><span leaf="">{{收尾段落2}}</span></p>
     <section style="background:#eeefe9;border-radius:6px;padding:16px 18px;border:1px solid #bfc1b7;text-align:center;">
       <p style="font-size:15px;color:#23251d;margin:0;line-height:1.6;"><strong style="border-bottom:3px solid #ed7b2f;"><span leaf="">{{最后总结}}</span></strong></p>
     </section>
@@ -879,9 +919,9 @@
 ## 完整文章模板骨架
 
 ```html
-<section style="max-width:677px;margin:0 auto;padding:8px;box-sizing:border-box;background:#fdfdf8;color:#4d4f46;font-family:'IBM Plex Sans',-apple-system,system-ui,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.75;">
+<section style="width:100%;max-width:677px;margin:0 auto;padding:8px;box-sizing:border-box;background:#fdfdf8;color:#4d4f46;font-family:'IBM Plex Sans',-apple-system,system-ui,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.95;">
 
-  <!-- 1. 头图卡（组件2 hero-card，唯一一处，不设 margin-top） -->
+  <!-- 1. 唯一开篇：有原摘要用阅读导读卡14b；封面式开篇用头图卡2，二选一 -->
 
   <!-- 2. 开篇编者按（组件14 editors-note，可选，仅原文有独立引言/背景说明时使用） -->
 
@@ -913,7 +953,7 @@
 ```
 
 **骨架铁律**：
-- 头图卡（组件 2）全文唯一、必须在最前；隐藏标记必须在全局容器闭合**之后**。
+- 开篇在头图卡2和阅读导读卡14b中二选一、全文唯一；隐藏标记必须在全局容器闭合**之后**。
 - 组件 3/4/5/6/7/8/9 都是"标题类"组件但权重不同——组件 3 是默认主力，4/6 是轻/中量级分节过渡，5 是重量级强调（≤1-2 处），7/8/9 是章节内的二级标题；不要一篇文章里把所有变体都用一遍，选 2-3 种保持节奏统一即可。
 - 组件 31 暗色摘要边框（反白内边框）是本主题最强的收束锚点，全文只在结尾用一次，不要在正文中段重复使用。
 
@@ -943,7 +983,7 @@
 | 生活/情感随笔 | 头图卡2 + 内刊标签条4 + 正文段落10 + 分割点17 + 重点观点卡15 | 摘要横幅条32 |
 | 案例实战 | 头图卡2 + 章节标题3 + 案例时间线26 + 对比摘要卡21 + 结尾内容块34 | 信任墙27、重点观点卡15 |
 
-所有类型共用固定结构：头图卡2 + 固定签名段落(组件10) + 结尾行动区28 + 隐藏标记。
+表中头图卡2在原文已有摘要时替换为阅读导读卡14b，不能同时输出。所有类型共用固定结构：唯一开篇卡 + 固定签名段落(组件10) + 结尾行动区28 + 隐藏标记。
 
 ---
 
@@ -952,6 +992,8 @@
 | Markdown 元素 | 对应组件 | 说明 |
 |---|---|---|
 | `# 标题` | 头图卡2 主标题/强调词 | 平台标题另设，头图卡标题从中提炼 |
+| 阅读信息 + frontmatter description/原摘要 + tags | 组件14b 阅读导读卡 | 整体消费一次，不另编封面摘要 |
+| `> [!IMPORTANT]` | 组件15 重点观点卡 | 去掉标记，不沿用旧主题告警 DOM/黄色荧光笔 |
 | 文章开头 `> 引言` | 组件14 编者按 或并入头图卡"底部摘要" | 视引言长度而定 |
 | `## 章节标题` | 组件3 section-title（默认）/ 组件6 期号徽章条（专题式，可选变体） | 编号 01/02/03… |
 | `### 子标题` | 组件7 步骤内联标题（教程步骤）/ 组件9 前导词标题（系列分节）/ 组件8 强调标题（观点强调） | 按语境三选一 |
@@ -967,7 +1009,10 @@
 | `![说明](图片)` | 组件19 图片卡 | 有说明才加 `<figcaption>` |
 | `![](图片)` 无说明/通栏 | 组件18 通栏图片 | |
 | `---` 分割线 | 组件16 分割线（正式）/ 组件17 分割点（轻松） | |
-| `> 引用`（非开头） | 组件14 编者按 / 组件15 重点观点卡 | 视语气选择 |
+| `>` 实际引语/反馈 | 组件14 编者按 | Agent确定来源/用途，不能默认写“引用” |
+| `>` 行动建议/互动引导 | 14c 行动建议 | 保留原文，不添新CTA |
+| `>` 自然语言提示词 | 14d 提示词卡 | 正常字号，取消整段斜体 |
+| `>` 写法对照/规则示例 | 组件14，标签“写法对照”/“替换句式” | 根据内容选择，不按符号硬映射 |
 | 案例/示例展开 | 组件26 案例时间线 | |
 | 常见问题 | 组件25 常见问题列表 | |
 | 文末总结/结语 | 组件34 结尾内容块 / 组件31 暗色摘要边框 / 组件30 暗色摘要分栏 / 组件32 摘要横幅条 | 四选一，按篇幅和语气选 |
