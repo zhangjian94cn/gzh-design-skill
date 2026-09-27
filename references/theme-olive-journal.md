@@ -83,7 +83,7 @@
           <span style="width:22px;height:3px;background:#1e1f23;border-radius:2px;display:inline-block;overflow:hidden;vertical-align:middle;font-size:0;line-height:0;"><span leaf="">&nbsp;</span></span>
           <span style="width:8px;height:3px;background:#bfc1b7;border-radius:2px;display:inline-block;overflow:hidden;vertical-align:middle;font-size:0;line-height:0;"><span leaf="">&nbsp;</span></span>
         </section>
-        <p style="font-size:13px;color:#65675e;margin:0;line-height:1.7;"><span leaf="">{{副标题说明}}</span></p>
+        <p style="font-size:15px;color:#65675e;margin:0;line-height:1.85;"><span leaf="">{{副标题说明}}</span></p>
       </section>
       <section style="flex-shrink:0;width:112px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#eeefe9;border:1px dashed #bfc1b7;border-radius:6px;padding:8px;">
         <svg width="72" height="72" viewBox="0 0 64 64" aria-hidden="true" style="display:block;">
@@ -313,7 +313,7 @@
 ```html
 <section style="margin-top:24px;">
   <section style="font-family:'IBM Plex Sans',-apple-system,sans-serif;">
-    <p style="margin:0;font-size:14px;color:#4d4f46;line-height:1.9;">
+    <p style="margin:0;font-size:15px;color:#4d4f46;line-height:1.95;">
       <span leaf="">{{正文前半}}&nbsp;</span><span style="background:#eeefe9;color:#23251d;padding:2px 6px;border-radius:4px;font-family:ui-monospace,Menlo,Monaco,Consolas,monospace;font-size:13px;border:1px solid #b6b7af;"><span leaf="">{{代码}}</span></span><span leaf="">&nbsp;{{正文后半}}</span>
     </p>
   </section>
@@ -331,8 +331,8 @@
 ```html
 <section style="margin-top:24px;">
   <section style="font-family:'IBM Plex Sans',-apple-system,sans-serif;">
-    <p style="margin:0;font-size:14px;line-height:1.9;text-align:left;color:#4d4f46;">
-      <span style="font-size:14px;color:#9ea096;letter-spacing:0.3px;text-decoration:line-through;"><span leaf="">{{旧表述}}</span></span>
+    <p style="margin:0;font-size:15px;line-height:1.95;text-align:left;color:#4d4f46;">
+      <span style="color:#9ea096;letter-spacing:0.3px;text-decoration:line-through;"><span leaf="">{{旧表述}}</span></span>
       <span style="margin-left:6px;font-weight:700;color:#23251d;"><span leaf="">{{新表述}}</span></span>
       <span style="margin-left:6px;background:#e5e7e0;padding:1px 5px;border-radius:4px;font-weight:600;color:#23251d;border:1px solid #bfc1b7;"><span leaf="">{{差异点}}</span></span>
     </p>
@@ -434,7 +434,7 @@
 <section style="margin-top:24px;">
   <section style="font-family:'IBM Plex Sans',-apple-system,sans-serif;">
     <section style="background:#fdfdf8;border-radius:6px;padding:16px 18px;border:1px solid #bfc1b7;">
-      <p style="font-size:14px;color:#4d4f46;margin:0;line-height:1.8;text-align:left;">
+      <p style="font-size:15px;color:#4d4f46;margin:0;line-height:1.95;text-align:left;">
         <strong style="color:#23251d;border-bottom:3px solid #ed7b2f;"><span leaf="">{{重点观点}}</span></strong><span leaf="">&nbsp;{{补充说明}}</span>
       </p>
     </section>
@@ -645,7 +645,7 @@
           <span style="display:inline-block;width:6px;height:6px;background:#ed7b2f;border-radius:50%;margin-right:5px;vertical-align:middle;overflow:hidden;font-size:0;line-height:0;"><span leaf="">&nbsp;</span></span><span leaf="">&nbsp;{{条目标题}}&nbsp;</span>
         </span>
       </p>
-      <p style="font-size:13px;color:#4d4f46;margin:0;line-height:1.7;text-align:left;"><span leaf="">{{条目说明}}</span></p>
+      <p style="font-size:15px;color:#4d4f46;margin:0;line-height:1.9;text-align:left;"><span leaf="">{{条目说明}}</span></p>
     </section>
   </section>
 </section>
@@ -697,11 +697,11 @@
           <h4 style="font-size:15px;font-weight:800;color:#23251d;margin:0;"><span leaf="">{{案例标题}}</span></h4>
         </section>
         <p style="font-size:11px;font-weight:600;color:#65675e;letter-spacing:1px;margin:0 0 12px;"><span leaf="">{{行业规模}}</span></p>
-        <p style="font-size:14px;margin:0 0 14px;color:#4d4f46;line-height:1.7;text-align:left;"><span leaf="">{{案例描述}}</span></p>
+        <p style="font-size:15px;margin:0 0 14px;color:#4d4f46;line-height:1.9;text-align:left;"><span leaf="">{{案例描述}}</span></p>
         <section style="text-align:center;margin-bottom:4px;">
           <span leaf=""><img src="{{图片URL}}" alt="案例配图" style="max-width:100%;height:auto;display:block;margin:0 auto;border-radius:6px;border:1px solid #bfc1b7;"></span>
         </section>
-        <p style="font-size:14px;margin:12px 0 0;color:#4d4f46;line-height:1.7;text-align:left;"><strong style="color:#23251d;"><span leaf="">{{结果总结}}</span></strong></p>
+        <p style="font-size:15px;margin:12px 0 0;color:#4d4f46;line-height:1.9;text-align:left;"><strong style="color:#23251d;"><span leaf="">{{结果总结}}</span></strong></p>
       </section>
     </section>
   </section>
@@ -812,7 +812,7 @@
     </section>
     <section style="width:34%;min-width:120px;padding:18px;background:#23251d;display:flex;flex-direction:column;justify-content:center;gap:10px;">
       <span style="display:inline-block;padding:4px 8px;background:#eeefe9;color:#23251d;border-radius:4px;font-size:10px;font-weight:800;align-self:flex-start;"><span leaf="">{{NEXT标签}}</span></span>
-      <p style="margin:0;font-size:13px;line-height:1.8;color:rgba(255,255,255,0.76);"><span leaf="">{{右侧说明}}</span></p>
+      <p style="margin:0;font-size:15px;line-height:1.85;color:rgba(255,255,255,0.76);"><span leaf="">{{右侧说明}}</span></p>
     </section>
   </section>
 </section>
@@ -899,10 +899,10 @@
         <p style="margin:0;font-size:11px;font-weight:600;color:#65675e;letter-spacing:1.2px;"><span leaf="">{{结尾说明}}</span></p>
       </section>
     </section>
-    <p style="margin:0 0 14px;font-size:14px;line-height:1.9;text-align:left;color:#4d4f46;"><span leaf="">{{收尾段落1}}</span></p>
-    <p style="margin:0 0 14px;font-size:14px;line-height:1.9;text-align:left;color:#4d4f46;"><span leaf="">{{收尾段落2}}</span></p>
+    <p style="margin:0 0 14px;font-size:15px;line-height:1.95;text-align:left;color:#4d4f46;"><span leaf="">{{收尾段落1}}</span></p>
+    <p style="margin:0 0 14px;font-size:15px;line-height:1.95;text-align:left;color:#4d4f46;"><span leaf="">{{收尾段落2}}</span></p>
     <section style="background:#eeefe9;border-radius:6px;padding:16px 18px;border:1px solid #bfc1b7;text-align:center;">
-      <p style="font-size:15px;color:#23251d;margin:0;line-height:1.6;"><strong style="border-bottom:3px solid #ed7b2f;"><span leaf="">{{最后总结}}</span></strong></p>
+      <p style="font-size:15px;color:#23251d;margin:0;line-height:1.85;"><strong style="border-bottom:3px solid #ed7b2f;"><span leaf="">{{最后总结}}</span></strong></p>
     </section>
   </section>
 </section>
@@ -992,8 +992,8 @@
 | Markdown 元素 | 对应组件 | 说明 |
 |---|---|---|
 | `# 标题` | 头图卡2 主标题/强调词 | 平台标题另设，头图卡标题从中提炼 |
-| 阅读信息 + frontmatter description/原摘要 + tags | 组件14b 阅读导读卡 | 整体消费一次，不另编封面摘要 |
-| `> [!IMPORTANT]` | 组件15 重点观点卡 | 去掉标记，不沿用旧主题告警 DOM/黄色荧光笔 |
+| 导读：阅读信息 + frontmatter description/原摘要 + tags | 组件14b 阅读导读卡（主题版，替代通用库 4a） | 整体消费一次，不另编封面摘要；无摘要则省略 |
+| 重点 `> [!IMPORTANT]` / `> [!要点]` / `> [!TAKEAWAY]` | 组件15 重点观点卡 | 去掉标记，不沿用旧主题告警 DOM/黄色荧光笔；列表要点逐条一个 `<p>` |
 | 文章开头 `> 引言` | 组件14 编者按 或并入头图卡"底部摘要" | 视引言长度而定 |
 | `## 章节标题` | 组件3 section-title（默认）/ 组件6 期号徽章条（专题式，可选变体） | 编号 01/02/03… |
 | `### 子标题` | 组件7 步骤内联标题（教程步骤）/ 组件9 前导词标题（系列分节）/ 组件8 强调标题（观点强调） | 按语境三选一 |
@@ -1009,10 +1009,11 @@
 | `![说明](图片)` | 组件19 图片卡 | 有说明才加 `<figcaption>` |
 | `![](图片)` 无说明/通栏 | 组件18 通栏图片 | |
 | `---` 分割线 | 组件16 分割线（正式）/ 组件17 分割点（轻松） | |
-| `>` 实际引语/反馈 | 组件14 编者按 | Agent确定来源/用途，不能默认写“引用” |
-| `>` 行动建议/互动引导 | 14c 行动建议 | 保留原文，不添新CTA |
-| `>` 自然语言提示词 | 14d 提示词卡 | 正常字号，取消整段斜体 |
-| `>` 写法对照/规则示例 | 组件14，标签“写法对照”/“替换句式” | 根据内容选择，不按符号硬映射 |
+| 引语 `> [!金句]` / 实际引语/反馈 | 组件14 编者按（标签写来源或「金句」）；文末终极收束金句可用组件31（≤1） | Agent确定来源/用途，不能默认写“引用” |
+| 行动建议 `> [!行动]` / `> [!ACTION]` | 14c 行动建议（主题版，替代通用库 4b） | 保留原文，不添新CTA |
+| 提示词 `> [!提示词]` / `> [!PROMPT]` | 14d 提示词卡（主题版，替代通用库 4c） | 正常字号，取消整段斜体 |
+| 写法对照 ```` ```diff ```` | 通用库 4d（块底 #eeefe9、竖条 #1e1f23、「原写法」标签底 #e5e7e0 字 #65675e、旧句 #9ea096、「改写」标签底 #1e1f23 字 #ffffff、新句 #23251d、说明 #4d4f46）；正文里一句话的新旧对照用组件12 | 正文字体，不用代码块 |
+| `>` 规则示例/替换句式（无用途标记） | 组件14，标签“替换句式” | 根据内容选择，不按符号硬映射 |
 | 案例/示例展开 | 组件26 案例时间线 | |
 | 常见问题 | 组件25 常见问题列表 | |
 | 文末总结/结语 | 组件34 结尾内容块 / 组件31 暗色摘要边框 / 组件30 暗色摘要分栏 / 组件32 摘要横幅条 | 四选一，按篇幅和语气选 |

@@ -39,7 +39,7 @@
 浅边框：       #E5E7EB
 浅灰背景：     #F3F4F6
 极浅灰：       #F9FAFB
-正文字号：     14px（不可改）
+正文字号：     15px（fork 按可读性基线由上游 14px 提高，勿改回）
 正文行高：     1.9
 全局行高：     1.75
 字间距：       0.5px
@@ -48,6 +48,8 @@
 ```
 
 字体栈：`-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif`
+
+正文 15px 是本 fork 按通用库[可读性基线](common-components.md)对上游 14px「不可改」的偏离，登记见 [fork 偏离记录](../docs/2026-09-27-fork-readability-baseline-deviations.md)；同步上游时不得改回。
 
 ---
 
@@ -97,7 +99,7 @@
         <section style="width:48px;height:3px;background:linear-gradient(to right,#059669,#34D399);border-radius:2px;margin-bottom:12px;">
           <span leaf=""><br></span>
         </section>
-        <p style="font-size:13px;color:#9CA3AF;margin:0;line-height:1.7;letter-spacing:0.5px;">
+        <p style="font-size:13px;color:#9CA3AF;margin:0;line-height:1.5;letter-spacing:0.5px;">
           <span leaf="">{{副标题关键词}}</span>
         </p>
       </section>
@@ -143,7 +145,7 @@
       <section style="width:48px;height:3px;background:linear-gradient(to right,#059669,#34D399);border-radius:2px;margin-bottom:12px;">
         <span leaf=""><br></span>
       </section>
-      <p style="font-size:13px;color:#9CA3AF;margin:0;line-height:1.7;letter-spacing:0.5px;">
+      <p style="font-size:13px;color:#9CA3AF;margin:0;line-height:1.5;letter-spacing:0.5px;">
         <span leaf="">{{副标题关键词}}</span>
       </p>
     </section>
@@ -263,7 +265,7 @@
 ## 组件 5 正文段落 paragraph
 
 ```html
-<p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+<p style="margin-bottom:16px;font-size:15px;line-height:1.9;text-align:left;">
   <span leaf="">{{正文内容}}</span>
 </p>
 ```
@@ -350,7 +352,7 @@
       <span leaf="">{{步骤标题}}</span>
     </h4>
   </section>
-  <p style="font-size:14px;margin:0 0 16px;color:#4B5563;line-height:1.9;text-align:justify;">
+  <p style="font-size:15px;margin:0 0 16px;color:#4B5563;line-height:1.9;text-align:left;">
     {{步骤内容}}
   </p>
 </section>
@@ -392,18 +394,18 @@
 ### 8a. prompt-block（PROMPT 展示块）
 
 ```html
-<p style="font-size:13px;color:#374151;margin:0 0 16px;line-height:1.8;">
+<p style="font-size:15px;color:#374151;margin:0 0 16px;line-height:1.85;">
   <span style="display:inline-block;background:#059669;color:#fff;font-size:11px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;vertical-align:middle;letter-spacing:0.5px;"><span leaf="">PROMPT</span></span>
-  <span style="font-size:12px;color:#9CA3AF;font-weight:700;"><span leaf="">{{提示词内容}}</span></span>
+  <span style="color:#4B5563;"><span leaf="">{{提示词内容}}</span></span>
 </p>
 ```
 
 ### 8b. cmd-block（CMD 单行命令块）
 
 ```html
-<p style="font-size:13px;color:#374151;margin:0 0 24px;line-height:1.8;">
+<p style="font-size:15px;color:#374151;margin:0 0 24px;line-height:1.85;">
   <span style="display:inline-block;background:#111827;color:#fff;font-size:11px;font-weight:700;padding:1px 7px;border-radius:3px;margin-right:6px;vertical-align:middle;letter-spacing:0.5px;"><span leaf="">CMD</span></span>
-  <span style="background:#F3F4F6;color:#1F2937;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:600;"><span leaf="">{{命令内容}}</span></span>
+  <span style="background:#F3F4F6;color:#1F2937;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:600;font-family:'SF Mono',Consolas,Monaco,monospace;"><span leaf="">{{命令内容}}</span></span>
 </p>
 ```
 
@@ -420,8 +422,8 @@
 所有引用、补充说明的**默认组件**（虚线框是本主题的风格特征，仅此组件与 9b 保留 dashed）：
 
 ```html
-<section style="background:#F9FAFB;border:1px dashed #D1D5DB;border-radius:8px;padding:12px 16px;margin-bottom:24px;text-align:justify;">
-  <p style="font-size:13px;color:#374151;margin:0;line-height:1.6;">
+<section style="background:#F9FAFB;border:1px dashed #D1D5DB;border-radius:8px;padding:12px 16px;margin-bottom:24px;text-align:left;">
+  <p style="font-size:15px;color:#374151;margin:0;line-height:1.85;">
     {{引用内容，可嵌入绿色加粗等内联样式}}
   </p>
 </section>
@@ -496,7 +498,7 @@
   <p style="margin-bottom:6px;font-size:12px;font-weight:700;color:#9CA3AF;letter-spacing:1px;">
     <span style="color:rgb(255,76,0);"><span leaf="">！踩坑提示 🕳</span></span>
   </p>
-  <p style="font-size:13px;color:#374151;margin:0;line-height:1.7;">
+  <p style="font-size:15px;color:#374151;margin:0;line-height:1.85;">
     <span style="color:rgb(136,136,136);font-weight:bold;"><span leaf="">{{提示内容}}</span></span>
   </p>
 </section>
@@ -511,7 +513,7 @@
   <p style="margin-bottom:6px;font-size:12px;font-weight:700;color:#9CA3AF;letter-spacing:1px;">
     <span style="color:#059669;"><span leaf="">✦ {{提示标题}}</span></span>
   </p>
-  <p style="font-size:13px;color:#374151;margin:0;line-height:1.7;">
+  <p style="font-size:15px;color:#374151;margin:0;line-height:1.85;">
     {{提示内容}}
   </p>
 </section>
@@ -531,7 +533,7 @@
 
 ```html
 <section style="background:#F0FDF4;padding:12px 16px;border-radius:8px;border:1px solid #BBF7D0;margin-bottom:20px;">
-  <p style="font-size:13px;color:#374151;margin:0;line-height:1.7;text-align:justify;">
+  <p style="font-size:15px;color:#374151;margin:0;line-height:1.85;text-align:left;">
     {{信息内容}}
   </p>
 </section>
@@ -560,7 +562,7 @@
   <p style="margin:0 0 6px;">
     <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">{{标题}}</span></span>
   </p>
-  <p style="font-size:13px;color:#4B5563;margin:0;line-height:1.7;text-align:justify;">
+  <p style="font-size:15px;color:#4B5563;margin:0;line-height:1.85;text-align:left;">
     <span leaf="">{{描述内容}}</span>
   </p>
 </section>
@@ -665,7 +667,7 @@
     <p style="font-size:11px;font-weight:600;color:#9CA3AF;letter-spacing:1px;margin:0 0 12px;">
       <span leaf="">{{英文副标题}}</span>
     </p>
-    <p style="font-size:14px;margin:0 0 16px;color:#4B5563;line-height:1.7;text-align:justify;">
+    <p style="font-size:15px;margin:0 0 16px;color:#4B5563;line-height:1.85;text-align:left;">
       {{内容}}
     </p>
   </section>
@@ -680,7 +682,7 @@
 
 ```html
 <section style="background:#fff;border-radius:12px;padding:16px 20px;box-shadow:0 4px 16px rgba(5,150,105,0.12);margin-bottom:24px;">
-  <p style="font-size:13px;color:#374151;margin:0;line-height:1.8;">
+  <p style="font-size:15px;color:#374151;margin:0;line-height:1.85;">
     {{说明内容}}
   </p>
 </section>
@@ -737,19 +739,19 @@
 <section style="margin-bottom:24px;">
   <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
     <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#059669;color:#fff;font-size:11px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;"><span leaf="">1</span></span>
-    <p style="font-size:14px;color:#374151;margin:0;line-height:1.9;flex:1;">
+    <p style="font-size:15px;color:#374151;margin:0;line-height:1.9;flex:1;">
       <span leaf="">{{列表项内容}}</span>
     </p>
   </section>
   <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
     <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#059669;color:#fff;font-size:11px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;"><span leaf="">2</span></span>
-    <p style="font-size:14px;color:#374151;margin:0;line-height:1.9;flex:1;">
+    <p style="font-size:15px;color:#374151;margin:0;line-height:1.9;flex:1;">
       <span leaf="">{{列表项内容}}</span>
     </p>
   </section>
   <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
     <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#059669;color:#fff;font-size:11px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;"><span leaf="">3</span></span>
-    <p style="font-size:14px;color:#374151;margin:0;line-height:1.9;flex:1;">
+    <p style="font-size:15px;color:#374151;margin:0;line-height:1.9;flex:1;">
       <span leaf="">{{列表项内容}}</span>
     </p>
   </section>
@@ -906,6 +908,7 @@
 | Markdown 元素 | 对应组件 | 说明 |
 |---|---|---|
 | `# 标题` | 不使用 | 公众号文章标题在平台设置；封面主标题从中提炼（视角错开） |
+| 导读（frontmatter 阅读时长 / `description` / `tags`） | 通用库 4a 导读卡（块底 #F0FDF4、竖条 #059669、标签底 #ECFDF5 字 #059669） | 全文一份，放封面后、正文前；无摘要则省略；封面副标题不再重复摘要 |
 | 文章开头 `> 引言` | 组件 9b oneliner-card 或并入封面副标题 | 开头金句 |
 | `## 章节标题` | 组件 4 chapter-title | PART 01/02/03…，末章 /// + LAST |
 | `### 子标题` | 组件 9c subtitle-highlight | 黄色下划线小节标题 |
@@ -914,12 +917,15 @@
 | `==高亮文字==` | 组件 6c 黄色渐变高亮 | 每段 ≤2 处 |
 | `<u>下划线</u>` / `++文字++` | 组件 6e 绿色下划线 | 次要强调 |
 | `~~删除线~~` | 组件 6i 删除线灰色 | 被淘汰的概念 |
-| `> 引用段落`（非开头） | 组件 9a quote-box | 灰色虚线框（本主题特征） |
-| 核心金句 | 组件 9b oneliner-card / 9d center-divider | 视觉焦点 |
+| `> 引用段落`（非开头，无用途标记） | 组件 9a quote-box | 灰色虚线框（本主题特征）；`>` 先按用途归入下面几行 |
+| 引语 `> [!金句]` / 核心金句 | 组件 9b oneliner-card / 9d center-divider | 视觉焦点 |
+| 重点 `> [!IMPORTANT]` / `> [!要点]` / `> [!TAKEAWAY]` | 组件 10b green-tip（标题写「重点」）；要点是列表时用 10d green-info 内逐条 `<p>` | 有标题才写标签 |
+| 行动建议 `> [!行动]` / `> [!ACTION]` | 通用库 4b 行动建议卡（块底 #F0FDF4、竖条/标签/序号 #059669） | 有序列表逐条编号 |
+| 写法对照 ```` ```diff ```` | 通用库 4d 写法对照（块底 #F0FDF4、竖条与「改写」标签 #059669、改写字 #111827） | 正文字体，不用代码块 |
 | 操作步骤 | 组件 7a step-label（+ 8a/8b） | STEP 01/02… |
 | 案例/场景 | 组件 7b case-label 或 11d timeline | CASE 01/02… |
 | 技能/工具清单 | 组件 7c skill/tool-label + 11e tool-card | |
-| Prompt 提示词 | 组件 8a prompt-block（短）/ 通用库 1a（长多行） | |
+| 提示词 `> [!提示词]` / `> [!PROMPT]` | 通用库 4c 提示词卡（竖条 #059669、标签底 #ECFDF5 字 #059669、正文 #111827） | 自然语言提示词，正文字号；一行内的短 Prompt 可用 8a，依赖缩进的结构化 Prompt 用通用库 1a |
 | 单行命令 | 组件 8b cmd-block | |
 | ` ``` 多行代码块 ``` ` | 通用库 1a 深色（默认）/ 1b 浅色（左竖条换 #059669） | 每行一个 `<p style="margin:0">` |
 | 行内 `` `code` `` | 组件 6g 代码标签 | |

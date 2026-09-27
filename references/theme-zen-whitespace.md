@@ -157,15 +157,15 @@
 **基础段落**：
 
 ```html
-<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: justify;color: #525252;padding: 0 16px;">
-  <span leaf="">正文内容，15px 字号，1.9 倍行高，两端对齐。段落间距 26px+，字里行间充满呼吸感。</span>
+<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;color: #525252;padding: 0 16px;">
+  <span leaf="">正文内容，15px 字号，1.9 倍行高，左对齐。段落间距 26px+，字里行间充满呼吸感。</span>
 </p>
 ```
 
 **带关键词下划线标记的段落**（推荐默认使用）：
 
 ```html
-<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: justify;color: #525252;padding: 0 16px;">
+<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;color: #525252;padding: 0 16px;">
   <span leaf="">正文内容的前半部分，引出核心概念，</span>
   <span style="border-bottom: 1.5px solid #B5C8BC;font-weight: 500;"><span leaf="">这是需要强调的关键语句</span></span>
   <span leaf="">，后半部分继续阐述。</span>
@@ -227,7 +227,7 @@
 **在段落中的实际效果**：
 
 ```html
-<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: justify;color: #525252;padding: 0 16px;">
+<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;color: #525252;padding: 0 16px;">
   <span leaf="">这个时代的竞争，拼的不是速度，而是</span>
   <span style="border-bottom: 1.5px solid #B5C8BC;font-weight: 500;"><span leaf="">深度思考的能力</span></span>
   <span leaf="">。真正的高手，往往在别人仰望风口时，已经悄悄</span>
@@ -266,7 +266,7 @@
 
 ```html
 <section style="border-left: 2px solid #4A5D52;padding: 10px 20px 10px 20px;margin: 0 16px 30px;background: #FFFFFF;">
-  <p style="font-size: 14px;color: #525252;margin: 0;line-height: 1.9;text-align: justify;">
+  <p style="font-size: 15px;color: #525252;margin: 0;line-height: 1.9;text-align: left;">
     <span leaf="">旁注或补充说明内容，左侧细竖线划定边界，无色块，保持呼吸感。</span>
   </p>
 </section>
@@ -274,12 +274,12 @@
 
 ### 8c. 极细线旁注（最轻量，几乎无存在感）
 
-> 仅左侧 1px 浅灰线，字号稍小，颜色略淡，用于最轻量的旁注或个人感想。
+> 仅左侧 1px 浅灰线，颜色略淡（字号与行高仍按正文基线，不用斜体），用于最轻量的旁注或个人感想。
 
 ```html
 <section style="border-left: 1px solid #E8E8E8;padding: 8px 16px;margin: 0 16px 28px;">
-  <p style="font-size: 13px;color: #A3A3A3;margin: 0;line-height: 1.9;text-align: justify;font-style: italic;">
-    <span leaf="">极轻量旁注，颜色浅、字号小，几乎不打扰主文节奏。</span>
+  <p style="font-size: 15px;color: #A3A3A3;margin: 0;line-height: 1.9;text-align: left;">
+    <span leaf="">极轻量旁注，颜色浅，几乎不打扰主文节奏。</span>
   </p>
 </section>
 ```
@@ -295,7 +295,7 @@
   <p style="font-size: 10px;color: #4A5D52;font-weight: 600;letter-spacing: 2px;margin: 0 0 8px;text-transform: uppercase;">
     <span leaf="">NOTE</span>
   </p>
-  <p style="font-size: 14px;color: #525252;margin: 0;line-height: 1.9;">
+  <p style="font-size: 15px;color: #525252;margin: 0;line-height: 1.9;">
     <span leaf="">这里是重要提示或核心结论，用小标签「NOTE」区分，不用色块。</span>
   </p>
 </section>
@@ -331,7 +331,7 @@
 ## 组件 11 加粗结论段落
 
 ```html
-<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: justify;font-weight: 600;color: #2B2B2B;padding: 0 16px;">
+<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;font-weight: 600;color: #2B2B2B;padding: 0 16px;">
   <span leaf="">加粗的结论性短句，字色加深到近黑，靠字重而非色彩传达重量。</span>
 </p>
 ```
@@ -339,7 +339,7 @@
 结合荧光笔的变体：
 
 ```html
-<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: justify;font-weight: 600;color: #2B2B2B;padding: 0 16px;">
+<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;font-weight: 600;color: #2B2B2B;padding: 0 16px;">
   <span style="background: linear-gradient(180deg, transparent 60%, #D6E4DC 60%);"><span leaf="">荧光笔标记的结论句，极浅墨绿底，克制温柔。</span></span>
 </p>
 ```
@@ -369,15 +369,15 @@
 <section style="margin: 0 16px 32px;border-top: 1px solid #E8E8E8;">
   <section style="display: flex;align-items: baseline;padding: 16px 0;border-bottom: 1px solid #E8E8E8;">
     <p style="font-size: 11px;color: #4A5D52;font-weight: 600;letter-spacing: 1px;margin: 0;min-width: 28px;"><span leaf="">01</span></p>
-    <p style="font-size: 14px;color: #2B2B2B;margin: 0;line-height: 1.7;padding-left: 12px;"><span leaf="">要点一：简明扼要的核心内容</span></p>
+    <p style="font-size: 15px;color: #2B2B2B;margin: 0;line-height: 1.85;padding-left: 12px;"><span leaf="">要点一：简明扼要的核心内容</span></p>
   </section>
   <section style="display: flex;align-items: baseline;padding: 16px 0;border-bottom: 1px solid #E8E8E8;">
     <p style="font-size: 11px;color: #4A5D52;font-weight: 600;letter-spacing: 1px;margin: 0;min-width: 28px;"><span leaf="">02</span></p>
-    <p style="font-size: 14px;color: #2B2B2B;margin: 0;line-height: 1.7;padding-left: 12px;"><span leaf="">要点二：简明扼要的核心内容</span></p>
+    <p style="font-size: 15px;color: #2B2B2B;margin: 0;line-height: 1.85;padding-left: 12px;"><span leaf="">要点二：简明扼要的核心内容</span></p>
   </section>
   <section style="display: flex;align-items: baseline;padding: 16px 0;border-bottom: 1px solid #E8E8E8;">
     <p style="font-size: 11px;color: #4A5D52;font-weight: 600;letter-spacing: 1px;margin: 0;min-width: 28px;"><span leaf="">03</span></p>
-    <p style="font-size: 14px;color: #2B2B2B;margin: 0;line-height: 1.7;padding-left: 12px;"><span leaf="">要点三：简明扼要的核心内容</span></p>
+    <p style="font-size: 15px;color: #2B2B2B;margin: 0;line-height: 1.85;padding-left: 12px;"><span leaf="">要点三：简明扼要的核心内容</span></p>
   </section>
 </section>
 ```
@@ -422,10 +422,10 @@
 
 ```html
 <section style="padding: 0 16px 40px;">
-  <p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: justify;color: #525252;">
+  <p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;color: #525252;">
     <span leaf="">我是 {{作者名}}，{{一句话简介，如：热衷于分享 AI 观察与干货}}。</span>
   </p>
-  <p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: justify;color: #525252;">
+  <p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;color: #525252;">
     <span leaf="">如果你觉得今天这篇有收获，欢迎</span>
     <strong style="color: #4A5D52;"><span leaf="">点赞、在看、转发</span></strong>
     <span leaf="">三连，我们下篇见。</span>
@@ -519,6 +519,7 @@
 | Markdown 元素 | 对应组件 | 说明 |
 |---|---|---|
 | `# 标题` | 不使用 | 公众号文章标题在平台设置 |
+| 导读（frontmatter 阅读时长 / `description` / `tags`） | 通用库 4a 导读卡按极简规则去块底：竖条 2px #4A5D52、元信息 #A3A3A3、摘要 #525252、标签用组件 13 标签胶囊（#EEF3F0 / #3D5046） | 全文一份，放正文前；无摘要则省略；与组件 2 引言卡不重复摘要 |
 | `> 引言金句` | 组件 2 纯白细线引言卡片 | 文章开头，衬线大字居中 |
 | `## 章节标题` | 组件 5 章节标题 | 小号墨绿英文 + 衬线中文 + 短细线，编号 01/02/03，结语用 ∞ |
 | 普通段落 | 组件 6 正文段落 | 默认样式，主动标记关键词下划线 |
@@ -526,8 +527,12 @@
 | `==高亮文字==` | 组件 7b 浅墨绿底深字标签 | 核心概念 |
 | `<u>下划线</u>` | 组件 7d 低饱和墨绿下划线 | 1.5px `#B5C8BC` |
 | `~~荧光笔~~` | 组件 7e 极浅墨绿荧光笔 | 底部半高亮，偶尔用 |
-| `> 引用段落`（金句） | 组件 8a 居中衬线细线引用 | 核心金句，衬线居中最有力 |
-| `> 引用段落`（旁注） | 组件 8b 左竖条轻量引用 | 补充说明 |
+| 引语 `> [!金句]` | 组件 8a 居中衬线细线引用 | 核心金句，衬线居中最有力；居中与衬线只属于引语，`>` 先按用途归入本表各行 |
+| `> 引用段落`（旁注，无用途标记） | 组件 8b 左竖条轻量引用 | 补充说明 |
+| 重点 `> [!IMPORTANT]` / `> [!要点]` / `> [!TAKEAWAY]` | 组件 9 提示块，标签写 `KEY POINT`/「重点」；要点列表用组件 12 要点列表版 | 左对齐，不用居中衬线 |
+| 行动建议 `> [!行动]` / `> [!ACTION]` | 通用库 4b 去块底：竖条 2px #4A5D52、标签底 #4A5D52 字 #FFFFFF、序号 #4A5D52、正文 #525252 | 有序列表逐条编号 |
+| 提示词 `> [!提示词]` / `> [!PROMPT]` | 组件 8b 左竖条轻量引用，前加组件 9 同款小标签 `PROMPT` | 正文字号，不斜体、不衬线、不居中 |
+| 写法对照 ```` ```diff ```` | 通用库 4d 去块底：竖条 2px #4A5D52、「原写法」标签底 #E8E8E8 字 #525252、旧句 #A3A3A3、「改写」标签底 #4A5D52、新句 #2B2B2B | 正文字体，不用代码块 |
 | 极轻量旁注 | 组件 8c 极细线旁注 | 个人感想，字色最浅 |
 | `!> 提示文字` | 组件 9 提示块 | 墨绿左竖条 + NOTE 小标签 |
 | `![](图片)` | 组件 10 图片容器 | 细线边框，有说明才加说明 |

@@ -10,7 +10,7 @@
 >
 > **WeChat 兼容铁律**（本主题组件全部已按此写好，改动时必须遵守）：
 > - 所有"装饰性空元素"（撕票虚线、头像占位框）**没有真实内容时整块删掉**，不留空 section
-> - 正文字号固定 `14px`、行高 `1.9`——这是本主题的排版铁律，不与其它主题共用字号
+> - 正文字号固定 `15px`、行高 `1.9`——上游原为 14px「铁律」，本 fork 按通用库[可读性基线](common-components.md)提到 15px（偏离登记见 [fork 偏离记录](../docs/2026-09-27-fork-readability-baseline-deviations.md)），同步上游时不得改回
 > - 不要把 `font-size`/`border-bottom` 打在 `<strong>` 上，高亮样式统一挂在外层 `<span>` 上
 > - `writing-mode:vertical-rl`（票据侧边竖排字）在个别老旧客户端可能渲染异常，如遇异常可退化为横排小字，不影响其余结构
 
@@ -30,7 +30,7 @@
 代码背景：       #F3F4F6
 代码字色：       #1F2937
 品牌紫色（AI 品牌专用，如 Claude/Obsidian/Gemini）：#7C3AED
-正文字号：       14px（本主题铁律，不可改）
+正文字号：       15px（fork 按可读性基线由上游 14px 提高，勿改回）
 正文行高：       1.9
 全局行高：       1.75
 字间距：         0.5px
@@ -89,7 +89,7 @@
           <section style="font-size:12px;color:#888;"><span leaf="">{{作者身份}}</span></section>
         </section>
       </section>
-      <section style="font-size:13px;color:#555;line-height:1.8;padding:12px;background:#F0FDF4;border:1px solid #A7F3D0;">
+      <section style="font-size:15px;color:#555;line-height:1.85;padding:12px;background:#F0FDF4;border:1px solid #A7F3D0;">
         <span leaf="">{{简介段落}}</span>
       </section>
       <section style="display:flex;gap:8px;margin-top:16px;">
@@ -164,13 +164,13 @@
 
 ## 组件 5 正文段落 paragraph
 
-**用途**：普通正文，可内嵌组件 6 文字强调。字号行高是本主题铁律，不要跟随其它主题改动。
+**用途**：普通正文，可内嵌组件 6 文字强调。字号行高按可读性基线固定为 15px / 1.9。
 
 **可替换字段**：`{{正文内容}}`
 
 ```html
 <section style="margin-bottom:32px;padding:0 20px;">
-  <p style="font-size:14px;color:#555;line-height:1.9;margin-bottom:16px;text-align:justify;">
+  <p style="font-size:15px;color:#555;line-height:1.9;margin-bottom:16px;text-align:left;">
     <span leaf="">{{正文内容}}</span>
   </p>
 </section>
@@ -257,7 +257,7 @@
 ```html
 <section style="margin-bottom:32px;padding:0 20px;">
   <section style="background:#F0FDF4;border-left:4px solid #059669;padding:14px 16px;margin-bottom:0;">
-    <p style="font-size:14px;color:#1a1a1a;font-weight:600;line-height:1.7;margin:0;">
+    <p style="font-size:15px;color:#1a1a1a;font-weight:600;line-height:1.85;margin:0;">
       <span leaf="">{{前缀}}</span>
       <span style="color:#059669;"><span leaf="">{{结论内容}}</span></span>
     </p>
@@ -278,7 +278,7 @@
   <section style="background:#fffef8;border:1px solid #eee;margin-bottom:12px;">
     <section style="display:flex;align-items:stretch;">
       <section style="width:36px;background:#059669;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800;"><span leaf="">{{序号}}</span></section>
-      <section style="flex:1;padding:12px 16px;font-size:13px;color:#555;line-height:1.7;border-left:1px dashed #A7F3D0;">
+      <section style="flex:1;padding:12px 16px;font-size:15px;color:#555;line-height:1.85;border-left:1px dashed #A7F3D0;">
         <span style="font-weight:600;color:#1a1a1a;"><span leaf="">{{小标题}}</span></span>
         <span leaf="">：{{描述}}</span>
       </section>
@@ -305,7 +305,7 @@
       <span style="color:#059669;font-size:24px;"><span leaf="">{{大数字}}</span></span>
       <span leaf="">{{金句后半}}</span>
     </p>
-    <p style="font-size:14px;color:#555;line-height:1.8;margin:0;text-align:justify;">
+    <p style="font-size:15px;color:#555;line-height:1.85;margin:0;text-align:left;">
       <span leaf="">{{补充说明}}</span>
     </p>
   </section>
@@ -478,6 +478,7 @@
 | Markdown 元素 | 对应组件 | 说明 |
 |---|---|---|
 | `# 标题` | 不使用 | 公众号文章标题在平台设置；票据封面大标题从中提炼 |
+| 导读（frontmatter 阅读时长 / `description` / `tags`） | 组件 2 票据封面：简介段落 = 摘要原样，标签 = `tags`，阅读时长放头部标签 | 全文一份；大标题从标题提炼、不重复平台标题；原文无作者信息时删作者行；无摘要时删简介段落 |
 | 文章开头 `> 引言` | 并入封面简介段落 | 票据封面无独立引言卡组件 |
 | `## 章节标题` | 组件 3 chapter-title | 编号 01/02/03… |
 | `### 子标题` | 组件 4 subtitle | 左竖条小标题 |
@@ -489,9 +490,13 @@
 | 案例/示例小标题 | 组件 7 case-title | case01/02… |
 | `![](图片)` | 组件 8 image-ticket | `src`/`data-src` 原样保留，不改写 |
 | 章节小结/观点 | 组件 9 conclusion-card | |
+| 重点 `> [!IMPORTANT]` / `> [!要点]` / `> [!TAKEAWAY]` | 组件 9 conclusion-card（前缀写「重点：」；列表要点逐条一个 `<p>`，只首条带前缀） | 左对齐 |
+| 行动建议 `> [!行动]` / `> [!ACTION]` | 通用库 4b 行动建议卡（块底 #F0FDF4、竖条/标签/序号 #059669、正文 #555），外套 `padding:0 20px` 区块 | 有序列表逐条编号 |
+| 提示词 `> [!提示词]` / `> [!PROMPT]` | 通用库 4c 提示词卡（底 #fffef8、描边 #eee、竖条 #059669、标签底 #F0FDF4 字 #059669、正文 #1a1a1a），外套 `padding:0 20px` 区块 | 正文字号，不斜体、不等宽 |
+| 写法对照 ```` ```diff ```` | 通用库 4d 写法对照（块底 #F0FDF4、竖条与「改写」标签 #059669、「原写法」标签底 #F3F4F6 字 #555、旧句 #999、新句 #1a1a1a），外套 `padding:0 20px` 区块 | 正文字体，不用代码块 |
 | 特点/步骤/清单 | 组件 10 numbered-feature-list | 每项一张卡片 |
-| 核心金句/关键数据 | 组件 11 key-point-card | 硬阴影锚点层，全文慎用 |
-| `> 引用段落`（非开头） | 组件 9 conclusion-card 或并入正文 | 本主题无独立引用块组件 |
+| 引语 `> [!金句]` / 核心金句 / 关键数据 | 组件 11 key-point-card | 硬阴影锚点层，全文慎用；居中只用于第一行金句 |
+| `> 引用段落`（非开头，无用途标记） | 组件 9 conclusion-card 或并入正文 | 本主题无独立引用块组件；`>` 先按用途归入上面各行 |
 | `#话题` 标签 | 组件 12 tag-group | |
 | 行内 `` `code` `` / 技术名词/模型名 | 组件 6d 代码标签 | |
 | ` ``` 多行代码块 ``` ` | 通用库 1a 深色（默认）/ 1b 浅色 | 左竖条换本主题主色 `#059669` |
