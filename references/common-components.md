@@ -1,6 +1,6 @@
-# 通用增量组件库 —— 代码块 · 图片/GIF · 小标签标题
+# 通用增量组件库 —— 可读性基线 · 代码块 · 图片/GIF · 小标签标题 · 语义卡片
 
-> **跨所有主题通用**。主题专属组件（引言卡、章节标题、签名等）读各自主题库；本文件提供三类**所有主题都需要**的组件：代码块、图片/GIF、小标签标题。
+> **跨所有主题通用**。主题专属组件（引言卡、章节标题、签名等）读各自主题库；本文件提供**所有主题都需要**的共用部分：可读性基线（唯一规则来源）、代码块、图片/GIF、小标签标题，以及导读 / 行动建议 / 提示词 / 写法对照四类语义卡片骨架。各主题库只写自己的映射与配色，不重复这里的规则。
 >
 > **配色占位**：下面用红白色系（主色 `#DC2626`、浅底 `#FEF2F2`、浅标 `#FEE2E2`、深字 `#991B1B`）做示例。换其它主题时，把这几个值替换为该主题"设计变量速查表"里的对应色；代码块深色版各主题可共用，浅色版用主题主色做左竖条。
 >
@@ -8,9 +8,28 @@
 
 ---
 
+## 〇、可读性基线（所有主题共同约束）
+
+基线约束的是「好不好读」，不规定配色、字体与装饰——各主题的辨识度靠后者保留。任何主题的组件、映射与装配产物都必须满足下表；主题库与本表冲突时以本表为准。
+
+| 项 | 基线 | 守护 |
+|---|---|---|
+| 对齐 | 正文、重点与各类卡片正文一律左对齐（`text-align:left` 或不写），**不用 `text-align:justify`** | `component_lint.py` / `validate_gzh_html.py --publish-ready` |
+| 正文字号与行高 | 正文类段落 **≥15px**，行高 **1.85–2.0**；卡片里的正文同样适用。代码行（13px/1.6 等宽）、类型标签、图注、标题与居中金句不算正文 | `component_lint.py` |
+| Part 前留白 | 章节（Part）标题前留白约一行（≥24px），只用 `margin` 表达，不用空段落或连续 `<br>` | `validate_gzh_html.py --publish-ready` |
+| 卡片边界 | 重点、提示、行动建议、提示词卡与正文左右边界对齐：放在同一正文容器内，不另加左右外边距，也不比正文宽 | 装配后人工核对 |
+| 标签 | 重点卡没有标题就不写类型标签，不留空标签、不用撑高的空元素 | 装配后人工核对 |
+| 导读 | 全文**恰好一份**，只用原文的阅读信息、摘要（frontmatter `description`）与标签；没有摘要时整张省略，不生成空卡；主题有等价的导读/引言卡时用主题版，不重复 | 装配后人工核对 |
+| 引语专属样式 | 斜体、居中、装饰引号与等宽字体只属于引语或代码，不串入行动建议、提示词、重点等卡片 | 装配后人工核对 |
+| 调色板 | 强调色只取所选主题「设计变量速查表」与本文件的色值 | `validate_gzh_html.py --theme` |
+
+摸鱼绿、摸鱼票据上游把正文定为 14px「铁律」；本 fork 按本基线统一提到 15px，偏离登记见 [fork 可读性基线偏离记录](../docs/2026-09-27-fork-readability-baseline-deviations.md)。
+
+---
+
 ## 一、代码块组件（Markdown ``` 围栏 → 这里）
 
-文章里的代码、命令、Prompt 提示词、配置等，**必须用代码块组件**，不要塞进普通段落或引用块。代码块内的英文、半角符号、缩进都要原样保留（代码不适用"中文全角标点"规则）。
+文章里的代码、命令、配置及依赖缩进的结构化 Prompt，**必须用代码块组件**，不要塞进普通段落或引用块；自然语言提示词用 4c 提示词卡。代码块内的英文、半角符号、缩进都要原样保留（代码不适用"中文全角标点"规则）。
 
 ### 1a. 深色代码块（默认，技术感强，适配所有主题）
 
@@ -104,7 +123,7 @@
 <section style="margin:0 0 24px;padding:30px 20px;border:1.5px dashed #DAD7D2;border-radius:14px;background:#FAFAF8;text-align:center;">
   <p style="margin:0 0 10px;font-size:26px;line-height:1;"><span leaf="">🎬</span></p>
   <p style="margin:0;font-size:14px;font-weight:700;color:#9CA3AF;letter-spacing:1px;"><span leaf="">待补素材</span></p>
-  <p style="margin:8px 0 0;font-size:13px;color:#B8B5B0;line-height:1.7;"><span leaf="">此处插入：创建 skill 的录屏演示</span></p>
+  <p style="margin:8px 0 0;font-size:13px;color:#B8B5B0;line-height:1.7;text-align:center;"><span leaf="">此处插入：创建 skill 的录屏演示</span></p>
 </section>
 ```
 
@@ -168,24 +187,109 @@
   <p style="margin:0 0 6px;">
     <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:11px;font-weight:700;padding:2px 10px;border-radius:4px;letter-spacing:1px;"><span leaf="">提示</span></span>
   </p>
-  <p style="font-size:14px;color:#374151;margin:0;line-height:1.8;">
+  <p style="font-size:15px;color:#374151;margin:0;line-height:1.85;">
     <span leaf="">提示或旁注的正文内容</span>
   </p>
 </section>
 ```
 
-类型小标签文字可换：`提示` / `注意` / `重点` / `Prompt` / `旁注` 等。整块**没有任何 dashed 边框**，靠左竖条 + 浅底 + 小标签区分层次。
+类型小标签文字可换：`提示` / `注意` / `重点` / `旁注` 等（自然语言提示词用 4c）。整块**没有任何 dashed 边框**，靠左竖条 + 浅底 + 小标签区分层次。
+
+---
+
+## 四、语义卡片骨架（导读 · 行动建议 · 提示词 · 写法对照）
+
+> 与第三节同一套形态：左竖条 + 浅底 + 类型小标签，正文走基线字号行高，全部 `<span leaf="">`。**使用优先级同第三节**：主题库映射表指定了等价组件就用主题版；没有才用下面骨架换主题色。
+>
+> **换色规则**沿用第三节：块底 `#FEF2F2` → 主题浅底色，竖条与实色标签 `#DC2626` → 主题主色，浅标签 `#FEE2E2`/`#991B1B` → 主题浅标色/深字色；正文 `#374151`、深字 `#1C1917`、弱化 `#9CA3AF` → 主题正文色/标题色/辅助色。4c 的中性浅底 `#F6F8FA`、描边 `#E5E7EB` 同 1b，各主题可共用。无色块的极简主题同样去掉块底、只留竖条。
+
+### 4a. 导读卡（frontmatter 阅读时长 / `description` / `tags` → 这里）
+
+```html
+<section style="margin:0 0 32px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:16px 18px;">
+  <p style="margin:0 0 8px;font-size:12px;color:#9CA3AF;letter-spacing:1px;line-height:1.5;">
+    <span leaf="">导读 · 约 6 分钟</span>
+  </p>
+  <p style="margin:0;font-size:15px;color:#374151;line-height:1.85;">
+    <span leaf="">原文摘要（frontmatter description 原样，不另编）</span>
+  </p>
+  <p style="margin:10px 0 0;">
+    <span style="display:inline-block;background:#FEE2E2;color:#991B1B;font-size:12px;padding:1px 8px;border-radius:4px;margin:0 6px 4px 0;"><span leaf="">标签一</span></span>
+    <span style="display:inline-block;background:#FEE2E2;color:#991B1B;font-size:12px;padding:1px 8px;border-radius:4px;margin:0 6px 4px 0;"><span leaf="">标签二</span></span>
+  </p>
+</section>
+```
+
+放在正文第一段之前，全文一份。原文没有阅读时长就只写「导读」；没有标签删掉标签行；**没有摘要时整张卡省略**。
+
+### 4b. 行动建议卡（`> [!行动]` / `> [!ACTION]` → 这里）
+
+```html
+<section style="margin:0 0 24px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:14px 18px;">
+  <p style="margin:0 0 8px;">
+    <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:11px;font-weight:700;padding:2px 10px;border-radius:4px;letter-spacing:1px;"><span leaf="">行动建议</span></span>
+  </p>
+  <p style="margin:0 0 6px;font-size:15px;color:#374151;line-height:1.85;">
+    <strong style="color:#DC2626;"><span leaf="">1　</span></strong><span leaf="">第一步做什么</span>
+  </p>
+  <p style="margin:0;font-size:15px;color:#374151;line-height:1.85;">
+    <strong style="color:#DC2626;"><span leaf="">2　</span></strong><span leaf="">第二步做什么</span>
+  </p>
+</section>
+```
+
+原文是有序列表就逐条编号，只有一句就去掉序号直接写正文。
+
+### 4c. 提示词卡（`> [!提示词]` / `> [!PROMPT]` → 这里）
+
+```html
+<section style="margin:0 0 24px;background:#F6F8FA;border:1px solid #E5E7EB;border-left:3px solid #DC2626;border-radius:0 8px 8px 0;padding:14px 18px;">
+  <p style="margin:0 0 8px;">
+    <span style="display:inline-block;background:#FEE2E2;color:#991B1B;font-size:11px;font-weight:700;padding:2px 10px;border-radius:4px;letter-spacing:1px;"><span leaf="">提示词</span></span>
+  </p>
+  <p style="margin:0;font-size:15px;color:#1C1917;line-height:1.85;">
+    <span leaf="">自然语言提示词原文，整段可直接复制</span>
+  </p>
+</section>
+```
+
+用正文字体与基线字号，**不斜体、不等宽、不居中、不加装饰引号**；多段提示词每段一个 `<p>`（段间 `margin:0 0 8px`）。代码、命令或依赖缩进的结构化 Prompt 仍用 1a/1b。
+
+### 4d. 写法对照（```` ```diff ```` 围栏 → 这里）
+
+```html
+<section style="margin:0 0 24px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:14px 18px;">
+  <p style="margin:0 0 8px;font-size:15px;color:#9CA3AF;line-height:1.85;">
+    <span style="display:inline-block;background:#E5E7EB;color:#374151;font-size:11px;font-weight:700;padding:1px 8px;border-radius:4px;margin-right:8px;"><span leaf="">原写法</span></span><span style="text-decoration:line-through;"><span leaf="">diff 里 - 开头的旧句子</span></span>
+  </p>
+  <p style="margin:0 0 8px;font-size:15px;color:#1C1917;line-height:1.85;">
+    <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:11px;font-weight:700;padding:1px 8px;border-radius:4px;margin-right:8px;"><span leaf="">改写</span></span><strong style="color:#991B1B;"><span leaf="">diff 里 + 开头的新句子</span></strong>
+  </p>
+  <p style="margin:0;font-size:15px;color:#374151;line-height:1.85;">
+    <span leaf="">diff 里无前缀的上下文行（说明）</span>
+  </p>
+</section>
+```
+
+`-` 行 → 原写法（删除线 + 弱化色），`+` 行 → 改写（加粗 + 深字色），无前缀行 → 说明；**用正文字体，不用等宽代码块，不保留 `-`/`+` 符号**。多组对照重复前两行；没有说明行就删掉第三个 `<p>` 并把改写行 `margin` 改为 `0`。
 
 ---
 
 ## 选用速记
 
+语义用途由 Stage 4 按内容标注（Agent 判断，脚本不猜）；`>` 本身只是块边界，不决定用途。
+
 | 文章里出现 | 用哪个组件 |
 |---|---|
-| ` ``` 代码 / 命令 / Prompt 围栏 ``` ` | 1a 深色（默认）或 1b 浅色代码块 |
+| ` ``` 代码 / 命令 / 配置（含依赖缩进的结构化 Prompt）``` ` | 1a 深色（默认）或 1b 浅色代码块 |
 | 行内 `` `code` `` | 1c 行内代码 |
 | `![](图片)` | 2a 标准图片 |
 | `![](xxx.gif)` 或注明动图 | 2b GIF 动图 |
 | 想给一段起小标题 / 强调 | 3a 左竖条（首选）/ 3b 药丸 / 3c 序号 |
-| `> 金句` | 3d 金句左竖条块 |
-| 提示 / 注意 / 旁注 | 3e 提示左竖条块（**不要用虚线框**） |
+| 导读：frontmatter 阅读时长 / `description` / `tags` | 主题导读组件，无则 4a 导读卡（恰好一份，无摘要则省略） |
+| 行动建议：`> [!行动]` / `> [!ACTION]` | 主题行动组件，无则 4b 行动建议卡 |
+| 提示词：`> [!提示词]` / `> [!PROMPT]` | 主题提示词组件，无则 4c 提示词卡（正文字体，不斜体、不等宽） |
+| 写法对照：```` ```diff ````（`-` 原写法，`+` 改写） | 4d 写法对照 |
+| 重点：`> [!IMPORTANT]` / `> [!要点]` / `> [!TAKEAWAY]` | 主题重点组件，无则 3e（标签写「重点」） |
+| 引语：`> [!金句]` | 主题金句/引语组件，无则 3d 金句左竖条块 |
+| 提示 / 注意 / 旁注：`> [!NOTE]` / `> [!TIP]` / `> [!WARNING]` | 主题提示组件，无则 3e 提示左竖条块（**不要用虚线框**） |
