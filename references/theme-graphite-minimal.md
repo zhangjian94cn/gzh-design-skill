@@ -45,7 +45,7 @@
 ## 组件 1 全局容器
 
 ```html
-<section style="max-width:677px;margin:0 auto;background:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#52525B;line-height:1.8;letter-spacing:0.3px;overflow-x:hidden;">
+<section style="overflow-wrap:anywhere;word-break:normal;max-width:677px;margin:0 auto;background:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#52525B;line-height:1.8;letter-spacing:0.3px;overflow-x:hidden;">
 
   <!-- 所有组件放在这里 -->
 
@@ -424,13 +424,15 @@
 ```html
 <section style="margin-bottom:14px;">
   <p style="margin:0 0 6px;">
-    <span style="display:inline-block;font-size:14px;font-weight:700;color:#27272A;background:#F4F4F5;padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#52525B;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">{{要点标题}}</span></span>
+    <span style="display:inline-block;font-size:15px;line-height:1.85;font-weight:700;color:#27272A;background:#F4F4F5;padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#52525B;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">{{要点标题}}</span></span>
   </p>
   <p style="font-size:15px;color:#71717A;margin:0;line-height:1.85;text-align:left;">
     <span leaf="">{{要点说明}}</span>
   </p>
 </section>
 ```
+
+简单并列句只填胶囊正文，省略不存在的说明段；承载完整列表句子时使用 15px / 1.85，不能退回辅助标签字号。
 
 ### 11c. timeline（时间线 / 递进脉络，访谈经历、案例演进）
 
@@ -494,7 +496,7 @@
 
 ```html
 <section style="margin:0 10px 24px;overflow-x:auto;">
-  <table style="width:100%;border-collapse:collapse;font-size:14px;">
+  <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:15px;line-height:1.85;">
     <thead>
       <tr>
         <th style="background:#27272A;color:#fff;font-weight:700;padding:8px 12px;text-align:left;"><span leaf="">{{列标题}}</span></th>

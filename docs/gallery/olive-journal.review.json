@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "theme": "olive-journal",
+  "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
+  "librarySha256": "8dc50461cc8149459a421b24a0ea9194e8cc4be840c7a348f21a4e7491045045",
+  "htmlSha256": "86d8947273d19fec9f05cd46ea308c4763f3a4d33a554281ed1fabf47db95124",
+  "selections": {
+    "intro": {
+      "library": "theme-olive-journal.md",
+      "heading": "14b. 阅读导读卡（已有摘要时的开篇变体）",
+      "index": 0
+    },
+    "h2": {
+      "library": "theme-olive-journal.md",
+      "heading": "组件 3 章节标题 section-title",
+      "index": 0
+    },
+    "important": {
+      "library": "theme-olive-journal.md",
+      "heading": "组件 15 重点观点卡 key-point-card",
+      "index": 0
+    },
+    "prompt": {
+      "library": "theme-olive-journal.md",
+      "heading": "14d. 自然语言提示词（可直接发送）",
+      "index": 0
+    }
+  }
+}

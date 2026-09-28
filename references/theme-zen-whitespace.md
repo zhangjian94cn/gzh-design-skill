@@ -47,7 +47,7 @@
 ## 组件 1 全局容器
 
 ```html
-<section style="max-width: 677px;margin: 0 auto;background: #FFFFFF;font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;color: #525252;line-height: 1.9;letter-spacing: 0.3px;overflow-x: hidden;">
+<section style="overflow-wrap:anywhere;word-break:normal;max-width: 677px;margin: 0 auto;background: #FFFFFF;font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;color: #525252;line-height: 1.9;letter-spacing: 0.3px;overflow-x: hidden;">
 
   <!-- 所有组件放在这里 -->
 
