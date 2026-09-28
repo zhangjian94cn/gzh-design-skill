@@ -9,6 +9,8 @@ description: 微信公众号文章排版引擎，将 Markdown 转换为可直接
 
 核心资产是 `references/` 下的**主题组件库**（每套一个主题：设计变量 + 各组件完整 HTML + 模板骨架 + 映射规则）外加 1 套**通用增量库**（可读性基线 / 代码块 / 图片·GIF / 小标签标题 / 语义卡片骨架，所有主题共用）。主题清单以 `references/theme-index.md` 为单一来源。本 SKILL.md 只负责流程与决策，**具体 HTML 代码一律从组件库取，不要凭记忆手写**。
 
+微信写作集成的常设契约：六类用途（导读、行动、提示词、对照、重点、引语）按源文语义分别映射；完整外观归各主题库，共用骨架归 [通用库](references/common-components.md)。集成方的 Stage 6 装配请求绑定源文与组件库指纹，manifest 还绑定最终 HTML；源文、HTML 或组件库更新后必须重新装配/验收，不能以旧样张代替当前文章。自动化未完成装配时保留 `manual_pending` 请求，不切换主题。浏览器预览和普通主题校验不替代 `--publish-ready`，平台草稿回读另行记录实际证据。
+
 ## 从现有 wechat-writing 主题入口调用
 
 本仓库的 [Stage 6](../../skills/my/content-creation/wechat-writing/skills/6-wechat-md-to-html/SKILL.md#独立组件主题gzh-design) 将本索引中的主题独立登记为 `gzh-*`。当输入含 Stage 6 布局请求时，使用请求中指定的主题与 sourcePath，不重新推荐其它主题；当前 Agent 完成下方装配/核对后，以 source/theme/HTML hash manifest 返回 Stage 6 验收。
