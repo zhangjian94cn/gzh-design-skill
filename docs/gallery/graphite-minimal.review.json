@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "theme": "graphite-minimal",
+  "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
+  "librarySha256": "0ee03c2a311e4eea6b64e934a6cd39bcde6e50f455ac4a21cb36e753bfed6b17",
+  "htmlSha256": "741ccf19b47657d8fa143a9251e421b77c715e395cc14a6526624bb0fc16569a",
+  "selections": {
+    "intro": {
+      "library": "common-components.md",
+      "heading": "4a. 导读卡（frontmatter 阅读时长 / `description` / `tags` → 这里）",
+      "index": 0
+    },
+    "h2": {
+      "library": "theme-graphite-minimal.md",
+      "heading": "组件 5 章节标题（超大水印编号 + 标题 + 细线）",
+      "index": 0
+    },
+    "important": {
+      "library": "theme-graphite-minimal.md",
+      "heading": "9a. 石墨竖条提示条（默认，重要提醒 / 核心结论）",
+      "index": 0
+    },
+    "prompt": {
+      "library": "theme-graphite-minimal.md",
+      "heading": "8b. 极浅灰底内容引用块（Prompt / 引用内容）",
+      "index": 0
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "theme": "moyu-green",
+  "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
+  "librarySha256": "9c3d99a8c426d70b8f80508fd61b9e77a52c4b2a14f8e5d71878b16c7a6330cf",
+  "htmlSha256": "7728bb67f2e2b75c780b8774301f3e3c3e6420919d96444fbed59e0721b166da",
+  "selections": {
+    "intro": {
+      "library": "common-components.md",
+      "heading": "4a. 导读卡（frontmatter 阅读时长 / `description` / `tags` → 这里）",
+      "index": 0
+    },
+    "h2": {
+      "library": "theme-moyu-green.md",
+      "heading": "组件 4 章节标题 chapter-title",
+      "index": 0
+    },
+    "important": {
+      "library": "theme-moyu-green.md",
+      "heading": "10b. green-tip（绿色提示）",
+      "index": 0
+    },
+    "prompt": {
+      "library": "common-components.md",
+      "heading": "4c. 提示词卡（`> [!提示词]` / `> [!PROMPT]` → 这里）",
+      "index": 0
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "theme": "zen-whitespace",
+  "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
+  "librarySha256": "a042806f9615fad9752c21acad202c07fba9be02c38352598ddcdaebf7aac913",
+  "htmlSha256": "94940a5d03208065fc5d4313a1bf70514a6449d9ee587ecac386ad506dda0e79",
+  "selections": {
+    "intro": {
+      "library": "common-components.md",
+      "heading": "4a. 导读卡（frontmatter 阅读时长 / `description` / `tags` → 这里）",
+      "index": 0
+    },
+    "h2": {
+      "library": "theme-zen-whitespace.md",
+      "heading": "组件 5 章节标题组件（小号墨绿英文 + 大号衬线中文 + 短细线）",
+      "index": 0
+    },
+    "important": {
+      "library": "theme-zen-whitespace.md",
+      "heading": "组件 9 提示块（左竖条 + 小标签 + 大留白）",
+      "index": 0
+    },
+    "prompt": {
+      "library": "theme-zen-whitespace.md",
+      "heading": "8b. 左竖条轻量引用（次要旁注 / 补充说明）",
+      "index": 0
+    }
+  }
+}

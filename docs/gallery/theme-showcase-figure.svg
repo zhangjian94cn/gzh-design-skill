@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="WeChat theme showcase figure">
+  <rect width="960" height="540" rx="24" fill="#f8fbfd"/>
+  <rect x="56" y="56" width="848" height="428" rx="18" fill="#ffffff" stroke="#d8e5ee" stroke-width="2"/>
+  <rect x="96" y="96" width="220" height="48" rx="8" fill="#0f4c81"/>
+  <text x="120" y="127" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Theme block</text>
+  <rect x="96" y="182" width="768" height="22" rx="11" fill="#dbeafe"/>
+  <rect x="96" y="230" width="580" height="22" rx="11" fill="#e5e7eb"/>
+  <rect x="96" y="278" width="690" height="22" rx="11" fill="#e5e7eb"/>
+  <rect x="96" y="348" width="186" height="74" rx="12" fill="#eff6ff" stroke="#bfdbfe"/>
+  <rect x="316" y="348" width="186" height="74" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <rect x="536" y="348" width="186" height="74" rx="12" fill="#ecfeff" stroke="#a5f3fc"/>
+  <text x="120" y="392" font-family="Arial, sans-serif" font-size="18" fill="#0f4c81">Callout</text>
+  <text x="340" y="392" font-family="Arial, sans-serif" font-size="18" fill="#334155">Table</text>
+  <text x="560" y="392" font-family="Arial, sans-serif" font-size="18" fill="#0369a1">Code</text>
+</svg>

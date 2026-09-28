@@ -23,7 +23,7 @@
 ## 验证证据
 
 - [四项回归](../tests/test_publish_html.py) 通过；旧混色草稿在新门禁下被拒绝，修正版通过 `--theme olive-journal --publish-ready`，0 ERROR / 0 WARNING。
-- 六套 gallery 对各自主题校验均 0 ERROR / 0 WARNING。组件源库 lint 为 0 ERROR，原有两个虚线边框提示保留。
+- 当时六套 gallery 的普通主题校验为 0 ERROR / 0 WARNING；该结论未覆盖 `--publish-ready`，不能作为发布验收证据。2026-09-27 已用同篇标准样张替换六份旧 gallery，并逐份通过 `--theme <id> --publish-ready`。组件源库 lint 为 0 ERROR，原有两个虚线边框提示保留。
 - 当前文章从清理后的 v4 processed Markdown 重新装配；71 个段落/标题顺序核对通过，5 张保留图片存在，6 个代码块逐行内容核对通过；原阅读时长/字数保留，没有重新编造统计。
 - 360 / 393 / 430 / 677px 浏览器宽度下，页面宽度等于视口宽度，越界元素 0、两端对齐段落 0、加载成功图片 5。
 - Stage 7 preflight 无错误：空 p、连续 br、block span、标签间源码换行均为 0。九组编号/代码逐行布局已人工对照并登记；仍保留原 GIF 的格式提示，源图审计另提示该 GIF 大于 3MB。

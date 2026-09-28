@@ -46,7 +46,7 @@
 ## 组件 1 全局容器
 
 ```html
-<section style="max-width:677px;margin:0 auto;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#374151;line-height:1.75;letter-spacing:0.5px;">
+<section style="overflow-wrap:anywhere;word-break:normal;max-width:677px;margin:0 auto;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#374151;line-height:1.75;letter-spacing:0.5px;">
 
   <!-- 所有组件放在这里 -->
 
@@ -77,7 +77,7 @@
     <section style="color:#fffef8;font-size:11px;letter-spacing:2px;"><span leaf="">★★★★★</span></section>
   </section>
   <section style="display:flex;">
-    <section style="flex:1;padding:24px 20px;border-right:2px dashed #A7F3D0;">
+    <section style="flex:1;min-width:0;padding:20px 16px;border-right:2px dashed #A7F3D0;">
       <section style="font-size:24px;font-weight:900;color:#1a1a1a;letter-spacing:0.5px;margin-bottom:4px;text-shadow:0.5px 0 0 #1a1a1a;"><span leaf="">{{大标题}}</span></section>
       <section style="font-size:14px;color:#666;letter-spacing:1px;margin-bottom:20px;"><span leaf="">{{副标题}}</span></section>
       <section style="border-top:1px dashed #A7F3D0;margin-bottom:16px;"><span leaf=""><br></span></section>
@@ -92,13 +92,13 @@
       <section style="font-size:15px;color:#555;line-height:1.85;padding:12px;background:#F0FDF4;border:1px solid #A7F3D0;">
         <span leaf="">{{简介段落}}</span>
       </section>
-      <section style="display:flex;gap:8px;margin-top:16px;">
+      <section style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
         <section style="font-size:10px;color:#059669;border:1px solid #059669;padding:4px 10px;"><span leaf="">{{#标签1}}</span></section>
         <section style="font-size:10px;color:#059669;border:1px solid #059669;padding:4px 10px;"><span leaf="">{{#标签2}}</span></section>
         <section style="font-size:10px;color:#059669;border:1px solid #059669;padding:4px 10px;"><span leaf="">{{#标签3}}</span></section>
       </section>
     </section>
-    <section style="width:48px;padding:14px 4px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;background:#F0FDF4;">
+    <section style="width:40px;flex-shrink:0;padding:14px 4px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;background:#F0FDF4;">
       <section style="text-align:center;">
         <section style="font-size:7px;color:#999;letter-spacing:1px;"><span leaf="">NO.</span></section>
         <section style="font-size:18px;font-weight:900;color:#059669;"><span leaf="">{{编号}}</span></section>
@@ -126,13 +126,15 @@
 
 ## 组件 3 章节标题 chapter-title
 
+手机长标题允许副标题换行，编号不挤压正文；章节前保留 32px 留白。
+
 **用途**：大章节分隔，编号 01/02/03…
 
 **可替换字段**：`{{编号}}` `{{标题}}` `{{副标题}}`
 
 ```html
-<section style="margin-bottom:32px;padding:0 20px;">
-  <section style="display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid #1a1a1a;">
+<section style="margin-top:32px;margin-bottom:24px;padding:0 20px;">
+  <section style="display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 12px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #1a1a1a;">
     <section style="background:#059669;color:#fff;font-size:12px;font-weight:800;padding:6px 12px;letter-spacing:2px;"><span leaf="">{{编号}}</span></section>
     <section style="font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:1px;"><span leaf="">{{标题}}</span></section>
     <section style="font-size:12px;color:#888;"><span leaf="">/ {{副标题}}</span></section>
@@ -170,7 +172,7 @@
 
 ```html
 <section style="margin-bottom:32px;padding:0 20px;">
-  <p style="font-size:15px;color:#555;line-height:1.9;margin-bottom:16px;text-align:left;">
+  <p style="font-size:15px;color:#555;line-height:1.9;margin:0;text-align:left;">
     <span leaf="">{{正文内容}}</span>
   </p>
 </section>
@@ -474,6 +476,8 @@
 ---
 
 ## Markdown → 摸鱼票据风 映射规则
+
+通用语义卡片 4b/4c/4d 在本主题统一使用 `border-radius:0`，延续票据硬边框；各卡片间距、正文与标签依下表处理。
 
 | Markdown 元素 | 对应组件 | 说明 |
 |---|---|---|

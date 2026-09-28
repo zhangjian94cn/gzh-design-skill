@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "theme": "moyu-ticket",
+  "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
+  "librarySha256": "7209cd01b7318b2a512c5ede8a59f375212e1467d5096cdcd4c406acfbc38079",
+  "htmlSha256": "dbbb01c5e783fd40e63757d6e3b79f83bfddd633b69fee9ef12a60287249c7dc",
+  "selections": {
+    "intro": {
+      "library": "theme-moyu-ticket.md",
+      "heading": "组件 2 票据封面 ticket-cover",
+      "index": 0
+    },
+    "h2": {
+      "library": "theme-moyu-ticket.md",
+      "heading": "组件 3 章节标题 chapter-title",
+      "index": 0
+    },
+    "important": {
+      "library": "theme-moyu-ticket.md",
+      "heading": "组件 9 结论卡片 conclusion-card",
+      "index": 0
+    },
+    "prompt": {
+      "library": "common-components.md",
+      "heading": "4c. 提示词卡（`> [!提示词]` / `> [!PROMPT]` → 这里）",
+      "index": 0
+    }
+  }
+}

@@ -56,7 +56,7 @@
 ## 组件 1 全局容器
 
 ```html
-<section style="max-width:677px;margin:0 auto;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#374151;line-height:1.75;letter-spacing:0.5px;overflow-x:hidden;">
+<section style="overflow-wrap:anywhere;word-break:normal;max-width:677px;margin:0 auto;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#374151;line-height:1.75;letter-spacing:0.5px;overflow-x:hidden;">
 
   <!-- 所有组件放在这里 -->
 
@@ -245,7 +245,7 @@
       </p>
     </section>
     <span style="width:1px;height:36px;background:#E5E7EB;flex-shrink:0;"><span leaf=""><br></span></span>
-    <section>
+    <section style="min-width:0;flex:1;">
       <p style="margin:0 0 1px;font-size:17px;font-weight:900;color:#111827;letter-spacing:0.3px;">
         <span leaf="">{{中文标题}}</span>
       </p>
@@ -550,7 +550,7 @@
 ```html
 <section style="margin-bottom:14px;">
   <p style="margin:0 0 6px;">
-    <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">{{列表项文字}}</span></span>
+    <span style="display:inline-block;font-size:15px;line-height:1.85;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">{{列表项文字}}</span></span>
   </p>
 </section>
 ```
@@ -560,13 +560,15 @@
 ```html
 <section style="margin-bottom:14px;">
   <p style="margin:0 0 6px;">
-    <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">{{标题}}</span></span>
+    <span style="display:inline-block;font-size:15px;line-height:1.85;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">{{标题}}</span></span>
   </p>
   <p style="font-size:15px;color:#4B5563;margin:0;line-height:1.85;text-align:left;">
     <span leaf="">{{描述内容}}</span>
   </p>
 </section>
 ```
+
+简单并列句只填胶囊正文，省略不存在的说明段；承载完整列表句子时使用 15px / 1.85，不能退回辅助标签字号。
 
 ### 11b. flow-cards（三步横排流程卡片）
 
@@ -707,7 +709,7 @@
 
 ```html
 <section style="margin-bottom:24px;overflow-x:auto;">
-  <table style="width:100%;border-collapse:collapse;font-size:13px;">
+  <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:15px;line-height:1.9;">
     <thead>
       <tr>
         <th style="background:#059669;color:#fff;font-weight:700;padding:8px 12px;text-align:left;"><span leaf="">{{列标题1}}</span></th>

@@ -275,6 +275,23 @@
 
 ---
 
+## 五、窄屏数据表（主题没有原生表格时使用）
+
+### 5a. 细线数据表（留白与票据主题的补充）
+
+```html
+<section style="margin:24px 0;overflow-x:auto;">
+  <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:15px;line-height:1.9;">
+    <tr><th style="padding:10px 8px;border-bottom:2px solid #DC2626;color:#1C1917;text-align:left;"><span leaf="">列标题</span></th></tr>
+    <tr><td style="padding:10px 8px;border-bottom:1px solid #E5E7EB;color:#374151;vertical-align:top;"><span leaf="">内容</span></td></tr>
+  </table>
+</section>
+```
+
+按实际列数复制单元格、按行数复制数据行；竖向对齐顶部，正文使用主题字体。仅按第四节配色规则填入本主题颜色。长词继承全局 `overflow-wrap:anywhere`，表格固定布局，不能靠整页裁切掩盖溢出。
+
+---
+
 ## 选用速记
 
 语义用途由 Stage 4 按内容标注（Agent 判断，脚本不猜）；`>` 本身只是块边界，不决定用途。

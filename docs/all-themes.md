@@ -1,6 +1,6 @@
 # 全部 6 套主题效果预览 · All 6 Themes
 
-同一篇长文（《做了些爆款 Skills 以后，我对 Skills 的看法》），用 6 套精选主题各排一遍的真实长图（含配图、引言卡、编号章节、金句、名词旁注等完整组件）。
+以下保留上游原设计参考图（《做了些爆款 Skills 以后，我对 Skills 的看法》），用 6 套精选主题各排一遍的真实长图（含配图、引言卡、编号章节、金句、名词旁注等完整组件）。
 
 > The same long-form article laid out in all 6 curated themes. Back to [README](../README.md).
 
@@ -19,4 +19,4 @@
 
 ---
 
-> 以上为每套排版的首屏长图；完整可交互 HTML 见 [`gallery/index.html`](gallery/index.html)（克隆后浏览器打开，无需服务器）。每套主题的主色 / 适用场景 / 英文标识见 [`../references/theme-index.md`](../references/theme-index.md)。需要别的风格可用[主题生成器](../references/theme-generator.md)现生成一套。
+> 上述历史图片的文章内容与当前标准样张不同，不作为本次回归证据。当前六主题标准样张见 [`gallery/index.html`](gallery/index.html)（克隆后浏览器打开，无需服务器）。每套主题的主色 / 适用场景 / 英文标识见 [`../references/theme-index.md`](../references/theme-index.md)。需要别的风格可用[主题生成器](../references/theme-generator.md)现生成一套。

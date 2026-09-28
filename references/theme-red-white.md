@@ -44,7 +44,7 @@
 ## 组件 1 全局容器
 
 ```html
-<section style="max-width:677px;margin:0 auto;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#374151;line-height:1.75;letter-spacing:0.5px;overflow-x:hidden;">
+<section style="overflow-wrap:anywhere;word-break:normal;max-width:677px;margin:0 auto;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#374151;line-height:1.75;letter-spacing:0.5px;overflow-x:hidden;">
 
   <!-- 所有组件放在这里 -->
 
@@ -127,8 +127,8 @@
 ```html
 <section style="margin-top:48px;margin-bottom:28px;padding:0 10px;">
   <section style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:3px solid #DC2626;">
-    <section style="display:flex;align-items:center;">
-      <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:18px;font-weight:900;padding:4px 14px;border-radius:6px;margin-right:14px;line-height:1.3;"><span leaf="">01</span></span>
+    <section style="display:flex;align-items:center;min-width:0;">
+      <span style="flex-shrink:0;display:inline-block;background:#DC2626;color:#FFFFFF;font-size:18px;font-weight:900;padding:4px 14px;border-radius:6px;margin-right:14px;line-height:1.3;"><span leaf="">01</span></span>
       <section>
         <p style="font-size:10px;color:#DC2626;font-weight:700;letter-spacing:3px;margin:0 0 2px;text-transform:uppercase;">
           <span leaf="">{{ENGLISH TAG}}</span>
@@ -291,7 +291,7 @@
 
 ```html
 <section style="background:#FEF2F2;border-left:4px solid #DC2626;border-radius:0 8px 8px 0;padding:14px 20px;margin-bottom:24px;">
-  <p style="font-size:14px;font-weight:700;color:#991B1B;margin:0;line-height:1.8;">
+  <p style="font-size:15px;font-weight:700;color:#991B1B;margin:0;line-height:1.85;">
     <span leaf="">💡 {{重要提示或核心结论}}</span>
   </p>
 </section>
@@ -370,13 +370,15 @@
 ```html
 <section style="margin-bottom:14px;">
   <p style="margin:0 0 6px;">
-    <span style="display:inline-block;font-size:14px;font-weight:700;color:#991B1B;background:#FEE2E2;padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#DC2626;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">{{要点标题}}</span></span>
+    <span style="display:inline-block;font-size:15px;line-height:1.85;font-weight:700;color:#991B1B;background:#FEE2E2;padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#DC2626;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">{{要点标题}}</span></span>
   </p>
   <p style="font-size:15px;color:#4B5563;margin:0;line-height:1.85;text-align:left;">
     <span leaf="">{{要点说明}}</span>
   </p>
 </section>
 ```
+
+简单并列句只填胶囊正文，省略不存在的说明段；承载完整列表句子时使用 15px / 1.85，不能退回辅助标签字号。
 
 ### 11c. timeline（时间线 / 递进脉络，访谈经历、案例演进）
 
@@ -437,7 +439,7 @@
 
 ```html
 <section style="margin-bottom:24px;overflow-x:auto;">
-  <table style="width:100%;border-collapse:collapse;font-size:14px;">
+  <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:15px;line-height:1.85;">
     <thead>
       <tr>
         <th style="background:#DC2626;color:#fff;font-weight:700;padding:8px 12px;text-align:left;"><span leaf="">{{列标题}}</span></th>

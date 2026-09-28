@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "theme": "red-white",
+  "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
+  "librarySha256": "7cf3b3d2f44e1d08d2eeed809e15290826890551cd9072bd2b1b59b2db4c3566",
+  "htmlSha256": "0426bda3c6a77cdae7411a535b960a72195bf64c7aaa6a2e3471b22a60d3ed4a",
+  "selections": {
+    "intro": {
+      "library": "common-components.md",
+      "heading": "4a. 导读卡（frontmatter 阅读时长 / `description` / `tags` → 这里）",
+      "index": 0
+    },
+    "h2": {
+      "library": "theme-red-white.md",
+      "heading": "组件 5 章节标题（红底编号标签 + 标题）",
+      "index": 0
+    },
+    "important": {
+      "library": "theme-red-white.md",
+      "heading": "9a. 红色提示条（重要提醒、核心结论）",
+      "index": 0
+    },
+    "prompt": {
+      "library": "common-components.md",
+      "heading": "4c. 提示词卡（`> [!提示词]` / `> [!PROMPT]` → 这里）",
+      "index": 0
+    }
+  }
+}
