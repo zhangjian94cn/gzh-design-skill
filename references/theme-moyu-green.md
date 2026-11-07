@@ -576,34 +576,23 @@
 
 ## 组件 11 布局组件
 
-### 11a. pill-list（绿色胶囊列表）
-
-基本版：
+### 11a. bullet-list（无序列表，绿色圆点 + 正文字重）
 
 ```html
-<section style="margin-bottom:14px;text-align:left;font-size:16px;">
-  <p style="margin:0 0 6px;">
-    <span style="display:inline-block;font-size:16px;line-height:1.9;font-weight:700;color:#087653;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#087653;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">{{列表项文字}}</span></span>
-  </p>
+<section style="margin-bottom:24px;text-align:left;">
+  <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;">
+    <span style="display:inline-block;flex-shrink:0;width:6px;height:6px;background:#087653;border-radius:50%;margin-top:12px;"><span leaf=""><br></span></span>
+    <p style="font-size:16px;color:#374151;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
+  </section>
+  <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;">
+    <span style="display:inline-block;flex-shrink:0;width:6px;height:6px;background:#087653;border-radius:50%;margin-top:12px;"><span leaf=""><br></span></span>
+    <p style="font-size:16px;color:#374151;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
+  </section>
 </section>
 
 ```
 
-带说明文字版：
-
-```html
-<section style="margin-bottom:14px;text-align:left;font-size:16px;">
-  <p style="margin:0 0 6px;">
-    <span style="display:inline-block;font-size:16px;line-height:1.9;font-weight:700;color:#087653;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#087653;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">{{标题}}</span></span>
-  </p>
-  <p style="font-size:16px;color:#4B5563;margin:0;line-height:1.9;text-align:left;">
-    <span leaf="">{{描述内容}}</span>
-  </p>
-</section>
-
-```
-
-简单并列句只填胶囊正文，省略不存在的说明段；承载完整列表句子时使用 15px / 1.85，不能退回辅助标签字号。
+每个 `-` 条目一行，按条目数复制；条目保持正文字号、字重和颜色，长句换行后与首行文字对齐。条目带小标题时写成行首 `<strong style="color:#111827;">` 加全角冒号接说明，仍在同一个 `<p>` 内；不做底色胶囊，也不整条加粗。
 
 ### 11b. flow-cards（三步横排流程卡片）
 
@@ -752,21 +741,21 @@
   <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:16px;line-height:1.9;">
     <thead>
       <tr>
-        <th style="background:#087653;color:#fff;font-weight:700;padding:8px 12px;text-align:left;"><span leaf="">{{列标题1}}</span></th>
-        <th style="background:#087653;color:#fff;font-weight:700;padding:8px 12px;text-align:left;"><span leaf="">{{列标题2}}</span></th>
-        <th style="background:#087653;color:#fff;font-weight:700;padding:8px 12px;text-align:left;"><span leaf="">{{列标题3}}</span></th>
+        <th style="width:23%;background:#087653;color:#fff;font-weight:700;padding:8px;text-align:left;word-break:keep-all;"><span leaf="">{{短列标题}}</span></th>
+        <th style="width:43%;background:#087653;color:#fff;font-weight:700;padding:8px;text-align:left;word-break:keep-all;"><span leaf="">{{长文本列标题}}</span></th>
+        <th style="width:34%;background:#087653;color:#fff;font-weight:700;padding:8px;text-align:left;word-break:keep-all;"><span leaf="">{{列标题3}}</span></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td style="padding:8px 12px;border-bottom:1px solid #E5E7EB;color:#374151;"><span leaf="">{{内容}}</span></td>
-        <td style="padding:8px 12px;border-bottom:1px solid #E5E7EB;color:#374151;"><span leaf="">{{内容}}</span></td>
-        <td style="padding:8px 12px;border-bottom:1px solid #E5E7EB;color:#374151;"><span leaf="">{{内容}}</span></td>
+        <td style="padding:8px;border-bottom:1px solid #E5E7EB;color:#374151;vertical-align:top;"><span leaf="">{{内容}}</span></td>
+        <td style="padding:8px;border-bottom:1px solid #E5E7EB;color:#374151;vertical-align:top;"><span leaf="">{{内容}}</span></td>
+        <td style="padding:8px;border-bottom:1px solid #E5E7EB;color:#374151;vertical-align:top;"><span leaf="">{{内容}}</span></td>
       </tr>
       <tr>
-        <td style="padding:8px 12px;border-bottom:1px solid #E5E7EB;color:#374151;background:#F9FAFB;"><span leaf="">{{内容}}</span></td>
-        <td style="padding:8px 12px;border-bottom:1px solid #E5E7EB;color:#374151;background:#F9FAFB;"><span leaf="">{{内容}}</span></td>
-        <td style="padding:8px 12px;border-bottom:1px solid #E5E7EB;color:#374151;background:#F9FAFB;"><span leaf="">{{内容}}</span></td>
+        <td style="padding:8px;border-bottom:1px solid #E5E7EB;color:#374151;vertical-align:top;background:#F9FAFB;"><span leaf="">{{内容}}</span></td>
+        <td style="padding:8px;border-bottom:1px solid #E5E7EB;color:#374151;vertical-align:top;background:#F9FAFB;"><span leaf="">{{内容}}</span></td>
+        <td style="padding:8px;border-bottom:1px solid #E5E7EB;color:#374151;vertical-align:top;background:#F9FAFB;"><span leaf="">{{内容}}</span></td>
       </tr>
     </tbody>
   </table>
@@ -774,7 +763,7 @@
 
 ```
 
-偶数行自动带浅灰背景 `#F9FAFB`，列数按实际需求增减。
+偶数行带浅灰背景 `#F9FAFB`，列数按实际需求增减。列宽写在表头 `th` 的 `width` 上，按内容长度分配、合计 100%：短标签列 22–25%（英文单词不能被拆开），其余列按各列最长内容的字数比例分配，如 23% / 43% / 34%。表头加 `word-break:keep-all`，手机宽度下不折出孤字；数据单元格不加 keep-all，长句照常折行并顶对齐。按 375px 屏宽检查：表头一行、单元格最多两行、行尾不剩单字。超过 3 列或每列都是长句时改用 11c 卡片或列表。
 
 ### 11g. ordered-list（数字编号列表）
 
@@ -925,7 +914,7 @@
 |------|------|------|------|
 | **锚点层** | 绿色加粗 6a / 黄底下划线 6d / oneliner-card 9b | 核心概念、产品名、关键结论 | 全文 ≤5 处 |
 | **标记层** | 绿色下划线 6e（默认）/ 黄色纯色高亮 6c | 正文关键词强调 | 每段 1~3 处 |
-| **容器层** | quote-box 9a / 提示 10x / 胶囊 11a / 卡片 11x | 引用、旁注、提示、结构化信息 | 按需 |
+| **容器层** | quote-box 9a / 提示 10x / 卡片 11x | 引用、旁注、提示、结构化信息 | 按需 |
 
 **克制原则**：
 - 黄色高亮每段不超过 1-2 处；一段内不超过 2 种高亮效果
@@ -941,7 +930,7 @@
 | 文章类型 | 核心组件组合 | 点缀组件 |
 |---|---|---|
 | 教程/操作指南 | step-label 7a + cmd/prompt 8a/8b + 代码块（通用库1a） | warn-tip 10a、green-tip 10b、flow-cards 11b |
-| 盘点/工具清单 | skill/tool-label 7c + tool-card 11e + pill-list 11a | table 11f、oneliner-card 9b |
+| 盘点/工具清单 | skill/tool-label 7c + tool-card 11e + bullet-list 11a | table 11f、oneliner-card 9b |
 | 观点/深度分析 | paragraph 5 + quote-box 9a + oneliner-card 9b | center-divider 9d、subtitle-highlight 9c |
 | 访谈/人物特稿 | paragraph 5 + quote-box 9a（引语）+ timeline 11d（经历脉络） | oneliner-card 9b、center-divider 9d |
 | 数据复盘/报告 | three-col-cards 11c + table 11f + ordered-list 11g | green-info 10d、黄色纯色高亮 6c |
@@ -978,7 +967,7 @@
 | 单行命令 | 组件 8b cmd-block | |
 | ` ``` 多行代码块 ``` ` | 通用库 1a 深色（默认）/ 1b 浅色（左竖条换 #059669） | 每行一个 `<p style="margin:0">` |
 | 行内 `` `code` `` | 组件 6g 代码标签 | |
-| 并列要点 | 组件 11a pill-list | |
+| `- ` 无序列表 / 并列要点 | 组件 11a bullet-list | 绿色圆点 + 正文字重，不做胶囊 |
 | 流程（3 步） | 组件 11b flow-cards | 箭头可换 × 做对比 |
 | 三项对比 | 组件 11c three-col-cards | |
 | 递进/时间脉络 | 组件 11d timeline | |

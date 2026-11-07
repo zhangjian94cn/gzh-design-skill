@@ -602,19 +602,19 @@
 <section style="margin-top:24px;text-align:left;">
   <section style="border-radius:6px;overflow:hidden;border:1px solid #bfc1b7;background:#fdfdf8;font-family:'IBM Plex Sans',-apple-system,sans-serif;">
     <section style="display:flex;background:#eeefe9;border-bottom:1px solid #bfc1b7;">
-      <section style="box-sizing:border-box;min-width:0;width:35%;padding:10px 8px;font-size:12px;font-weight:800;color:#23251d;"><span leaf="">{{维度列名}}</span></section>
-      <section style="box-sizing:border-box;min-width:0;width:32.5%;padding:10px 8px;font-size:12px;font-weight:800;color:#23251d;border-left:1px solid #bfc1b7;"><span leaf="">{{方案A名}}</span></section>
-      <section style="box-sizing:border-box;min-width:0;width:32.5%;padding:10px 8px;font-size:12px;font-weight:800;color:#23251d;border-left:1px solid #bfc1b7;"><span leaf="">{{方案B名}}</span></section>
+      <section style="box-sizing:border-box;min-width:0;width:23%;padding:10px 8px;font-size:12px;font-weight:800;color:#23251d;word-break:keep-all;"><span leaf="">{{维度列名}}</span></section>
+      <section style="box-sizing:border-box;min-width:0;width:38.5%;padding:10px 8px;font-size:12px;font-weight:800;color:#23251d;border-left:1px solid #bfc1b7;word-break:keep-all;"><span leaf="">{{方案A名}}</span></section>
+      <section style="box-sizing:border-box;min-width:0;width:38.5%;padding:10px 8px;font-size:12px;font-weight:800;color:#23251d;border-left:1px solid #bfc1b7;word-break:keep-all;"><span leaf="">{{方案B名}}</span></section>
     </section>
     <section style="display:flex;border-bottom:1px solid #bfc1b7;">
-      <section style="box-sizing:border-box;min-width:0;width:35%;padding:10px 8px;font-size:16px;line-height:1.9;color:#4d4f46;"><span leaf="">{{行标题}}</span></section>
-      <section style="box-sizing:border-box;min-width:0;width:32.5%;padding:10px 8px;font-size:16px;line-height:1.9;color:#23251d;border-left:1px solid #bfc1b7;"><span leaf="">{{A值}}</span></section>
-      <section style="box-sizing:border-box;min-width:0;width:32.5%;padding:10px 8px;font-size:16px;line-height:1.9;color:#23251d;border-left:1px solid #bfc1b7;"><span leaf="">{{B值}}</span></section>
+      <section style="box-sizing:border-box;min-width:0;width:23%;padding:10px 8px;font-size:16px;line-height:1.9;color:#4d4f46;"><span leaf="">{{行标题}}</span></section>
+      <section style="box-sizing:border-box;min-width:0;width:38.5%;padding:10px 8px;font-size:16px;line-height:1.9;color:#23251d;border-left:1px solid #bfc1b7;"><span leaf="">{{A值}}</span></section>
+      <section style="box-sizing:border-box;min-width:0;width:38.5%;padding:10px 8px;font-size:16px;line-height:1.9;color:#23251d;border-left:1px solid #bfc1b7;"><span leaf="">{{B值}}</span></section>
     </section>
     <section style="display:flex;">
-      <section style="box-sizing:border-box;min-width:0;width:35%;padding:10px 8px;font-size:16px;line-height:1.9;color:#4d4f46;"><span leaf="">{{行标题}}</span></section>
-      <section style="box-sizing:border-box;min-width:0;width:32.5%;padding:10px 8px;font-size:16px;line-height:1.9;color:#23251d;border-left:1px solid #bfc1b7;"><span leaf="">{{A值}}</span></section>
-      <section style="box-sizing:border-box;min-width:0;width:32.5%;padding:10px 8px;font-size:16px;line-height:1.9;color:#23251d;border-left:1px solid #bfc1b7;"><span leaf="">{{B值}}</span></section>
+      <section style="box-sizing:border-box;min-width:0;width:23%;padding:10px 8px;font-size:16px;line-height:1.9;color:#4d4f46;"><span leaf="">{{行标题}}</span></section>
+      <section style="box-sizing:border-box;min-width:0;width:38.5%;padding:10px 8px;font-size:16px;line-height:1.9;color:#23251d;border-left:1px solid #bfc1b7;"><span leaf="">{{A值}}</span></section>
+      <section style="box-sizing:border-box;min-width:0;width:38.5%;padding:10px 8px;font-size:16px;line-height:1.9;color:#23251d;border-left:1px solid #bfc1b7;"><span leaf="">{{B值}}</span></section>
     </section>
   </section>
 </section>
@@ -622,6 +622,8 @@
 ```
 
 （最后一行不带 `border-bottom`；行数不止 2 行时，中间行都带 `border-bottom:1px solid #bfc1b7`，只有最后一行不带。）
+
+列宽按内容长度分配、每行同一列宽度一致且合计 100%：短的维度列 22–25%，其余列按各列最长内容的字数比例分配（两列方案长度相近时平分，如 23% / 38.5% / 38.5%；长短悬殊时如 23% / 43% / 34%）。表头单元格保留 `word-break:keep-all`，手机宽度下不折出孤字；数据单元格不加 keep-all，长句照常折行。按 375px 屏宽检查：表头一行、单元格最多两行、行尾不剩单字。
 
 ---
 

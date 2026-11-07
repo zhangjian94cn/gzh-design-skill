@@ -2,8 +2,8 @@
   "version": 1,
   "theme": "graphite-minimal",
   "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
-  "librarySha256": "689091449163a3cda03f7ecdb48534a6caccb50cae8ed5778e22c8546e86de3c",
-  "htmlSha256": "a643ea1e12d7bd305ae95b2b4282faa26859ec37ee94b4ade1037b4b65d8522f",
+  "librarySha256": "c1fdd9e0cfc3a438865721c1e819692b18576a990da3e51835cb9272421cd1e6",
+  "htmlSha256": "cc67f3d594b74fd3f7d8d94a80e0a6f767cc50495f66a7d0da196ba3c9f668f5",
   "selections": {
     "intro": {
       "library": "common-components.md",

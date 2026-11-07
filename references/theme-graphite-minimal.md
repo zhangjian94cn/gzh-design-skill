@@ -334,14 +334,19 @@
 
 ---
 
-## 组件 9 提示 / 警示条（3 种变体）
+## 组件 9 提示 / 警示条（4 种变体）
+
+四类提示各带与语义一致的英文小标签：IMPORTANT → `KEY POINT`（9a）、WARNING → `WARNING`（9c）、NOTE → `NOTE`（9d）、TIP → `TIP`（9d）。层级由竖条粗细、底色和正文字重区分，不用胶囊或色块。
 
 ### 9a. 石墨竖条提示条（默认，重要提醒 / 核心结论）
 
-> 石墨竖条 + 深炭文字，无背景色，极简提醒。
+> 石墨竖条 + `KEY POINT` 标签 + 深炭粗体，无背景色，极简提醒。
 
 ```html
 <section style="border-left:3px solid #27272A;padding:14px 0 14px 22px;margin:0 10px 24px;text-align:left;" data-part="important-card">
+  <p style="font-size:12px;font-weight:700;color:#27272A;margin:0 0 6px;letter-spacing:0.02em;line-height:1.5;">
+    <span leaf="">KEY POINT</span>
+  </p>
   <p style="font-size:16px;font-weight:700;color:#27272A;margin:0;line-height:1.9;" data-part="important-body">
     <span leaf="">{{重要提示或核心结论}}</span>
   </p>
@@ -362,17 +367,45 @@
 
 ```
 
-### 9c. 踩坑提示（极浅灰底，风险 / 注意事项，内容量大时）
+### 9c. 警示块（WARNING：风险、限制、需人工确认）
 
-> 极浅灰底 + 顶部深炭细线 + 多行内容，适合提示内容较多时。
+> 极浅灰底 + 顶部深炭细线 + `WARNING` 粗体标签，比 NOTE / TIP 更重，适合风险说明或内容较多的注意事项。
 
 ```html
 <section style="background:#FAFAFA;border-top:2px solid #27272A;padding:18px 22px;margin:0 10px 24px;text-align:left;">
-  <p style="font-size:12px;color:#626872;margin:0 0 10px;letter-spacing:0.02em;font-weight:500;">
-    <span leaf="">NOTE</span>
+  <p style="font-size:12px;color:#27272A;margin:0 0 10px;letter-spacing:0.02em;font-weight:700;line-height:1.5;">
+    <span leaf="">WARNING</span>
   </p>
   <p style="font-size:16px;color:#52525B;margin:0;line-height:1.9;">
-    <span leaf="">{{较多的提示内容}}</span>
+    <span leaf="">{{风险、限制或需要人工确认的内容}}</span>
+  </p>
+</section>
+
+```
+
+### 9d. 补充与建议（NOTE / TIP，细竖条 + 类型标签）
+
+> 2px 细竖条、无底色、正文常规字重，是四类提示里最轻的一层。NOTE 用极细线色竖条和次要灰字，TIP 用辅助灰竖条和正文色。
+
+```html
+<section style="border-left:2px solid #E4E4E7;padding:12px 0 12px 20px;margin:0 10px 24px;text-align:left;">
+  <p style="font-size:12px;color:#626872;margin:0 0 6px;letter-spacing:0.02em;font-weight:500;line-height:1.5;">
+    <span leaf="">NOTE</span>
+  </p>
+  <p style="font-size:16px;color:#71717A;margin:0;line-height:1.9;">
+    <span leaf="">{{补充背景或术语解释}}</span>
+  </p>
+</section>
+
+```
+
+```html
+<section style="border-left:2px solid #A1A1AA;padding:12px 0 12px 20px;margin:0 10px 24px;text-align:left;">
+  <p style="font-size:12px;color:#626872;margin:0 0 6px;letter-spacing:0.02em;font-weight:500;line-height:1.5;">
+    <span leaf="">TIP</span>
+  </p>
+  <p style="font-size:16px;color:#52525B;margin:0;line-height:1.9;">
+    <span leaf="">{{可执行的建议}}</span>
   </p>
 </section>
 
@@ -450,21 +483,23 @@
 
 ```
 
-### 11b. pill-list（无序要点，石墨圆点前缀 + 说明）
+### 11b. bullet-list（无序列表，石墨圆点 + 正文字重）
 
 ```html
-<section style="margin-bottom:14px;text-align:left;font-size:16px;">
-  <p style="margin:0 0 6px;">
-    <span style="display:inline-block;font-size:16px;line-height:1.9;font-weight:700;color:#27272A;background:#F4F4F5;padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#52525B;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">{{要点标题}}</span></span>
-  </p>
-  <p style="font-size:16px;color:#71717A;margin:0;line-height:1.9;text-align:left;">
-    <span leaf="">{{要点说明}}</span>
-  </p>
+<section style="margin-bottom:24px;text-align:left;">
+  <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;">
+    <span style="display:inline-block;flex-shrink:0;width:5px;height:5px;background:#52525B;border-radius:50%;margin-top:13px;"><span leaf=""><br></span></span>
+    <p style="font-size:16px;color:#52525B;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
+  </section>
+  <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;">
+    <span style="display:inline-block;flex-shrink:0;width:5px;height:5px;background:#52525B;border-radius:50%;margin-top:13px;"><span leaf=""><br></span></span>
+    <p style="font-size:16px;color:#52525B;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
+  </section>
 </section>
 
 ```
 
-简单并列句只填胶囊正文，省略不存在的说明段；承载完整列表句子时使用 15px / 1.85，不能退回辅助标签字号。
+每个 `-` 条目一行，按条目数复制；条目保持正文字号、字重和颜色，长句换行后与首行文字对齐。条目带小标题时写成行首 `<strong style="color:#27272A;">` 加全角冒号接说明，仍在同一个 `<p>` 内；极简主题不使用底色胶囊。
 
 ### 11c. timeline（时间线 / 递进脉络，访谈经历、案例演进）
 
@@ -534,24 +569,29 @@
   <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:16px;line-height:1.9;">
     <thead>
       <tr>
-        <th style="background:#27272A;color:#fff;font-weight:700;padding:8px 12px;text-align:left;"><span leaf="">{{列标题}}</span></th>
-        <th style="background:#27272A;color:#fff;font-weight:700;padding:8px 12px;text-align:left;"><span leaf="">{{列标题}}</span></th>
+        <th style="width:23%;background:#27272A;color:#fff;font-weight:700;padding:8px;text-align:left;word-break:keep-all;"><span leaf="">{{短列标题}}</span></th>
+        <th style="width:43%;background:#27272A;color:#fff;font-weight:700;padding:8px;text-align:left;word-break:keep-all;"><span leaf="">{{长文本列标题}}</span></th>
+        <th style="width:34%;background:#27272A;color:#fff;font-weight:700;padding:8px;text-align:left;word-break:keep-all;"><span leaf="">{{列标题}}</span></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td style="padding:8px 12px;border-bottom:1px solid #E4E4E7;color:#52525B;"><span leaf="">{{内容}}</span></td>
-        <td style="padding:8px 12px;border-bottom:1px solid #E4E4E7;color:#52525B;"><span leaf="">{{内容}}</span></td>
+        <td style="padding:8px;border-bottom:1px solid #E4E4E7;color:#52525B;vertical-align:top;"><span leaf="">{{内容}}</span></td>
+        <td style="padding:8px;border-bottom:1px solid #E4E4E7;color:#52525B;vertical-align:top;"><span leaf="">{{内容}}</span></td>
+        <td style="padding:8px;border-bottom:1px solid #E4E4E7;color:#52525B;vertical-align:top;"><span leaf="">{{内容}}</span></td>
       </tr>
       <tr>
-        <td style="padding:8px 12px;border-bottom:1px solid #E4E4E7;color:#52525B;background:#FAFAFA;"><span leaf="">{{内容}}</span></td>
-        <td style="padding:8px 12px;border-bottom:1px solid #E4E4E7;color:#52525B;background:#FAFAFA;"><span leaf="">{{内容}}</span></td>
+        <td style="padding:8px;border-bottom:1px solid #E4E4E7;color:#52525B;vertical-align:top;background:#FAFAFA;"><span leaf="">{{内容}}</span></td>
+        <td style="padding:8px;border-bottom:1px solid #E4E4E7;color:#52525B;vertical-align:top;background:#FAFAFA;"><span leaf="">{{内容}}</span></td>
+        <td style="padding:8px;border-bottom:1px solid #E4E4E7;color:#52525B;vertical-align:top;background:#FAFAFA;"><span leaf="">{{内容}}</span></td>
       </tr>
     </tbody>
   </table>
 </section>
 
 ```
+
+列宽写在表头 `th` 的 `width` 上，按内容长度分配、合计 100%：短标签列 22–25%（英文单词不能被拆开），其余列按各列最长内容的字数比例分配，如 23% / 43% / 34%。表头加 `word-break:keep-all`，手机宽度下不折出孤字；数据单元格不加 keep-all，长句照常折行并顶对齐。按 375px 屏宽检查：表头一行、单元格最多两行、行尾不剩单字。超过 3 列或每列都是长句时改用卡片或列表。
 
 ---
 
@@ -702,11 +742,11 @@ GIF 动图角标改极简描边胶囊：边框与字色用石墨主色 `#52525B`
 |---|---|---|
 | 观点/深度分析 | 正文6 + 石墨竖条金句8a + 居中金句8d | 极浅灰引用8b、辅助竖条旁注8c |
 | 教程/操作指南 | step-label 10a + 代码块（通用库1a）+ ordered-list 11a | 石墨提示9a、tool-card 10c |
-| 盘点/工具清单 | skill/tool-label 10b + tool-card 10c + pill-list 11b | 数据卡12、标签胶囊13 |
+| 盘点/工具清单 | skill/tool-label 10b + tool-card 10c + bullet-list 11b | 数据卡12、标签胶囊13 |
 | 访谈/人物特稿 | 正文6 + 石墨竖条金句8a（引语）+ timeline 11c（经历脉络） | 居中金句8d、辅助竖条旁注8c |
 | 数据复盘/报告 | 数据卡12（两列/三列）+ 表格12 + ordered-list 11a | 石墨提示9a、荧光笔7e |
 | 生活/情感随笔 | 正文6 + 居中金句8d + 辅助竖条旁注8c | 石墨竖条金句8a（少量） |
-| 案例实战 | case-label 10a / timeline 11c + step-label 10a | 极浅灰引用8b、踩坑提示9c |
+| 案例实战 | case-label 10a / timeline 11c + step-label 10a | 极浅灰引用8b、警示块9c |
 
 所有类型共用固定结构：引言卡 2 + 导读 3（3+ 章节）+ 水印编号章节 5 + END 15 + 签名 16。
 
@@ -730,7 +770,8 @@ GIF 动图角标改极简描边胶囊：边框与字色用石墨主色 `#52525B`
 | 引语 `> [!金句]` | 组件 8a 石墨竖条金句 | 核心金句，无底色；`>` 先按用途归入本表各行 |
 | `> 引用段落`（内容块，无用途标记） | 组件 8b 极浅灰底引用块 | 有 REFERENCE 标签行 |
 | `> 引用段落`（旁注，无用途标记） | 组件 8c 辅助色竖条轻量旁注 | 极细辅助灰竖条 |
-| 重点 `> [!IMPORTANT]` / `> [!要点]` / `> [!TAKEAWAY]` | 组件 9c（标签行写 `KEY POINT`/「重点」）；单句结论用 9a | 列表要点逐条一个 `<p>` |
+| 补充说明 `> [!NOTE]` / 建议 `> [!TIP]` | 组件 9d，标签分别写 `NOTE` / `TIP` | 细竖条、常规字重 |
+| 重点 `> [!IMPORTANT]` / `> [!要点]` / `> [!TAKEAWAY]` | 组件 9a（标签 `KEY POINT`） | 列表要点逐条一个 `<p>` |
 | 行动建议 `> [!行动]` / `> [!ACTION]` | 通用库 4b 去块底：竖条 3px #27272A、标签底 #27272A 字 #FFFFFF、序号 #27272A、正文 #52525B | 有序列表逐条编号 |
 | 写法对照 ```` ```diff ```` | 通用库 4d 去块底：竖条 3px #52525B、「原写法」标签底 #F4F4F5 字 #71717A、旧句 #A1A1AA、「改写」标签底 #27272A、新句 #27272A | 正文字体，不用代码块 |
 | 核心金句 | 组件 8a / 8d 居中金句 | 视觉焦点 |
@@ -739,11 +780,11 @@ GIF 动图角标改极简描边胶囊：边框与字色用石墨主色 `#52525B`
 | 案例/经历脉络 | 组件 10a case-label / 11c timeline | |
 | 提示词 `> [!提示词]` / `> [!PROMPT]` | 组件 8b 极浅灰引用块，标签行改写 `PROMPT` | 自然语言提示词，正文字号、不斜体不等宽；依赖缩进的结构化 Prompt 用通用库 1a |
 | ` ``` 多行代码块 ``` ` | 通用库 1a 深色 / 1b 浅色（左竖条换 #52525B） | 每行一个 `<p style="margin:0">` |
-| 并列要点 | 组件 11b pill-list | |
+| `- ` 无序列表 / 并列要点 | 组件 11b bullet-list | 石墨圆点 + 正文字重，不做胶囊 |
 | `1. 2. 3.` 编号列表 | 组件 11a ordered-list | 石墨圆标 |
 | 数据展示 | 组件 12 数据/要点卡片组 | 线框版，深炭大号数字 |
 | Markdown 表格 | 组件 12 表格 | 偶数行极浅灰底 |
-| 注意/警告 | 组件 9a 石墨提示 / 9b 橙色提示 / 9c 踩坑提示 | |
+| 警示 `> [!WARNING]` / `> [!CAUTION]` / 注意 | 组件 9c 警示块（标签 `WARNING`） | 全篇最关键的一处可改用 9b 橙色竖条（占橙色配额） |
 | 行内标签 | 组件 13 标签胶囊 | 石墨描边默认 |
 | `---` | 组件 4 章节分割线 | 1px 石墨极细线 |
 | `![](图片)` | 组件 14 图片容器 | 极简线框，无圆角 |

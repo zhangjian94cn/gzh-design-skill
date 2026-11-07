@@ -2,8 +2,8 @@
   "version": 1,
   "theme": "red-white",
   "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
-  "librarySha256": "19edc090bb52c9862afa2e38acaff87e4e92a92081b963f468c426325a34c4d6",
-  "htmlSha256": "8d2a8092488dd08e28ff8d3a1e80c7c80581afe542f9b2c855a8c0c30e2237b5",
+  "librarySha256": "b8c8bd5aac3dba4db36bfa8c052d101cab9777282694063b00bf123c2f577913",
+  "htmlSha256": "cdf87b58023732af2333166a522c0d681dfacedcc7d0cd1d5bc5ae8277a7241c",
   "selections": {
     "intro": {
       "library": "common-components.md",
