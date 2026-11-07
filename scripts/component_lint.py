@@ -174,22 +174,30 @@ def _line_owners(node):
     return owners
 
 
-def inheritance_issues(html, line):
-    """返回会在微信线上继承正文默认对齐/字号的组件位置说明。"""
+def _text(node):
+    return "".join(c if isinstance(c, str) else _text(c) for c in node.children)
+
+
+def inheritance_findings(html):
+    """找出会在微信线上继承正文默认对齐/字号的位置，返回 [(类别, 节点)]。
+
+    类别：global-align / global-size = 全局容器缺 text-align / px 字号；
+    align = 顶层块缺 text-align；size = 承载文字的块自身和片段内祖先都没有 px 字号。
+    """
     tree = _Fragment()
     tree.feed(html)
     tree.close()
-    issues = []
+    found = []
     for root in tree.root.children:
         if not isinstance(root, _Node) or _display(root) == "inline":
             continue
         if "max-width" in root.style:  # 全局容器：其余组件都放在它里面
-            if "text-align" not in root.style or not _sized(root):
-                issues.append(f"第 {line} 行全局容器未同时声明 text-align 与 px 字号：未写明的组件会落到"
-                              "微信正文默认的两端对齐与 17px；写 text-align:left;font-size:16px")
+            if "text-align" not in root.style:
+                found.append(("global-align", root))
+            if not _sized(root):
+                found.append(("global-size", root))
         elif _has_text(root) and "text-align" not in root.style:
-            issues.append(f"第 {line} 行组件顶层 <{root.tag}> 未声明 text-align：线上会继承微信正文默认的"
-                          "两端对齐；顶层写 text-align:left（居中组件写 center）")
+            found.append(("align", root))
     flagged = set()
 
     def walk(node):
@@ -198,13 +206,27 @@ def inheritance_issues(html, line):
                 for owner in _line_owners(node):
                     if id(owner) not in flagged and not _sized(owner):
                         flagged.add(id(owner))
-                        issues.append(f"第 {line} 行 <{owner.tag}> 未声明 px 字号且组件内无字号可继承："
-                                      "线上会落到微信正文默认 17px，行高随之变大；写明设计字号")
+                        found.append(("size", owner))
             else:
                 walk(child)
 
     walk(tree.root)
-    return issues
+    return found
+
+
+def inheritance_issues(html, line):
+    """组件库版说明：带上代码块所在行号。"""
+    messages = {
+        "global-align": "第 {line} 行全局容器未声明 text-align：未写明对齐的组件会落到微信正文默认的"
+                        "两端对齐；写 text-align:left",
+        "global-size": "第 {line} 行全局容器未声明 px 字号：未写明字号的文字块会落到微信正文默认 17px；"
+                       "写 font-size:16px",
+        "align": "第 {line} 行组件顶层 <{tag}> 未声明 text-align：线上会继承微信正文默认的"
+                 "两端对齐；顶层写 text-align:left（居中组件写 center）",
+        "size": "第 {line} 行 <{tag}> 未声明 px 字号且组件内无字号可继承："
+                "线上会落到微信正文默认 17px，行高随之变大；写明设计字号",
+    }
+    return [messages[kind].format(line=line, tag=node.tag) for kind, node in inheritance_findings(html)]
 
 
 def lint_text(text):

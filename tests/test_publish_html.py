@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from validate_gzh_html import validate
 
-CLEAN = '<section style="color:#23251d;text-align:left;"><p style="margin:0;"><span leaf="">正文</span></p></section>'
+CLEAN = '<section style="color:#23251d;text-align:left;font-size:16px;"><p style="margin:0;"><span leaf="">正文</span></p></section>'
 
 
 class PublishHTMLTests(unittest.TestCase):
@@ -20,6 +20,28 @@ class PublishHTMLTests(unittest.TestCase):
         self.assertTrue(any('两端对齐' in e for e in errors))
         self.assertTrue(any('源码换行' in e for e in errors))
         self.assertEqual(validate(CLEAN, theme='olive-journal', publish_ready=True)[:2], ([], []))
+
+    def test_wechat_body_defaults_cannot_leak_into_published_text(self):
+        # WeChat's .rich_media_content defaults to justify/17px; anything not declared inherits them.
+        container = '<section style="max-width:677px;color:#23251d;{root}">{body}</section>'
+        label = ('<section style="margin:0 0 24px;{card}"><p style="margin:0 0 8px;"><span style="display:inline-block;'
+                 'font-size:11px;"><span leaf="">提示词</span></span></p><p style="margin:0;font-size:15px;line-height:1.85;">'
+                 '<span leaf="">正文</span></p></section>')
+        bare = validate(container.format(root='', body=label.format(card='')), publish_ready=True)[0]
+        self.assertTrue(any('text-align' in e for e in bare))
+        self.assertTrue(any('17px' in e and '提示词' in e for e in bare))
+        # Declared on the container: every component inherits left/16px instead of the WeChat defaults.
+        root = 'text-align:left;font-size:16px;'
+        self.assertEqual(validate(container.format(root=root, body=label.format(card='')), publish_ready=True)[:2], ([], []))
+        # A sized component does not excuse the container: it must still carry the base size for future components.
+        only_card = validate(container.format(root='text-align:left;', body=label.format(card='text-align:left;font-size:16px;')),
+                             publish_ready=True)[0]
+        self.assertTrue(any('17px' in e for e in only_card))
+        # Relative sizes resolve against WeChat's 17px, so they do not count.
+        relative = '<section style="text-align:left;font-size:1em;"><p style="margin:0;"><span leaf="">正文</span></p></section>'
+        self.assertTrue(any('17px' in e for e in validate(relative, publish_ready=True)[0]))
+        # The check belongs to --publish-ready only.
+        self.assertEqual(validate(container.format(root='', body=label.format(card='')))[:2], ([], []))
 
     def test_pre_source_whitespace_is_not_allowed(self):
         for value in ('pre', 'pre-wrap', 'pre-line', 'break-spaces'):

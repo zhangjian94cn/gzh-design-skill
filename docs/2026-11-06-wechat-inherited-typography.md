@@ -33,11 +33,16 @@
 - 摸鱼绿样张第 17、19 块的 green-tip 原本是空 section，标签和正文落在卡片外。已按组件库恢复包裹，这两块的上下留白回到组件设计值。
 - moyu-ticket 已由集成方退役，但仍在本 fork 的主题索引里登记，同样处理以保持库和样张一致。
 
+## 发布校验
+
+组件库由 lint 把关，装配好的文章由 [validate_gzh_html.py](../scripts/validate_gzh_html.py) 的 `--publish-ready` 把关，两者共用 `component_lint.inheritance_findings` 的判定。发布片段的顶层块缺 `text-align` 报 ERROR；文字块自身和片段内祖先都没有 px 字号也报 ERROR，带 `max-width` 的全局容器必须同时写明两项。集成方 Stage 6 会对每篇组件文章跑这个检查，所以它的测试夹具同步在根 section 写明 `text-align:left;font-size:16px`。改动落在集成方 `feature/wechat-theme-polish` 分支，涉及 3 个文件中的 5 个夹具。
+
 ## 验证
 
 - 线上模拟：六份样张中，计算样式为 justify 的元素为 0，落到 17px 默认值的元素为 0。本地与线上的对齐、字号、行高、字距、颜色和字重逐元素一致。
 - 去掉全局容器的对齐与字号后再模拟，结果仍为 0/0，说明组件顶层单独起作用。
 - 本地渲染：五个主题的文字盒逐个比较，位置零变化；摸鱼绿只有第 17、19 块变化，即上一节说明的结构恢复。
-- `validate_gzh_html.py --theme <id> --publish-ready` 六份通过。`component_lint.py` 0 ERROR，保留原有两个虚线框 WARN。本仓 12 个测试通过。
+- `validate_gzh_html.py --theme <id> --publish-ready` 六份通过，加入继承检查后仍通过。`component_lint.py` 0 ERROR，保留原有两个虚线框 WARN。本仓 13 个测试通过。
+- 集成方 polish 分支上与 gzh 相关的 11 个测试文件全部通过，共 157 个测试。该分支合入 main 之前，main 上 5 个使用旧夹具的 Stage 6 测试会被新检查拒绝。
 - 集成方 `gallery-review.mjs` 六份通过（52 块、4 个原生组件）。集成方主题测试 50 个通过。
 - 模拟只是近似，真实草稿回读和手机截图仍是最终证据；本次未写入微信草稿。
