@@ -2,8 +2,8 @@
   "version": 1,
   "theme": "red-white",
   "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
-  "librarySha256": "4de0235cad024606e1c5bedb033b10ab504da29b2254d4ffd049fd1fe62f5d2b",
-  "htmlSha256": "a9da9a91e03151636e84c51a263e7861f6cf01e76b212073d0b7f46b48268e0f",
+  "librarySha256": "19edc090bb52c9862afa2e38acaff87e4e92a92081b963f468c426325a34c4d6",
+  "htmlSha256": "8d2a8092488dd08e28ff8d3a1e80c7c80581afe542f9b2c855a8c0c30e2237b5",
   "selections": {
     "intro": {
       "library": "common-components.md",
@@ -24,6 +24,21 @@
       "library": "common-components.md",
       "heading": "4c. 提示词卡（`> [!提示词]` / `> [!PROMPT]` → 这里）",
       "index": 0
+    },
+    "h3": {
+      "library": "theme-red-white.md",
+      "heading": "正文层级标题",
+      "index": 0
+    },
+    "h4": {
+      "library": "theme-red-white.md",
+      "heading": "正文层级标题",
+      "index": 1
+    },
+    "h5": {
+      "library": "theme-red-white.md",
+      "heading": "正文层级标题",
+      "index": 2
     }
   }
 }

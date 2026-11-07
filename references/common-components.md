@@ -40,14 +40,15 @@
     <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FF5F56;margin-right:7px;font-size:0;line-height:0;overflow:hidden;">.</span>
     <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FFBD2E;margin-right:7px;font-size:0;line-height:0;overflow:hidden;">.</span>
     <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#27C93F;font-size:0;line-height:0;overflow:hidden;">.</span>
-    <span style="margin-left:12px;font-size:12px;color:#64748B;font-family:Consolas,Monaco,monospace;letter-spacing:1px;"><span leaf="">python</span></span>
+    <span style="margin-left:12px;font-size:12px;color:#64748B;font-family:Consolas,Monaco,monospace;letter-spacing:0.02em;"><span leaf="">python</span></span>
   </section>
   <section style="padding:11px 14px;">
-    <p style="margin:0;font-family:'SF Mono',Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">def make_skill(name):</span></p>
-    <p style="margin:0;font-family:'SF Mono',Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">　　return f"已生成 {name}"</span></p>
-    <p style="margin:0;font-family:'SF Mono',Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">print(make_skill("gzh-design"))</span></p>
+    <p style="margin:0;font-family:'SF Mono',Consolas,Monaco,monospace;font-size:14px;line-height:1.6;color:#E2E8F0;"><span leaf="">def make_skill(name):</span></p>
+    <p style="margin:0;font-family:'SF Mono',Consolas,Monaco,monospace;font-size:14px;line-height:1.6;color:#E2E8F0;"><span leaf="">　　return f"已生成 {name}"</span></p>
+    <p style="margin:0;font-family:'SF Mono',Consolas,Monaco,monospace;font-size:14px;line-height:1.6;color:#E2E8F0;"><span leaf="">print(make_skill("gzh-design"))</span></p>
   </section>
 </section>
+
 ```
 
 要点（**关键，避免大段空白**）：① 顶栏三色圆点 + 语言名（无语言可删该 span）；② **每行代码用一个 `<p style="margin:0;...">`，不要用 `white-space:pre`**——否则 HTML 源码里 span 前的缩进和行间换行会被原样渲染成大左缩进 + 空行；③ 需要缩进时在 span 文字里用全角空格 `　`（不要靠源码空格）；④ 行距只靠 `line-height:1.6` 控制，padding 用 `11px 14px`，保持紧凑；⑤ 长行会自动换行，不溢出。
@@ -57,12 +58,13 @@
 ```html
 <section style="margin:0 0 20px;border-radius:8px;overflow:hidden;background:#F6F8FA;border:1px solid #E5E7EB;border-left:3px solid #DC2626;text-align:left;font-size:16px;">
   <section style="padding:7px 14px;border-bottom:1px solid #E5E7EB;">
-    <span style="font-size:12px;color:#9CA3AF;font-family:Consolas,Monaco,monospace;letter-spacing:1px;"><span leaf="">bash</span></span>
+    <span style="font-size:12px;color:#626872;font-family:Consolas,Monaco,monospace;letter-spacing:0.02em;"><span leaf="">bash</span></span>
   </section>
   <section style="padding:11px 14px;">
-    <p style="margin:0;font-family:'SF Mono',Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#24292F;"><span leaf="">npx skills add gzh-design</span></p>
+    <p style="margin:0;font-family:'SF Mono',Consolas,Monaco,monospace;font-size:14px;line-height:1.6;color:#24292F;"><span leaf="">npx skills add gzh-design</span></p>
   </section>
 </section>
+
 ```
 
 （左竖条 `#DC2626` 换成当前主题主色；多行同 1a：每行一个 `<p style="margin:0">`，不用 `white-space:pre`，缩进用全角空格 `　`。）
@@ -71,6 +73,7 @@
 
 ```html
 <span style="background:#F1F5F9;color:#DC2626;padding:1px 6px;border-radius:4px;font-family:'SF Mono',Consolas,Monaco,monospace;font-size:14px;"><span leaf="">SKILL.md</span></span>
+
 ```
 
 （文字色 `#DC2626` 换主题主色；底色保持中性浅灰。）
@@ -89,9 +92,10 @@
     <span leaf=""><img src="图片URL" style="max-width:100%;height:auto;display:block;margin:0 auto;"></span>
   </section>
 </section>
-<p style="font-size:12px;color:#9CA3AF;text-align:center;margin:0 0 24px;">
+<p style="font-size:12px;color:#626872;text-align:center;margin:0 0 24px;">
   <span leaf="">— 图片说明文字</span>
 </p>
+
 ```
 
 无说明文字时删掉下方 `<p>`，并把图片容器 `margin-bottom` 改回 `10px`。
@@ -107,9 +111,10 @@
   </section>
 </section>
 <p style="text-align:center;margin:0 0 24px;font-size:16px;">
-  <span style="display:inline-block;background:#FEE2E2;color:#991B1B;font-size:11px;font-weight:700;padding:1px 8px;border-radius:4px;margin-right:6px;"><span leaf="">GIF 动图</span></span>
-  <span style="font-size:12px;color:#9CA3AF;"><span leaf="">动图说明文字</span></span>
+  <span style="display:inline-block;background:#FEE2E2;color:#991B1B;font-size:12px;font-weight:700;padding:1px 8px;border-radius:4px;margin-right:6px;"><span leaf="">GIF 动图</span></span>
+  <span style="font-size:12px;color:#626872;"><span leaf="">动图说明文字</span></span>
 </p>
+
 ```
 
 （角标底色 `#FEE2E2` → 主题浅底色，字色 `#991B1B` → 主题深字色，取自该主题"设计变量速查表"；无色块的极简主题改用细线描边胶囊：边框与字色用主题主色、背景透明。）若原文只写了图片但没给 URL，用 `src="图片URL"` 占位并在交付时提醒用户补图，**不要凭空编造图床链接**。
@@ -123,9 +128,10 @@
 ```html
 <section style="margin:0 0 24px;padding:30px 20px;border:1.5px dashed #DAD7D2;border-radius:14px;background:#FAFAF8;text-align:center;">
   <p style="margin:0 0 10px;font-size:26px;line-height:1;"><span leaf="">🎬</span></p>
-  <p style="margin:0;font-size:14px;font-weight:700;color:#9CA3AF;letter-spacing:1px;"><span leaf="">待补素材</span></p>
-  <p style="margin:8px 0 0;font-size:13px;color:#B8B5B0;line-height:1.7;text-align:center;"><span leaf="">此处插入：创建 skill 的录屏演示</span></p>
+  <p style="margin:0;font-size:14px;font-weight:700;color:#626872;letter-spacing:0.02em;"><span leaf="">待补素材</span></p>
+  <p style="margin:8px 0 0;font-size:14px;color:#B8B5B0;line-height:1.7;text-align:center;"><span leaf="">此处插入：创建 skill 的录屏演示</span></p>
 </section>
+
 ```
 
 - 图标按素材类型换：🎬 视频/录屏、🖼 图片、📊 信息图、📎 附件。
@@ -152,6 +158,7 @@
 <p style="margin:28px 0 14px;font-size:16px;font-weight:800;color:#1C1917;line-height:1.5;border-left:4px solid #DC2626;padding-left:12px;text-align:left;">
   <span leaf="">小标题文字</span>
 </p>
+
 ```
 
 ### 3b. 药丸标签小标题（实色底，最醒目）
@@ -160,15 +167,17 @@
 <p style="margin:28px 0 14px;text-align:left;font-size:16px;">
   <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:14px;font-weight:700;padding:5px 16px;border-radius:6px;"><span leaf="">小标题文字</span></span>
 </p>
+
 ```
 
 ### 3c. 序号药丸 + 标题（清单/步骤）
 
 ```html
-<p style="margin:24px 0 12px;font-size:15px;font-weight:800;color:#1C1917;line-height:1.6;text-align:left;">
+<p style="margin:24px 0 12px;font-size:16px;font-weight:800;color:#1C1917;line-height:1.6;text-align:left;">
   <span style="display:inline-block;background:#FEE2E2;color:#991B1B;border-radius:5px;padding:1px 9px;margin-right:8px;font-weight:900;"><span leaf="">01</span></span>
   <span leaf="">要点标题</span>
 </p>
+
 ```
 
 ### 3d. 金句引用（左竖条版，取代旧的虚线框金句）
@@ -179,19 +188,21 @@
     <span leaf="">「这里是核心观点或关键金句」</span>
   </p>
 </section>
+
 ```
 
 ### 3e. 提示 / 旁注块（左竖条 + 类型小标签，取代旧的虚线提示框）
 
 ```html
-<section style="margin:0 0 24px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:14px 18px;text-align:left;font-size:16px;">
+<section style="margin:0 0 24px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:16px;text-align:left;font-size:16px;">
   <p style="margin:0 0 6px;">
-    <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:11px;font-weight:700;padding:2px 10px;border-radius:4px;letter-spacing:1px;"><span leaf="">提示</span></span>
+    <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:12px;font-weight:700;padding:2px 10px;border-radius:4px;letter-spacing:0.02em;"><span leaf="">提示</span></span>
   </p>
-  <p style="font-size:15px;color:#374151;margin:0;line-height:1.85;">
+  <p style="font-size:16px;color:#374151;margin:0;line-height:1.9;">
     <span leaf="">提示或旁注的正文内容</span>
   </p>
 </section>
+
 ```
 
 类型小标签文字可换：`提示` / `注意` / `重点` / `旁注` 等（自然语言提示词用 4c）。整块**没有任何 dashed 边框**，靠左竖条 + 浅底 + 小标签区分层次。
@@ -207,11 +218,11 @@
 ### 4a. 导读卡（frontmatter 阅读时长 / `description` / `tags` → 这里）
 
 ```html
-<section style="margin:0 0 32px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:16px 18px;text-align:left;font-size:16px;">
-  <p style="margin:0 0 8px;font-size:12px;color:#9CA3AF;letter-spacing:1px;line-height:1.5;">
+<section style="margin:0 0 32px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:16px;text-align:left;font-size:16px;" data-part="intro-card">
+  <p style="margin:0 0 8px;font-size:12px;color:#626872;letter-spacing:0.02em;line-height:1.5;" data-part="intro-meta">
     <span leaf="">导读 · 约 6 分钟</span>
   </p>
-  <p style="margin:0;font-size:15px;color:#374151;line-height:1.85;">
+  <p style="margin:0;font-size:16px;color:#374151;line-height:1.9;" data-part="intro-summary">
     <span leaf="">原文摘要（frontmatter description 原样，不另编）</span>
   </p>
   <p style="margin:10px 0 0;">
@@ -219,6 +230,7 @@
     <span style="display:inline-block;background:#FEE2E2;color:#991B1B;font-size:12px;padding:1px 8px;border-radius:4px;margin:0 6px 4px 0;"><span leaf="">标签二</span></span>
   </p>
 </section>
+
 ```
 
 放在正文第一段之前，全文一份。原文没有阅读时长就只写「导读」；没有标签删掉标签行；**没有摘要时整张卡省略**。
@@ -226,17 +238,18 @@
 ### 4b. 行动建议卡（`> [!行动]` / `> [!ACTION]` → 这里）
 
 ```html
-<section style="margin:0 0 24px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:14px 18px;text-align:left;font-size:16px;">
+<section style="margin:0 0 24px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:16px;text-align:left;font-size:16px;">
   <p style="margin:0 0 8px;">
-    <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:11px;font-weight:700;padding:2px 10px;border-radius:4px;letter-spacing:1px;"><span leaf="">行动建议</span></span>
+    <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:12px;font-weight:700;padding:2px 10px;border-radius:4px;letter-spacing:0.02em;"><span leaf="">行动建议</span></span>
   </p>
-  <p style="margin:0 0 6px;font-size:15px;color:#374151;line-height:1.85;">
+  <p style="margin:0 0 6px;font-size:16px;color:#374151;line-height:1.9;">
     <strong style="color:#DC2626;"><span leaf="">1　</span></strong><span leaf="">第一步做什么</span>
   </p>
-  <p style="margin:0;font-size:15px;color:#374151;line-height:1.85;">
+  <p style="margin:0;font-size:16px;color:#374151;line-height:1.9;">
     <strong style="color:#DC2626;"><span leaf="">2　</span></strong><span leaf="">第二步做什么</span>
   </p>
 </section>
+
 ```
 
 原文是有序列表就逐条编号，只有一句就去掉序号直接写正文。
@@ -244,14 +257,15 @@
 ### 4c. 提示词卡（`> [!提示词]` / `> [!PROMPT]` → 这里）
 
 ```html
-<section style="margin:0 0 24px;background:#F6F8FA;border:1px solid #E5E7EB;border-left:3px solid #DC2626;border-radius:0 8px 8px 0;padding:14px 18px;text-align:left;font-size:16px;">
+<section style="margin:0 0 24px;background:#F6F8FA;border:1px solid #E5E7EB;border-left:3px solid #DC2626;border-radius:0 8px 8px 0;padding:16px;text-align:left;font-size:16px;" data-part="prompt-card">
   <p style="margin:0 0 8px;">
-    <span style="display:inline-block;background:#FEE2E2;color:#991B1B;font-size:11px;font-weight:700;padding:2px 10px;border-radius:4px;letter-spacing:1px;"><span leaf="">提示词</span></span>
+    <span style="display:inline-block;background:#FEE2E2;color:#991B1B;font-size:12px;font-weight:700;padding:2px 10px;border-radius:4px;letter-spacing:0.02em;"><span leaf="">提示词</span></span>
   </p>
-  <p style="margin:0;font-size:15px;color:#1C1917;line-height:1.85;">
+  <p style="margin:0;font-size:16px;color:#1C1917;line-height:1.9;" data-part="prompt-body">
     <span leaf="">自然语言提示词原文，整段可直接复制</span>
   </p>
 </section>
+
 ```
 
 用正文字体与基线字号，**不斜体、不等宽、不居中、不加装饰引号**；多段提示词每段一个 `<p>`（段间 `margin:0 0 8px`）。代码、命令或依赖缩进的结构化 Prompt 仍用 1a/1b。
@@ -259,17 +273,18 @@
 ### 4d. 写法对照（```` ```diff ```` 围栏 → 这里）
 
 ```html
-<section style="margin:0 0 24px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:14px 18px;text-align:left;">
-  <p style="margin:0 0 8px;font-size:15px;color:#9CA3AF;line-height:1.85;">
-    <span style="display:inline-block;background:#E5E7EB;color:#374151;font-size:11px;font-weight:700;padding:1px 8px;border-radius:4px;margin-right:8px;"><span leaf="">原写法</span></span><span style="text-decoration:line-through;"><span leaf="">diff 里 - 开头的旧句子</span></span>
+<section style="margin:0 0 24px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:16px;text-align:left;">
+  <p style="margin:0 0 8px;font-size:16px;color:#626872;line-height:1.9;">
+    <span style="display:inline-block;background:#E5E7EB;color:#374151;font-size:12px;font-weight:700;padding:1px 8px;border-radius:4px;margin-right:8px;"><span leaf="">原写法</span></span><span style="text-decoration:line-through;"><span leaf="">diff 里 - 开头的旧句子</span></span>
   </p>
-  <p style="margin:0 0 8px;font-size:15px;color:#1C1917;line-height:1.85;">
-    <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:11px;font-weight:700;padding:1px 8px;border-radius:4px;margin-right:8px;"><span leaf="">改写</span></span><strong style="color:#991B1B;"><span leaf="">diff 里 + 开头的新句子</span></strong>
+  <p style="margin:0 0 8px;font-size:16px;color:#1C1917;line-height:1.9;">
+    <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:12px;font-weight:700;padding:1px 8px;border-radius:4px;margin-right:8px;"><span leaf="">改写</span></span><strong style="color:#991B1B;"><span leaf="">diff 里 + 开头的新句子</span></strong>
   </p>
-  <p style="margin:0;font-size:15px;color:#374151;line-height:1.85;">
+  <p style="margin:0;font-size:16px;color:#374151;line-height:1.9;">
     <span leaf="">diff 里无前缀的上下文行（说明）</span>
   </p>
 </section>
+
 ```
 
 `-` 行 → 原写法（删除线 + 弱化色），`+` 行 → 改写（加粗 + 深字色），无前缀行 → 说明；**用正文字体，不用等宽代码块，不保留 `-`/`+` 符号**。多组对照重复前两行；没有说明行就删掉第三个 `<p>` 并把改写行 `margin` 改为 `0`。
@@ -282,11 +297,12 @@
 
 ```html
 <section style="margin:24px 0;overflow-x:auto;text-align:left;">
-  <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:15px;line-height:1.9;">
-    <tr><th style="padding:10px 8px;border-bottom:2px solid #DC2626;color:#1C1917;text-align:left;"><span leaf="">列标题</span></th></tr>
+  <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:16px;line-height:1.9;">
+    <tbody><tr><th style="padding:10px 8px;border-bottom:2px solid #DC2626;color:#1C1917;text-align:left;"><span leaf="">列标题</span></th></tr>
     <tr><td style="padding:10px 8px;border-bottom:1px solid #E5E7EB;color:#374151;vertical-align:top;"><span leaf="">内容</span></td></tr>
-  </table>
+  </tbody></table>
 </section>
+
 ```
 
 按实际列数复制单元格、按行数复制数据行；竖向对齐顶部，正文使用主题字体。仅按第四节配色规则填入本主题颜色。长词继承全局 `overflow-wrap:anywhere`，表格固定布局，不能靠整页裁切掩盖溢出。

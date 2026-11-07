@@ -2,8 +2,8 @@
   "version": 1,
   "theme": "zen-whitespace",
   "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
-  "librarySha256": "e58ec79b1fd44148487ed79377eb8ce00274f353e28eccef874e753eb3a72b53",
-  "htmlSha256": "3a826bde2b2c179838140367f91ecf98eca8d359dc0cbc35431f73a1f473e936",
+  "librarySha256": "273e56473c2da81198d59dde88f8973799865ff23ee93a0b9580a89f16881e48",
+  "htmlSha256": "0c246335fbbef538bac609ccc4039bbd72d49f076c7b3682425ab12be529c93f",
   "selections": {
     "intro": {
       "library": "common-components.md",
@@ -24,6 +24,21 @@
       "library": "theme-zen-whitespace.md",
       "heading": "8b. 左竖条轻量引用（次要旁注 / 补充说明）",
       "index": 0
+    },
+    "h3": {
+      "library": "theme-zen-whitespace.md",
+      "heading": "正文层级标题",
+      "index": 0
+    },
+    "h4": {
+      "library": "theme-zen-whitespace.md",
+      "heading": "正文层级标题",
+      "index": 1
+    },
+    "h5": {
+      "library": "theme-zen-whitespace.md",
+      "heading": "正文层级标题",
+      "index": 2
     }
   }
 }
