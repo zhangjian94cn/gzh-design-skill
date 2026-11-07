@@ -2,8 +2,8 @@
   "version": 1,
   "theme": "moyu-ticket",
   "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
-  "librarySha256": "7209cd01b7318b2a512c5ede8a59f375212e1467d5096cdcd4c406acfbc38079",
-  "htmlSha256": "dbbb01c5e783fd40e63757d6e3b79f83bfddd633b69fee9ef12a60287249c7dc",
+  "librarySha256": "b6b3c6b5d45cf10e831c1f1e6ad27053fa26ead4a08d1996efca6cc449c9fe55",
+  "htmlSha256": "768cf4dfeab67d0b3a638f858e5bf72f61dcf3b2e13cc1d54a10187b7bbb1440",
   "selections": {
     "intro": {
       "library": "theme-moyu-ticket.md",

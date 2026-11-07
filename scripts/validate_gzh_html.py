@@ -4,6 +4,8 @@
 把 SKILL.md 里"必须遵守的平台限制"从模型自觉变成确定性兜底。
 排版生成后必跑：检查禁用标签/属性/样式，并核查文字节点是否用
 <span leaf=""> 包裹（公众号编辑器粘贴后保持样式的关键）。
+--publish-ready 另查线上继承：微信正文容器默认两端对齐、17px，顶层块缺 text-align
+或文字块无 px 字号可继承即报 ERROR（判定与 component_lint.py 共用）。
 
 用法:
     validate_gzh_html.py <file.html>
@@ -17,6 +19,9 @@ import re
 import sys
 from html.parser import HTMLParser
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from component_lint import _text, inheritance_findings  # noqa: E402  共用组件库的线上继承判定
 
 # (正则, 级别, 说明) —— ERROR 会被公众号编辑器过滤掉或导致样式失效
 FORBIDDEN = [
@@ -175,6 +180,17 @@ def validate(html, name="<input>", theme=None, publish_ready=False):
             errors.append("发布正文存在空 p；段距应由组件 margin/padding 表达")
         if re.search(r"<br\s*/?>\s*<br\s*/?>", html, re.I):
             errors.append("发布正文存在连续 br；请使用有明确间距的段落")
+        # 微信正文容器默认两端对齐、17px：发布片段里没写明的对齐与字号会落到这两个默认值
+        findings = inheritance_findings(html)
+        unaligned = [node for kind, node in findings if kind in ("global-align", "align")]
+        if unaligned:
+            errors.append(f"发布正文有 {len(unaligned)} 个顶层块未声明 text-align，线上会继承微信正文默认的两端对齐；"
+                          f"全局容器写 text-align:left（例：<{unaligned[0].tag}>）")
+        unsized = [node for kind, node in findings if kind in ("global-size", "size")]
+        if unsized:
+            sample = "；".join(f"「{_text(n).strip()[:16]}」(<{n.tag}>)" for n in unsized[:3])
+            errors.append(f"发布正文有 {len(unsized)} 处文字块没有 px 字号可继承，线上会落到微信正文默认 17px；"
+                          f"全局容器写 font-size:16px 或在该块写明字号。例：{sample}")
         errors.extend(warnings)
         warnings = []
 

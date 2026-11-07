@@ -47,7 +47,7 @@
 ## 组件 1 全局容器
 
 ```html
-<section style="overflow-wrap:anywhere;word-break:normal;max-width: 677px;margin: 0 auto;background: #FFFFFF;font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;color: #525252;line-height: 1.9;letter-spacing: 0.3px;overflow-x: hidden;">
+<section style="overflow-wrap:anywhere;word-break:normal;max-width: 677px;margin: 0 auto;background: #FFFFFF;font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;color: #525252;line-height: 1.9;letter-spacing: 0.3px;overflow-x: hidden;text-align: left;font-size: 16px;">
 
   <!-- 所有组件放在这里 -->
 
@@ -80,7 +80,7 @@
 > 无色块目录，用细线分隔，数字编号低调呈现。三列等宽，纯文字 + 细线底边。
 
 ```html
-<section style="padding: 0 16px 48px;">
+<section style="padding: 0 16px 48px;text-align: left;">
   <p style="font-size: 11px;color: #A3A3A3;margin: 0 0 20px;letter-spacing: 2px;text-transform: uppercase;">
     <span leaf="">本文脉络</span>
   </p>
@@ -124,7 +124,7 @@
 > 英文小标签（极小号，墨绿，大字间距）+ 衬线中文大标题 + 标题下方一条短细线（40px 宽，墨绿）。编号低调嵌入英文标签前。无色块，无粗边框。
 
 ```html
-<section style="margin-top: 64px;margin-bottom: 32px;padding: 0 16px;">
+<section style="margin-top: 64px;margin-bottom: 32px;padding: 0 16px;text-align: left;">
   <p style="font-size: 10px;color: #4A5D52;font-weight: 600;letter-spacing: 4px;margin: 0 0 10px;text-transform: uppercase;">
     <span leaf="">01 · CHAPTER ONE</span>
   </p>
@@ -143,7 +143,7 @@
 **结语章节变体**（编号改 ∞，英文改 POSTSCRIPT）：
 
 ```html
-<p style="font-size: 10px;color: #4A5D52;font-weight: 600;letter-spacing: 4px;margin: 0 0 10px;text-transform: uppercase;">
+<p style="font-size: 10px;color: #4A5D52;font-weight: 600;letter-spacing: 4px;margin: 0 0 10px;text-transform: uppercase;text-align: left;">
   <span leaf="">∞ · POSTSCRIPT</span>
 </p>
 ```
@@ -265,7 +265,7 @@
 > 极细左竖条（`#4A5D52`，2px），无底色，大 padding，适合旁注和补充说明。
 
 ```html
-<section style="border-left: 2px solid #4A5D52;padding: 10px 20px 10px 20px;margin: 0 16px 30px;background: #FFFFFF;">
+<section style="border-left: 2px solid #4A5D52;padding: 10px 20px 10px 20px;margin: 0 16px 30px;background: #FFFFFF;text-align: left;">
   <p style="font-size: 15px;color: #525252;margin: 0;line-height: 1.9;text-align: left;">
     <span leaf="">旁注或补充说明内容，左侧细竖线划定边界，无色块，保持呼吸感。</span>
   </p>
@@ -277,7 +277,7 @@
 > 仅左侧 1px 浅灰线，颜色略淡（字号与行高仍按正文基线，不用斜体），用于最轻量的旁注或个人感想。
 
 ```html
-<section style="border-left: 1px solid #E8E8E8;padding: 8px 16px;margin: 0 16px 28px;">
+<section style="border-left: 1px solid #E8E8E8;padding: 8px 16px;margin: 0 16px 28px;text-align: left;">
   <p style="font-size: 15px;color: #A3A3A3;margin: 0;line-height: 1.9;text-align: left;">
     <span leaf="">极轻量旁注，颜色浅，几乎不打扰主文节奏。</span>
   </p>
@@ -291,7 +291,7 @@
 > 用墨绿左竖条 + 「提示」小标签区分，无色块底色。保持留白气质，不用醒目色块警示。
 
 ```html
-<section style="margin: 0 16px 32px;padding: 18px 20px;border-left: 2px solid #4A5D52;">
+<section style="margin: 0 16px 32px;padding: 18px 20px;border-left: 2px solid #4A5D52;text-align: left;">
   <p style="font-size: 10px;color: #4A5D52;font-weight: 600;letter-spacing: 2px;margin: 0 0 8px;text-transform: uppercase;">
     <span leaf="">NOTE</span>
   </p>
@@ -351,7 +351,7 @@
 ### 两列版（用细线边框替代色块）
 
 ```html
-<section style="display: flex;margin: 0 16px 32px;">
+<section style="display: flex;margin: 0 16px 32px;text-align: left;">
   <section style="flex: 1;border: 1px solid #E8E8E8;padding: 24px 16px;margin-right: 12px;text-align: center;">
     <p style="font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;font-size: 32px;font-weight: 700;color: #2B2B2B;margin: 0 0 8px;line-height: 1;"><span leaf="">14亿</span></p>
     <p style="font-size: 11px;color: #A3A3A3;margin: 0;letter-spacing: 1px;"><span leaf="">覆盖用户</span></p>
@@ -366,7 +366,7 @@
 ### 要点列表版（竖排，细线分隔）
 
 ```html
-<section style="margin: 0 16px 32px;border-top: 1px solid #E8E8E8;">
+<section style="margin: 0 16px 32px;border-top: 1px solid #E8E8E8;text-align: left;">
   <section style="display: flex;align-items: baseline;padding: 16px 0;border-bottom: 1px solid #E8E8E8;">
     <p style="font-size: 11px;color: #4A5D52;font-weight: 600;letter-spacing: 1px;margin: 0;min-width: 28px;"><span leaf="">01</span></p>
     <p style="font-size: 15px;color: #2B2B2B;margin: 0;line-height: 1.85;padding-left: 12px;"><span leaf="">要点一：简明扼要的核心内容</span></p>
@@ -389,13 +389,13 @@
 ### 浅墨绿底深字（默认）
 
 ```html
-<span style="display: inline-block;background: #EEF3F0;color: #3D5046;font-size: 11px;font-weight: 600;padding: 2px 10px;border-radius: 2px;margin-right: 6px;letter-spacing: 0.5px;"><span leaf="">标签名</span></span>
+<span style="display: inline-block;background: #EEF3F0;color: #3D5046;font-size: 11px;font-weight: 600;padding: 2px 10px;border-radius: 2px;margin-right: 6px;letter-spacing: 0.5px;text-align: left;"><span leaf="">标签名</span></span>
 ```
 
 ### 细线描边（轻量，更透气）
 
 ```html
-<span style="display: inline-block;border: 1px solid #B5C8BC;color: #4A5D52;font-size: 11px;font-weight: 500;padding: 2px 10px;border-radius: 2px;margin-right: 6px;letter-spacing: 0.5px;"><span leaf="">标签名</span></span>
+<span style="display: inline-block;border: 1px solid #B5C8BC;color: #4A5D52;font-size: 11px;font-weight: 500;padding: 2px 10px;border-radius: 2px;margin-right: 6px;letter-spacing: 0.5px;text-align: left;"><span leaf="">标签名</span></span>
 ```
 
 ---
@@ -405,7 +405,7 @@
 > 居中极细线 + 「END」字样，低调收尾。墨绿细线 + 小号字母，不用渐变装饰。
 
 ```html
-<section style="padding: 0 16px;">
+<section style="padding: 0 16px;text-align: left;">
   <section style="text-align: center;margin: 48px 0 40px;">
     <section style="display: flex;align-items: center;justify-content: center;">
       <span style="height: 1px;width: 48px;background: #E8E8E8;margin-right: 16px;"></span>
@@ -421,7 +421,7 @@
 ## 组件 15 尾部作者签名区
 
 ```html
-<section style="padding: 0 16px 40px;">
+<section style="padding: 0 16px 40px;text-align: left;">
   <p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;color: #525252;">
     <span leaf="">我是 {{作者名}}，{{一句话简介，如：热衷于分享 AI 观察与干货}}。</span>
   </p>
@@ -438,7 +438,7 @@
 ## 完整文章模板骨架
 
 ```html
-<section style="max-width: 677px;margin: 0 auto;background: #FFFFFF;font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;color: #525252;line-height: 1.9;letter-spacing: 0.3px;overflow-x: hidden;">
+<section style="max-width: 677px;margin: 0 auto;background: #FFFFFF;font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;color: #525252;line-height: 1.9;letter-spacing: 0.3px;overflow-x: hidden;text-align: left;font-size: 16px;">
 
   <!-- 1. 开头引言卡片（纯白 + 上下细线 + 衬线大字） -->
   <!-- 组件 2 -->
