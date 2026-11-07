@@ -14,6 +14,8 @@
     豁免（不是正文）：等宽代码行、inline-block 标签、加粗（bold/≥600）标题与卡片标题、
     居中说明/金句、删除线旧写法、letter-spacing ≥1px 的英文标签、字号 <13px 或 >17px、
     未写字号（继承容器）的 <p>。
+  - 线上继承（微信正文默认两端对齐、17px）→ ERROR：组件顶层块缺 text-align；
+    承载文字的块自身和组件内祖先都没有 px 字号；全局容器缺 text-align 或 px 字号。
 
 用法：
     component_lint.py [skill-dir]   # 默认当前目录
@@ -24,6 +26,7 @@ import glob
 import os
 import re
 import sys
+from html.parser import HTMLParser
 
 CJK = re.compile(r"[一-鿿㐀-䶿]")
 
@@ -79,6 +82,130 @@ def body_typography_issue(style):
 FOURSIDE_DASHED = re.compile(r"border\s*:\s*[^;{}]*dashed", re.I)
 CENTERED = re.compile(r"text-align\s*:\s*center", re.I)
 
+# 线上继承检查：微信文章页正文容器 .rich_media_content 默认 text-align:justify、
+# font-size:17px。组件里没有写明的对齐与字号，发布后都会落到这两个默认值。
+INLINE_TAGS = {"span", "strong", "b", "em", "i", "u", "a", "code", "sub", "sup",
+               "mark", "del", "s", "small", "font", "label", "br", "img"}
+VOID = {"br", "img", "hr", "input", "meta", "link", "source", "wbr", "col"}
+ABSOLUTE_SIZE = re.compile(r"^(?:[\d.]+px|0)$", re.I)
+
+
+class _Node:
+    __slots__ = ("tag", "style", "children", "parent")
+
+    def __init__(self, tag, style, parent):
+        self.tag, self.style, self.children, self.parent = tag, style, [], parent
+
+
+def _declarations(attrs):
+    attrs = dict(attrs)
+    out = {}
+    for part in (attrs.get("style") or "").split(";"):
+        if ":" in part:
+            key, value = part.split(":", 1)
+            out[key.strip().lower()] = value.strip()
+    size = (attrs.get("font-size") or "").strip()  # SVG 文字的字号写在属性上，单位为用户坐标
+    if size and "font-size" not in out:
+        out["font-size"] = size + "px" if re.fullmatch(r"[\d.]+", size) else size
+    return out
+
+
+class _Fragment(HTMLParser):
+    """把组件 HTML 片段解析成节点树（只保留标签、style 与文本）。"""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.root = _Node("#root", {}, None)
+        self.current = self.root
+
+    def handle_starttag(self, tag, attrs):
+        node = _Node(tag, _declarations(attrs), self.current)
+        self.current.children.append(node)
+        if tag not in VOID:
+            self.current = node
+
+    def handle_startendtag(self, tag, attrs):
+        self.current.children.append(_Node(tag, _declarations(attrs), self.current))
+
+    def handle_endtag(self, tag):
+        node = self.current
+        while node is not self.root and node.tag != tag:
+            node = node.parent
+        if node is not self.root:
+            self.current = node.parent
+
+    def handle_data(self, data):
+        if data.strip():
+            self.current.children.append(data)
+
+
+def _display(node):
+    return node.style.get("display", "inline" if node.tag in INLINE_TAGS else "block").lower()
+
+
+def _has_text(node):
+    return any(isinstance(c, str) or _has_text(c) for c in node.children)
+
+
+def _sized(node):
+    """该节点的字号是否由组件内某个 px 声明决定（em/% 仍相对微信默认值）。"""
+    while node is not None and node.tag != "#root":
+        value = node.style.get("font-size")
+        if value and ABSOLUTE_SIZE.match(value):
+            return True
+        node = node.parent
+    return False
+
+
+def _line_owners(node):
+    """文字所在的行盒拥有者：块级元素、flex 子项和 inline-block 自身及其所在行。"""
+    owners = []
+    while node is not None and node.tag != "#root":
+        display = _display(node)
+        parent_flex = node.parent is not None and "flex" in _display(node.parent)
+        if display == "inline" and not parent_flex:
+            node = node.parent
+            continue
+        owners.append(node)
+        if display.startswith("inline") and not parent_flex:  # inline-block 也坐在父元素的行里
+            node = node.parent
+            continue
+        break
+    return owners
+
+
+def inheritance_issues(html, line):
+    """返回会在微信线上继承正文默认对齐/字号的组件位置说明。"""
+    tree = _Fragment()
+    tree.feed(html)
+    tree.close()
+    issues = []
+    for root in tree.root.children:
+        if not isinstance(root, _Node) or _display(root) == "inline":
+            continue
+        if "max-width" in root.style:  # 全局容器：其余组件都放在它里面
+            if "text-align" not in root.style or not _sized(root):
+                issues.append(f"第 {line} 行全局容器未同时声明 text-align 与 px 字号：未写明的组件会落到"
+                              "微信正文默认的两端对齐与 17px；写 text-align:left;font-size:16px")
+        elif _has_text(root) and "text-align" not in root.style:
+            issues.append(f"第 {line} 行组件顶层 <{root.tag}> 未声明 text-align：线上会继承微信正文默认的"
+                          "两端对齐；顶层写 text-align:left（居中组件写 center）")
+    flagged = set()
+
+    def walk(node):
+        for child in node.children:
+            if isinstance(child, str):
+                for owner in _line_owners(node):
+                    if id(owner) not in flagged and not _sized(owner):
+                        flagged.add(id(owner))
+                        issues.append(f"第 {line} 行 <{owner.tag}> 未声明 px 字号且组件内无字号可继承："
+                                      "线上会落到微信正文默认 17px，行高随之变大；写明设计字号")
+            else:
+                walk(child)
+
+    walk(tree.root)
+    return issues
+
 
 def lint_text(text):
     """检查一份组件库 Markdown 文本，返回 [(level, msg)]（按说明去重）。"""
@@ -92,6 +219,9 @@ def lint_text(text):
 
     for m in re.finditer(r"```html\s*\n(.*?)```", text, re.S):
         html = m.group(1)
+        line = text.count("\n", 0, m.start(1)) + 1
+        for msg in inheritance_issues(html, line):
+            add("ERROR", msg)
         for rx, level, msg in CHECKS:
             if rx.search(html):
                 add(level, msg)

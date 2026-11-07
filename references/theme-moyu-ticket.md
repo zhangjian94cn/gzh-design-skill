@@ -46,7 +46,7 @@
 ## 组件 1 全局容器
 
 ```html
-<section style="overflow-wrap:anywhere;word-break:normal;max-width:677px;margin:0 auto;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#374151;line-height:1.75;letter-spacing:0.5px;">
+<section style="overflow-wrap:anywhere;word-break:normal;max-width:677px;margin:0 auto;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#374151;line-height:1.75;letter-spacing:0.5px;text-align:left;font-size:16px;">
 
   <!-- 所有组件放在这里 -->
 
@@ -71,7 +71,7 @@
 - `{{等级}}` → 如 `S`
 
 ```html
-<section style="background:#fffef8;border:2px solid #1a1a1a;box-shadow:4px 4px 0 #1a1a1a;margin-bottom:32px;">
+<section style="background:#fffef8;border:2px solid #1a1a1a;box-shadow:4px 4px 0 #1a1a1a;margin-bottom:32px;text-align:left;">
   <section style="background:#059669;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;">
     <section style="color:#fffef8;font-size:11px;letter-spacing:4px;font-weight:600;"><span leaf="">{{头部标签}}</span></section>
     <section style="color:#fffef8;font-size:11px;letter-spacing:2px;"><span leaf="">★★★★★</span></section>
@@ -133,7 +133,7 @@
 **可替换字段**：`{{编号}}` `{{标题}}` `{{副标题}}`
 
 ```html
-<section style="margin-top:32px;margin-bottom:24px;padding:0 20px;">
+<section style="margin-top:32px;margin-bottom:24px;padding:0 20px;text-align:left;">
   <section style="display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 12px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #1a1a1a;">
     <section style="background:#059669;color:#fff;font-size:12px;font-weight:800;padding:6px 12px;letter-spacing:2px;"><span leaf="">{{编号}}</span></section>
     <section style="font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:1px;"><span leaf="">{{标题}}</span></section>
@@ -154,7 +154,7 @@
 **可替换字段**：`{{小节标题}}`
 
 ```html
-<section style="margin-bottom:32px;padding:0 20px;">
+<section style="margin-bottom:32px;padding:0 20px;text-align:left;">
   <section style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
     <section style="width:4px;height:16px;background:#059669;"><span leaf=""><br></span></section>
     <section style="font-size:15px;font-weight:700;color:#1a1a1a;"><span leaf="">{{小节标题}}</span></section>
@@ -171,7 +171,7 @@
 **可替换字段**：`{{正文内容}}`
 
 ```html
-<section style="margin-bottom:32px;padding:0 20px;">
+<section style="margin-bottom:32px;padding:0 20px;text-align:left;">
   <p style="font-size:15px;color:#555;line-height:1.9;margin:0;text-align:left;">
     <span leaf="">{{正文内容}}</span>
   </p>
@@ -225,7 +225,7 @@
 **可替换字段**：`{{case编号}}` `{{案例名称}}`
 
 ```html
-<section style="margin-bottom:32px;padding:0 20px;">
+<section style="margin-bottom:32px;padding:0 20px;text-align:left;">
   <p style="font-size:13px;color:#1a1a1a;font-weight:600;margin-bottom:0;">
     <span leaf="">case{{case编号}}: {{案例名称}}</span>
   </p>
@@ -257,7 +257,7 @@
 **可替换字段**：`{{前缀}}` `{{结论内容}}`
 
 ```html
-<section style="margin-bottom:32px;padding:0 20px;">
+<section style="margin-bottom:32px;padding:0 20px;text-align:left;">
   <section style="background:#F0FDF4;border-left:4px solid #059669;padding:14px 16px;margin-bottom:0;">
     <p style="font-size:15px;color:#1a1a1a;font-weight:600;line-height:1.85;margin:0;">
       <span leaf="">{{前缀}}</span>
@@ -276,7 +276,7 @@
 **可替换字段**：`{{序号}}` `{{小标题}}` `{{描述}}`
 
 ```html
-<section style="margin-bottom:32px;padding:0 20px;">
+<section style="margin-bottom:32px;padding:0 20px;text-align:left;">
   <section style="background:#fffef8;border:1px solid #eee;margin-bottom:12px;">
     <section style="display:flex;align-items:stretch;">
       <section style="width:36px;background:#059669;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800;"><span leaf="">{{序号}}</span></section>
@@ -300,7 +300,7 @@
 **可替换字段**：`{{金句前半}}` `{{大数字}}`（可选）`{{金句后半}}` `{{补充说明}}`
 
 ```html
-<section style="margin-bottom:32px;padding:0 20px;">
+<section style="margin-bottom:32px;padding:0 20px;text-align:left;">
   <section style="background:#fffef8;border:2px solid #1a1a1a;box-shadow:3px 3px 0 #1a1a1a;padding:20px;margin-bottom:0;">
     <p style="font-size:15px;color:#1a1a1a;font-weight:700;line-height:1.8;margin:0 0 12px;text-align:center;">
       <span leaf="">{{金句前半}}</span>
@@ -325,7 +325,7 @@
 **可替换字段**：`{{#标签}}`
 
 ```html
-<section style="margin-bottom:32px;padding:0 20px;">
+<section style="margin-bottom:32px;padding:0 20px;text-align:left;">
   <section style="display:flex;gap:8px;flex-wrap:wrap;">
     <section style="font-size:10px;color:#059669;border:1px solid #059669;padding:4px 10px;"><span leaf="">{{#标签1}}</span></section>
     <section style="font-size:10px;color:#059669;border:1px solid #059669;padding:4px 10px;"><span leaf="">{{#标签2}}</span></section>
@@ -345,7 +345,7 @@
 **可替换字段**：`{{互动文案}}`
 
 ```html
-<section style="padding:0 0 32px;">
+<section style="padding:0 0 32px;text-align:left;font-size:16px;">
   <section style="background:#fffef8;border:2px solid #1a1a1a;box-shadow:4px 4px 0 #1a1a1a;padding:24px 20px;text-align:center;">
     <p style="font-size:13px;font-weight:700;color:#1a1a1a;margin:0 0 20px;line-height:1.6;">
       <span leaf="">{{互动文案}}</span>
@@ -414,7 +414,7 @@
 ## 完整文章模板骨架
 
 ```html
-<section style="max-width:677px;margin:0 auto;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#374151;line-height:1.75;letter-spacing:0.5px;">
+<section style="max-width:677px;margin:0 auto;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#374151;line-height:1.75;letter-spacing:0.5px;text-align:left;font-size:16px;">
 
   <!-- 1. 票据封面（组件2 ticket-cover） -->
 

@@ -2,8 +2,8 @@
   "version": 1,
   "theme": "olive-journal",
   "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
-  "librarySha256": "8dc50461cc8149459a421b24a0ea9194e8cc4be840c7a348f21a4e7491045045",
-  "htmlSha256": "86d8947273d19fec9f05cd46ea308c4763f3a4d33a554281ed1fabf47db95124",
+  "librarySha256": "8eeeb8b960d62134f7331163803f246fc68d5a13a1ff8fca511e3f9a5c8666b8",
+  "htmlSha256": "0971e8aaf5f47d94a79b36ecfe0179db979b1b092a1338961abe997103fee2eb",
   "selections": {
     "intro": {
       "library": "theme-olive-journal.md",
