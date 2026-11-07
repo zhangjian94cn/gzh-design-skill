@@ -2,8 +2,8 @@
   "version": 1,
   "theme": "moyu-green",
   "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
-  "librarySha256": "b14b4dde476d04e065054f712dd18287fcfe090fd09df71cb1b7932a0db5f05e",
-  "htmlSha256": "c10b42057a981e489b26108d643f4b08291bab9c8cce9e3a5b7d01d28d76e6ee",
+  "librarySha256": "ffb314e9a82d7621f70ac9f29e12ea1ea822e45f1949e2e2fc303f60bb19fa52",
+  "htmlSha256": "f3ec0a046260ae6c63248fc968e80bdd03631b4c18ffbaec393d5ca825691d74",
   "selections": {
     "intro": {
       "library": "common-components.md",
@@ -24,6 +24,21 @@
       "library": "common-components.md",
       "heading": "4c. 提示词卡（`> [!提示词]` / `> [!PROMPT]` → 这里）",
       "index": 0
+    },
+    "h3": {
+      "library": "theme-moyu-green.md",
+      "heading": "正文层级标题",
+      "index": 0
+    },
+    "h4": {
+      "library": "theme-moyu-green.md",
+      "heading": "正文层级标题",
+      "index": 1
+    },
+    "h5": {
+      "library": "theme-moyu-green.md",
+      "heading": "正文层级标题",
+      "index": 2
     }
   }
 }

@@ -2,8 +2,8 @@
   "version": 1,
   "theme": "olive-journal",
   "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
-  "librarySha256": "8eeeb8b960d62134f7331163803f246fc68d5a13a1ff8fca511e3f9a5c8666b8",
-  "htmlSha256": "0971e8aaf5f47d94a79b36ecfe0179db979b1b092a1338961abe997103fee2eb",
+  "librarySha256": "38d0407405d886e00991a589fdb330beff6a53115d40222f31ac814a547ae5b3",
+  "htmlSha256": "9b567e943ceac27c68a53d8039f576d176bd7372d29c988df0451b940f1112ca",
   "selections": {
     "intro": {
       "library": "theme-olive-journal.md",
@@ -24,6 +24,21 @@
       "library": "theme-olive-journal.md",
       "heading": "14d. 自然语言提示词（可直接发送）",
       "index": 0
+    },
+    "h3": {
+      "library": "theme-olive-journal.md",
+      "heading": "正文层级标题",
+      "index": 0
+    },
+    "h4": {
+      "library": "theme-olive-journal.md",
+      "heading": "正文层级标题",
+      "index": 1
+    },
+    "h5": {
+      "library": "theme-olive-journal.md",
+      "heading": "正文层级标题",
+      "index": 2
     }
   }
 }

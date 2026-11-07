@@ -56,6 +56,14 @@ VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input",
              "link", "meta", "param", "source", "track", "wbr"}
 HEX_COLOR = re.compile(r"#[0-9a-fA-F]{3,8}\b")
 
+# 只检查内联背景声明，跳过 CSS 注释、字符串和图片 URL 中的示例文字。
+CSS_NON_FUNCTION = re.compile(
+    r"/\*.*?\*/|url\(\s*(?:\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'|(?:\\.|[^)])*)\s*\)"
+    r"|\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'", re.I | re.S)
+GRADIENT_BACKGROUND = re.compile(
+    r"(?:^|;)\s*background(?:-image)?\s*:[^;]*\b"
+    r"(?:repeating-)?(?:linear|radial|conic)-gradient\s*\(", re.I)
+
 
 def hex_color(value):
     value = value.lower()
@@ -86,10 +94,16 @@ class LeafChecker(HTMLParser):
         self.unwrapped = []       # (文本片段, 父标签) —— 未被 leaf 包裹的中文文本
         self.half_punct = []      # 正文里疑似半角标点的片段
         self.styles = []
+        self.gradient_backgrounds = []
 
     def handle_starttag(self, tag, attrs):
         ad = dict(attrs)
-        self.styles.append(ad.get("style", "") or "")
+        style = ad.get("style", "") or ""
+        self.styles.append(style)
+        if tag not in SKIP_TAGS and not any(t in SKIP_TAGS for t, _, _ in self.stack):
+            if GRADIENT_BACKGROUND.search(CSS_NON_FUNCTION.sub("", style)):
+                line, col = self.getpos()
+                self.gradient_backgrounds.append((line, col + 1, tag))
         if tag in VOID_TAGS:
             return
         is_leaf = tag == "span" and "leaf" in ad
@@ -147,6 +161,14 @@ def validate(html, name="<input>", theme=None, publish_ready=False):
         checker.feed(html)
     except Exception as e:  # 容错：解析失败不致命，只提示
         warnings.append(f"HTML 解析中断: {e}")
+
+    if checker.gradient_backgrounds:
+        sample = "；".join(f"第 {line} 行 {col} 列 <{tag}>"
+                           for line, col, tag in checker.gradient_backgrounds[:5])
+        warnings.append(
+            f"[darkmode-no-gradient] {len(checker.gradient_backgrounds)} 处渐变背景，"
+            f"可能触发公众号内容结构检测；文字/卡片背景建议改为主题内纯色或 rgba 纯色，"
+            f"装饰渐变也需人工确认。位置：{sample}")
 
     has_cjk = bool(CJK.search(html))
     if has_cjk and checker.span_leaf_count == 0:

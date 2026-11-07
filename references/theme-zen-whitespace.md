@@ -11,9 +11,12 @@
 > - ❌ 不支持 `display: grid`
 > - ✅ 支持内联 `style` 属性
 > - ✅ 支持 `display: flex`（有限支持）
-> - ✅ 支持 `linear-gradient`
+> - 文字与卡片背景使用纯色；渐变的设备效果未验收
 > - ✅ 支持 `border-radius`、`box-shadow`
 > - ✅ 支持 `<section>`、`<p>`、`<span>`、`<strong>`、`<img>` 等基础标签
+
+
+本轮阅读基准：正文 16px / 1.95，字距 0.02em，H2/H3/H4 为 22/18/16px，注释至少 14px，元信息至少 12px。组件 `data-part` 标记定义审核部位，排版可移除无样式的重复 leaf，但不得改变文字或代码空白。
 
 ---
 
@@ -31,7 +34,7 @@
 标签底色：          #EEF3F0（极浅墨绿底，胶囊标签用）
 标签文字色：        #3D5046（深墨绿，胶囊标签文字）
 
-正文字号：          15px
+正文字号：          16px
 行高：              1.9
 字间距：            0.3px
 段落间距：          26px+
@@ -47,11 +50,12 @@
 ## 组件 1 全局容器
 
 ```html
-<section style="overflow-wrap:anywhere;word-break:normal;max-width: 677px;margin: 0 auto;background: #FFFFFF;font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;color: #525252;line-height: 1.9;letter-spacing: 0.3px;overflow-x: hidden;text-align: left;font-size: 16px;">
+<section style="overflow-wrap:anywhere;word-break:normal;max-width: 677px;margin: 0 auto;background: #FFFFFF;font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;color: #525252;line-height:1.95;letter-spacing:0.02em;text-align: left;font-size: 16px;">
 
   <!-- 所有组件放在这里 -->
 
 </section>
+
 ```
 
 ---
@@ -62,13 +66,14 @@
 
 ```html
 <section style="margin: 32px 16px 48px;padding: 40px 24px;border-top: 1px solid #E8E8E8;border-bottom: 1px solid #E8E8E8;text-align: center;">
-  <p style="font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;font-size: 19px;font-weight: 600;color: #2B2B2B;margin: 0 0 28px;line-height: 1.85;letter-spacing: 0.8px;">
+  <p style="font-family: 'Songti SC', 'Noto Serif CJK SC', Georgia, serif;font-size: 19px;font-weight: 600;color: #2B2B2B;margin: 0 0 28px;line-height:1.95;letter-spacing: 0.8px;">
     <span leaf="">这里放开篇金句，衬线字体自带书卷气，</span><span leaf="">留白让文字自己呼吸。</span>
   </p>
-  <p style="font-size: 12px;color: #A3A3A3;margin: 0;letter-spacing: 1.5px;">
+  <p style="font-size: 12px;color: #626872;margin: 0;letter-spacing:0.02em;">
     <span leaf="">—— 作者名（按文章作者/主题而定）</span>
   </p>
 </section>
+
 ```
 
 **效果**：纯白无色块，细线框定空间，衬线大字在大留白中极有质感。署名占位不写死品牌名。
@@ -81,26 +86,27 @@
 
 ```html
 <section style="padding: 0 16px 48px;text-align: left;">
-  <p style="font-size: 11px;color: #A3A3A3;margin: 0 0 20px;letter-spacing: 2px;text-transform: uppercase;">
+  <p style="font-size:12px;color: #626872;margin: 0 0 20px;letter-spacing:0.02em;text-transform: uppercase;">
     <span leaf="">本文脉络</span>
   </p>
   <section style="border-top: 1px solid #E8E8E8;">
     <section style="display: flex;">
       <section style="flex: 1;padding: 18px 12px 18px 0;border-bottom: 1px solid #E8E8E8;border-right: 1px solid #E8E8E8;margin-right: 16px;">
-        <p style="font-size: 11px;color: #4A5D52;font-weight: 600;margin: 0 0 6px;letter-spacing: 1px;"><span leaf="">01</span></p>
-        <p style="font-size: 13px;color: #2B2B2B;margin: 0;font-weight: 500;line-height: 1.5;"><span leaf="">第一个要点</span></p>
+        <p style="font-size:12px;color: #4A5D52;font-weight: 600;margin: 0 0 6px;letter-spacing:0.02em;"><span leaf="">01</span></p>
+        <p style="font-size:14px;color: #2B2B2B;margin: 0;font-weight: 500;line-height: 1.5;"><span leaf="">第一个要点</span></p>
       </section>
       <section style="flex: 1;padding: 18px 12px 18px 0;border-bottom: 1px solid #E8E8E8;border-right: 1px solid #E8E8E8;margin-right: 16px;">
-        <p style="font-size: 11px;color: #4A5D52;font-weight: 600;margin: 0 0 6px;letter-spacing: 1px;"><span leaf="">02</span></p>
-        <p style="font-size: 13px;color: #2B2B2B;margin: 0;font-weight: 500;line-height: 1.5;"><span leaf="">第二个要点</span></p>
+        <p style="font-size:12px;color: #4A5D52;font-weight: 600;margin: 0 0 6px;letter-spacing:0.02em;"><span leaf="">02</span></p>
+        <p style="font-size:14px;color: #2B2B2B;margin: 0;font-weight: 500;line-height: 1.5;"><span leaf="">第二个要点</span></p>
       </section>
       <section style="flex: 1;padding: 18px 0 18px 0;border-bottom: 1px solid #E8E8E8;">
-        <p style="font-size: 11px;color: #4A5D52;font-weight: 600;margin: 0 0 6px;letter-spacing: 1px;"><span leaf="">03</span></p>
-        <p style="font-size: 13px;color: #2B2B2B;margin: 0;font-weight: 500;line-height: 1.5;"><span leaf="">第三个要点</span></p>
+        <p style="font-size:12px;color: #4A5D52;font-weight: 600;margin: 0 0 6px;letter-spacing:0.02em;"><span leaf="">03</span></p>
+        <p style="font-size:14px;color: #2B2B2B;margin: 0;font-weight: 500;line-height: 1.5;"><span leaf="">第三个要点</span></p>
       </section>
     </section>
   </section>
 </section>
+
 ```
 
 ---
@@ -115,6 +121,7 @@
     <span leaf=""><br></span>
   </section>
 </section>
+
 ```
 
 ---
@@ -124,28 +131,30 @@
 > 英文小标签（极小号，墨绿，大字间距）+ 衬线中文大标题 + 标题下方一条短细线（40px 宽，墨绿）。编号低调嵌入英文标签前。无色块，无粗边框。
 
 ```html
-<section style="margin-top: 64px;margin-bottom: 32px;padding: 0 16px;text-align: left;">
-  <p style="font-size: 10px;color: #4A5D52;font-weight: 600;letter-spacing: 4px;margin: 0 0 10px;text-transform: uppercase;">
+<section style="margin-top:32px;margin-bottom: 32px;padding: 0 16px;text-align: left;" data-part="chapter">
+  <p style="font-size:12px;color: #4A5D52;font-weight: 600;letter-spacing:0.02em;margin: 0 0 10px;text-transform: uppercase;">
     <span leaf="">01 · CHAPTER ONE</span>
   </p>
-  <h3 style="font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;font-size: 22px;font-weight: 700;color: #2B2B2B;margin: 0 0 16px;letter-spacing: 0.5px;line-height: 1.4;">
+  <h3 style="font-family: 'Songti SC', 'Noto Serif CJK SC', Georgia, serif;font-size:22px;font-weight: 700;color: #2B2B2B;margin: 0 0 16px;letter-spacing:0.02em;line-height: 1.4;" data-part="chapter-title">
     <span leaf="">中文章节大标题</span>
   </h3>
-  <section style="width: 40px;height: 2px;background: #4A5D52;">
+  <section style="width: 40px;height: 2px;background: #4A5D52;" data-part="chapter-rule">
     <span leaf=""><br></span>
   </section>
 
   <!-- 本章节正文内容放在这里 -->
 
 </section>
+
 ```
 
 **结语章节变体**（编号改 ∞，英文改 POSTSCRIPT）：
 
 ```html
-<p style="font-size: 10px;color: #4A5D52;font-weight: 600;letter-spacing: 4px;margin: 0 0 10px;text-transform: uppercase;text-align: left;">
+<p style="font-size:12px;color: #4A5D52;font-weight: 600;letter-spacing:0.02em;margin: 0 0 10px;text-transform: uppercase;text-align: left;">
   <span leaf="">∞ · POSTSCRIPT</span>
 </p>
+
 ```
 
 ---
@@ -157,19 +166,21 @@
 **基础段落**：
 
 ```html
-<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;color: #525252;padding: 0 16px;">
-  <span leaf="">正文内容，15px 字号，1.9 倍行高，左对齐。段落间距 26px+，字里行间充满呼吸感。</span>
+<p style="margin-bottom:16px;font-size:16px;line-height:1.95;text-align: left;color: #525252;padding: 0 16px;">
+  <span leaf="">正文内容，16px 字号，1.9 倍行高，左对齐。段落间距 26px+，字里行间充满呼吸感。</span>
 </p>
+
 ```
 
 **带关键词下划线标记的段落**（推荐默认使用）：
 
 ```html
-<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;color: #525252;padding: 0 16px;">
+<p style="margin-bottom:16px;font-size:16px;line-height:1.95;text-align: left;color: #525252;padding: 0 16px;">
   <span leaf="">正文内容的前半部分，引出核心概念，</span>
   <span style="border-bottom: 1.5px solid #B5C8BC;font-weight: 500;"><span leaf="">这是需要强调的关键语句</span></span>
   <span leaf="">，后半部分继续阐述。</span>
 </p>
+
 ```
 
 **标记原则**：
@@ -197,11 +208,13 @@
 普通加粗（默认）：
 ```html
 <strong style="color: #2B2B2B;"><span leaf="">普通加粗强调</span></strong>
+
 ```
 
 墨绿加粗（仅限关键锚点）：
 ```html
 <strong style="color: #4A5D52;"><span leaf="">墨绿加粗，仅用于核心概念/步骤/CTA</span></strong>
+
 ```
 
 ### 7b. 浅墨绿底深字标签
@@ -210,6 +223,7 @@
 
 ```html
 <span style="background: #EEF3F0;color: #3D5046;padding: 2px 6px;border-radius: 2px;font-weight: 600;font-size: 14px;"><span leaf="">关键词标签</span></span>
+
 ```
 
 ### 7c. 留空（本风格不设此变体，保持克制）
@@ -222,18 +236,20 @@
 
 ```html
 <span style="border-bottom: 1.5px solid #B5C8BC;font-weight: 500;"><span leaf="">下划线标记的关键词</span></span>
+
 ```
 
 **在段落中的实际效果**：
 
 ```html
-<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;color: #525252;padding: 0 16px;">
+<p style="margin-bottom:16px;font-size:16px;line-height:1.95;text-align: left;color: #525252;padding: 0 16px;">
   <span leaf="">这个时代的竞争，拼的不是速度，而是</span>
   <span style="border-bottom: 1.5px solid #B5C8BC;font-weight: 500;"><span leaf="">深度思考的能力</span></span>
   <span leaf="">。真正的高手，往往在别人仰望风口时，已经悄悄</span>
   <span style="border-bottom: 1.5px solid #B5C8BC;font-weight: 500;"><span leaf="">找到了下一片旷野</span></span>
   <span leaf="">。</span>
 </p>
+
 ```
 
 ### 7e. 极浅墨绿荧光笔效果
@@ -241,7 +257,8 @@
 > 底部 40% 极浅绿色高亮，偶尔用于长句强调，仍保持克制。
 
 ```html
-<span style="background: linear-gradient(180deg, transparent 60%, #D6E4DC 60%);font-weight: 600;color: #2B2B2B;"><span leaf="">荧光笔效果的重要长句</span></span>
+<span style="background: #D6E4DC;font-weight: 600;color: #2B2B2B;"><span leaf="">荧光笔效果的重要长句</span></span>
+
 ```
 
 ---
@@ -254,10 +271,11 @@
 
 ```html
 <section style="margin: 40px 16px;padding: 36px 20px;border-top: 1px solid #E8E8E8;border-bottom: 1px solid #E8E8E8;text-align: center;">
-  <p style="font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;font-size: 17px;font-weight: 600;color: #2B2B2B;margin: 0;line-height: 1.9;letter-spacing: 0.8px;">
+  <p style="font-family: 'Songti SC', 'Noto Serif CJK SC', Georgia, serif;font-size: 17px;font-weight: 600;color: #2B2B2B;margin: 0;line-height:1.95;letter-spacing: 0.8px;">
     <span leaf="">「这里是核心金句，衬线字体 + 大留白 + 细线框定。」</span>
   </p>
 </section>
+
 ```
 
 ### 8b. 左竖条轻量引用（次要旁注 / 补充说明）
@@ -265,11 +283,12 @@
 > 极细左竖条（`#4A5D52`，2px），无底色，大 padding，适合旁注和补充说明。
 
 ```html
-<section style="border-left: 2px solid #4A5D52;padding: 10px 20px 10px 20px;margin: 0 16px 30px;background: #FFFFFF;text-align: left;">
-  <p style="font-size: 15px;color: #525252;margin: 0;line-height: 1.9;text-align: left;">
+<section style="border-left: 2px solid #4A5D52;padding:16px;margin: 0 16px 30px;background: #FFFFFF;text-align: left;" data-part="prompt-card">
+  <p style="font-size:16px;color: #525252;margin: 0;line-height:1.95;text-align: left;" data-part="prompt-body">
     <span leaf="">旁注或补充说明内容，左侧细竖线划定边界，无色块，保持呼吸感。</span>
   </p>
 </section>
+
 ```
 
 ### 8c. 极细线旁注（最轻量，几乎无存在感）
@@ -278,10 +297,11 @@
 
 ```html
 <section style="border-left: 1px solid #E8E8E8;padding: 8px 16px;margin: 0 16px 28px;text-align: left;">
-  <p style="font-size: 15px;color: #A3A3A3;margin: 0;line-height: 1.9;text-align: left;">
+  <p style="font-size:16px;color: #626872;margin: 0;line-height:1.95;text-align: left;">
     <span leaf="">极轻量旁注，颜色浅，几乎不打扰主文节奏。</span>
   </p>
 </section>
+
 ```
 
 ---
@@ -291,14 +311,15 @@
 > 用墨绿左竖条 + 「提示」小标签区分，无色块底色。保持留白气质，不用醒目色块警示。
 
 ```html
-<section style="margin: 0 16px 32px;padding: 18px 20px;border-left: 2px solid #4A5D52;text-align: left;">
-  <p style="font-size: 10px;color: #4A5D52;font-weight: 600;letter-spacing: 2px;margin: 0 0 8px;text-transform: uppercase;">
+<section style="margin: 0 16px 32px;padding:16px;border-left: 2px solid #4A5D52;text-align: left;" data-part="important-card">
+  <p style="font-size:12px;color: #4A5D52;font-weight: 600;letter-spacing:0.02em;margin: 0 0 8px;text-transform: uppercase;">
     <span leaf="">NOTE</span>
   </p>
-  <p style="font-size: 15px;color: #525252;margin: 0;line-height: 1.9;">
+  <p style="font-size:16px;color: #525252;margin: 0;line-height:1.95;" data-part="important-body">
     <span leaf="">这里是重要提示或核心结论，用小标签「NOTE」区分，不用色块。</span>
   </p>
 </section>
+
 ```
 
 ---
@@ -311,6 +332,7 @@
     <span leaf=""><img src="图片URL" style="max-width: 100%;display: block;"></span>
   </section>
 </section>
+
 ```
 
 图片 + 说明文字配合（说明文字用辅助色，居中，大留白）：
@@ -321,9 +343,10 @@
     <span leaf=""><img src="图片URL" style="max-width: 100%;display: block;"></span>
   </section>
 </section>
-<p style="font-size: 12px;color: #A3A3A3;text-align: center;margin: 8px 16px 32px;letter-spacing: 0.5px;">
+<p style="font-size: 12px;color: #626872;text-align: center;margin: 8px 16px 32px;letter-spacing:0.02em;">
   <span leaf="">— 图片说明文字</span>
 </p>
+
 ```
 
 ---
@@ -331,17 +354,19 @@
 ## 组件 11 加粗结论段落
 
 ```html
-<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;font-weight: 600;color: #2B2B2B;padding: 0 16px;">
+<p style="margin-bottom:16px;font-size:16px;line-height:1.95;text-align: left;font-weight: 600;color: #2B2B2B;padding: 0 16px;">
   <span leaf="">加粗的结论性短句，字色加深到近黑，靠字重而非色彩传达重量。</span>
 </p>
+
 ```
 
 结合荧光笔的变体：
 
 ```html
-<p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;font-weight: 600;color: #2B2B2B;padding: 0 16px;">
-  <span style="background: linear-gradient(180deg, transparent 60%, #D6E4DC 60%);"><span leaf="">荧光笔标记的结论句，极浅墨绿底，克制温柔。</span></span>
+<p style="margin-bottom:16px;font-size:16px;line-height:1.95;text-align: left;font-weight: 600;color: #2B2B2B;padding: 0 16px;">
+  <span style="background: #D6E4DC;"><span leaf="">荧光笔标记的结论句，极浅墨绿底，克制温柔。</span></span>
 </p>
+
 ```
 
 ---
@@ -353,14 +378,15 @@
 ```html
 <section style="display: flex;margin: 0 16px 32px;text-align: left;">
   <section style="flex: 1;border: 1px solid #E8E8E8;padding: 24px 16px;margin-right: 12px;text-align: center;">
-    <p style="font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;font-size: 32px;font-weight: 700;color: #2B2B2B;margin: 0 0 8px;line-height: 1;"><span leaf="">14亿</span></p>
-    <p style="font-size: 11px;color: #A3A3A3;margin: 0;letter-spacing: 1px;"><span leaf="">覆盖用户</span></p>
+    <p style="font-family: 'Songti SC', 'Noto Serif CJK SC', Georgia, serif;font-size: 32px;font-weight: 700;color: #2B2B2B;margin: 0 0 8px;line-height: 1;"><span leaf="">14亿</span></p>
+    <p style="font-size:12px;color: #626872;margin: 0;letter-spacing:0.02em;"><span leaf="">覆盖用户</span></p>
   </section>
   <section style="flex: 1;border: 1px solid #E8E8E8;padding: 24px 16px;text-align: center;">
-    <p style="font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;font-size: 32px;font-weight: 700;color: #2B2B2B;margin: 0 0 8px;line-height: 1;"><span leaf="">3步</span></p>
-    <p style="font-size: 11px;color: #A3A3A3;margin: 0;letter-spacing: 1px;"><span leaf="">快速接入</span></p>
+    <p style="font-family: 'Songti SC', 'Noto Serif CJK SC', Georgia, serif;font-size: 32px;font-weight: 700;color: #2B2B2B;margin: 0 0 8px;line-height: 1;"><span leaf="">3步</span></p>
+    <p style="font-size:12px;color: #626872;margin: 0;letter-spacing:0.02em;"><span leaf="">快速接入</span></p>
   </section>
 </section>
+
 ```
 
 ### 要点列表版（竖排，细线分隔）
@@ -368,18 +394,19 @@
 ```html
 <section style="margin: 0 16px 32px;border-top: 1px solid #E8E8E8;text-align: left;">
   <section style="display: flex;align-items: baseline;padding: 16px 0;border-bottom: 1px solid #E8E8E8;">
-    <p style="font-size: 11px;color: #4A5D52;font-weight: 600;letter-spacing: 1px;margin: 0;min-width: 28px;"><span leaf="">01</span></p>
-    <p style="font-size: 15px;color: #2B2B2B;margin: 0;line-height: 1.85;padding-left: 12px;"><span leaf="">要点一：简明扼要的核心内容</span></p>
+    <p style="font-size:12px;color: #4A5D52;font-weight: 600;letter-spacing:0.02em;margin: 0;min-width: 28px;"><span leaf="">01</span></p>
+    <p style="font-size:16px;color: #2B2B2B;margin: 0;line-height:1.95;padding-left: 12px;"><span leaf="">要点一：简明扼要的核心内容</span></p>
   </section>
   <section style="display: flex;align-items: baseline;padding: 16px 0;border-bottom: 1px solid #E8E8E8;">
-    <p style="font-size: 11px;color: #4A5D52;font-weight: 600;letter-spacing: 1px;margin: 0;min-width: 28px;"><span leaf="">02</span></p>
-    <p style="font-size: 15px;color: #2B2B2B;margin: 0;line-height: 1.85;padding-left: 12px;"><span leaf="">要点二：简明扼要的核心内容</span></p>
+    <p style="font-size:12px;color: #4A5D52;font-weight: 600;letter-spacing:0.02em;margin: 0;min-width: 28px;"><span leaf="">02</span></p>
+    <p style="font-size:16px;color: #2B2B2B;margin: 0;line-height:1.95;padding-left: 12px;"><span leaf="">要点二：简明扼要的核心内容</span></p>
   </section>
   <section style="display: flex;align-items: baseline;padding: 16px 0;border-bottom: 1px solid #E8E8E8;">
-    <p style="font-size: 11px;color: #4A5D52;font-weight: 600;letter-spacing: 1px;margin: 0;min-width: 28px;"><span leaf="">03</span></p>
-    <p style="font-size: 15px;color: #2B2B2B;margin: 0;line-height: 1.85;padding-left: 12px;"><span leaf="">要点三：简明扼要的核心内容</span></p>
+    <p style="font-size:12px;color: #4A5D52;font-weight: 600;letter-spacing:0.02em;margin: 0;min-width: 28px;"><span leaf="">03</span></p>
+    <p style="font-size:16px;color: #2B2B2B;margin: 0;line-height:1.95;padding-left: 12px;"><span leaf="">要点三：简明扼要的核心内容</span></p>
   </section>
 </section>
+
 ```
 
 ---
@@ -389,13 +416,15 @@
 ### 浅墨绿底深字（默认）
 
 ```html
-<span style="display: inline-block;background: #EEF3F0;color: #3D5046;font-size: 11px;font-weight: 600;padding: 2px 10px;border-radius: 2px;margin-right: 6px;letter-spacing: 0.5px;text-align: left;"><span leaf="">标签名</span></span>
+<span style="display: inline-block;background: #EEF3F0;color: #3D5046;font-size:12px;font-weight: 600;padding: 2px 10px;border-radius: 2px;margin-right: 6px;letter-spacing:0.02em;text-align: left;"><span leaf="">标签名</span></span>
+
 ```
 
 ### 细线描边（轻量，更透气）
 
 ```html
-<span style="display: inline-block;border: 1px solid #B5C8BC;color: #4A5D52;font-size: 11px;font-weight: 500;padding: 2px 10px;border-radius: 2px;margin-right: 6px;letter-spacing: 0.5px;text-align: left;"><span leaf="">标签名</span></span>
+<span style="display: inline-block;border: 1px solid #B5C8BC;color: #4A5D52;font-size:12px;font-weight: 500;padding: 2px 10px;border-radius: 2px;margin-right: 6px;letter-spacing:0.02em;text-align: left;"><span leaf="">标签名</span></span>
+
 ```
 
 ---
@@ -409,11 +438,12 @@
   <section style="text-align: center;margin: 48px 0 40px;">
     <section style="display: flex;align-items: center;justify-content: center;">
       <span style="height: 1px;width: 48px;background: #E8E8E8;margin-right: 16px;"></span>
-      <span style="font-size: 10px;color: #A3A3A3;letter-spacing: 4px;font-weight: 400;"><span leaf="">END</span></span>
+      <span style="font-size:12px;color: #626872;letter-spacing:0.02em;font-weight: 400;"><span leaf="">END</span></span>
       <span style="height: 1px;width: 48px;background: #E8E8E8;margin-left: 16px;"></span>
     </section>
   </section>
 </section>
+
 ```
 
 ---
@@ -422,15 +452,16 @@
 
 ```html
 <section style="padding: 0 16px 40px;text-align: left;">
-  <p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;color: #525252;">
+  <p style="margin-bottom:16px;font-size:16px;line-height:1.95;text-align: left;color: #525252;">
     <span leaf="">我是 {{作者名}}，{{一句话简介，如：热衷于分享 AI 观察与干货}}。</span>
   </p>
-  <p style="margin-bottom: 26px;font-size: 15px;line-height: 1.9;text-align: left;color: #525252;">
+  <p style="margin-bottom:16px;font-size:16px;line-height:1.95;text-align: left;color: #525252;">
     <span leaf="">如果你觉得今天这篇有收获，欢迎</span>
     <strong style="color: #4A5D52;"><span leaf="">点赞、在看、转发</span></strong>
     <span leaf="">三连，我们下篇见。</span>
   </p>
 </section>
+
 ```
 
 ---
@@ -438,7 +469,7 @@
 ## 完整文章模板骨架
 
 ```html
-<section style="max-width: 677px;margin: 0 auto;background: #FFFFFF;font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;color: #525252;line-height: 1.9;letter-spacing: 0.3px;overflow-x: hidden;text-align: left;font-size: 16px;">
+<section style="max-width: 677px;margin: 0 auto;background: #FFFFFF;font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;color: #525252;line-height:1.95;letter-spacing:0.02em;text-align: left;font-size: 16px;">
 
   <!-- 1. 开头引言卡片（纯白 + 上下细线 + 衬线大字） -->
   <!-- 组件 2 -->
@@ -477,6 +508,7 @@
   <!-- 组件 15 -->
 
 </section>
+
 ```
 
 ---
@@ -541,3 +573,19 @@
 | 行内标签 | 组件 13 标签胶囊 | 浅墨绿底为默认，描边为轻量 |
 | `---` | 组件 4 章节分割线 | 1px 极细线 + 64px 留白 |
 | 文末 | 组件 14 + 15 | END 细线 + 签名 |
+
+## 正文层级标题
+
+章节下的 H3、H4、H5 按原文深度选用；不自动添加标题文字。
+
+```html
+<h3 data-part="heading-3" style="font-size:18px;font-weight:700;line-height:1.6;color:#2B2B2B;margin:24px 0 12px;text-align:left;letter-spacing:0.02em;font-family:'Songti SC','Noto Serif CJK SC',Georgia,serif;"><span leaf="">{{原文标题}}</span></h3>
+```
+
+```html
+<h4 data-part="heading-4" style="font-size:16px;font-weight:700;line-height:1.6;color:#2B2B2B;margin:20px 0 8px;text-align:left;letter-spacing:0.02em;"><span leaf="">{{原文标题}}</span></h4>
+```
+
+```html
+<h5 data-part="heading-5" style="font-size:15px;font-weight:600;line-height:1.6;color:#2B2B2B;margin:20px 0 8px;text-align:left;letter-spacing:0.02em;color:#525252;"><span leaf="">{{原文标题}}</span></h5>
+```
