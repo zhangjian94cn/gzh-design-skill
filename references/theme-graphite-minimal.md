@@ -16,7 +16,7 @@
 > - 结构化区域（如引言卡右下署名、图片说明、水印编号旁标签）没有内容时**整块删掉**，不留空 section
 
 
-本轮阅读基准：正文 16px / 1.9，字距 0.02em，H2/H3/H4 为 22/18/16px，注释至少 14px，元信息至少 12px。组件 `data-part` 标记定义审核部位，排版可移除无样式的重复 leaf，但不得改变文字或代码空白。
+默认阅读基准以[通用组件库](common-components.md#〇可读性基线所有主题共同约束)为准（2026-11-07 用户确认）。组件 `data-part` 标记定义审核部位，排版可移除无样式的重复 leaf，但不得改变文字或代码空白。
 
 ---
 
@@ -48,7 +48,7 @@
 ## 组件 1 全局容器
 
 ```html
-<section style="overflow-wrap:anywhere;word-break:normal;max-width:677px;margin:0 auto;background:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#52525B;line-height:1.8;letter-spacing:0.02em;text-align:left;font-size:16px;">
+<section style="overflow-wrap:anywhere;word-break:normal;max-width:677px;margin:0 auto;background:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#52525B;line-height:1.9;letter-spacing:0.02em;text-align:left;font-size:15px;">
 
   <!-- 所有组件放在这里 -->
 
@@ -145,7 +145,7 @@
       <p style="font-size:12px;color:#626872;font-weight:500;letter-spacing:0.02em;margin:0 0 6px;text-transform:uppercase;">
         <span leaf="">{{ENGLISH TAG}}</span>
       </p>
-      <h3 style="font-size:22px;font-weight:800;color:#27272A;margin:0;letter-spacing:0.02em;line-height:1.4;" data-part="chapter-title">
+      <h3 style="font-size:20px;font-weight:800;color:#27272A;margin:0;letter-spacing:0.02em;line-height:1.5;" data-part="chapter-title">
         <span leaf="">{{中文章节标题}}</span>
       </h3>
     </section>
@@ -177,7 +177,7 @@
 **基础段落**：
 
 ```html
-<p style="margin-bottom:22px;font-size:16px;line-height:1.9;text-align:left;color:#52525B;letter-spacing:0.02em;">
+<p style="margin-bottom:20px;font-size:15px;line-height:1.9;text-align:left;color:#52525B;letter-spacing:0.02em;">
   <span leaf="">{{正文内容}}</span>
 </p>
 
@@ -186,7 +186,7 @@
 **带关键词下划线标记的段落**（推荐默认）：
 
 ```html
-<p style="margin-bottom:22px;font-size:16px;line-height:1.9;text-align:left;color:#52525B;letter-spacing:0.02em;">
+<p style="margin-bottom:20px;font-size:15px;line-height:1.9;text-align:left;color:#52525B;letter-spacing:0.02em;">
   <span leaf="">{{前半句}}</span>
   <span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">{{需要强调的关键短语}}</span></span>
   <span leaf="">{{后半句}}</span>
@@ -203,7 +203,7 @@
 > `###` 子标题用石墨左竖条 + 深炭标题，**不套用组件 5 的水印编号章节样式**（水印编号只给 `##`）。竖条 3px 石墨灰，贴合极简气质。
 
 ```html
-<p style="font-size:16px;font-weight:800;color:#27272A;margin:28px 0 14px;padding-left:12px;border-left:3px solid #52525B;line-height:1.4;text-align:left;">
+<p style="font-size:17px;font-weight:800;color:#27272A;margin:28px 0 14px;padding-left:12px;border-left:3px solid #52525B;line-height:1.65;text-align:left;">
   <span leaf="">{{子标题}}</span>
 </p>
 
@@ -301,7 +301,7 @@
   <p style="font-size:12px;color:#626872;margin:0 0 8px;letter-spacing:0.02em;font-weight:500;">
     <span leaf="">REFERENCE</span>
   </p>
-  <p style="font-size:16px;color:#3F3F46;margin:0;line-height:1.9;text-align:left;" data-part="prompt-body">
+  <p style="font-size:15px;color:#3F3F46;margin:0;line-height:1.9;text-align:left;" data-part="prompt-body">
     {{引用内容，可含 7d 石墨下划线等内联样式}}
   </p>
 </section>
@@ -314,7 +314,7 @@
 
 ```html
 <section style="border-left:2px solid #E4E4E7;padding:12px 0 12px 20px;margin:0 10px 24px;text-align:left;">
-  <p style="font-size:16px;color:#71717A;margin:0;line-height:1.9;text-align:left;">
+  <p style="font-size:15px;color:#71717A;margin:0;line-height:1.9;text-align:left;">
     <span leaf="">{{轻量旁注内容}}</span>
   </p>
 </section>
@@ -347,7 +347,7 @@
   <p style="font-size:12px;font-weight:700;color:#27272A;margin:0 0 6px;letter-spacing:0.02em;line-height:1.5;">
     <span leaf="">KEY POINT</span>
   </p>
-  <p style="font-size:16px;font-weight:700;color:#27272A;margin:0;line-height:1.9;" data-part="important-body">
+  <p style="font-size:15px;font-weight:700;color:#27272A;margin:0;line-height:1.9;" data-part="important-body">
     <span leaf="">{{重要提示或核心结论}}</span>
   </p>
 </section>
@@ -360,7 +360,7 @@
 
 ```html
 <section style="border-left:3px solid #F97316;padding:14px 0 14px 22px;margin:0 10px 24px;text-align:left;">
-  <p style="font-size:16px;font-weight:700;color:#27272A;margin:0;line-height:1.9;">
+  <p style="font-size:15px;font-weight:700;color:#27272A;margin:0;line-height:1.9;">
     <span leaf="">{{最需要引起注意的内容}}</span>
   </p>
 </section>
@@ -376,7 +376,7 @@
   <p style="font-size:12px;color:#27272A;margin:0 0 10px;letter-spacing:0.02em;font-weight:700;line-height:1.5;">
     <span leaf="">WARNING</span>
   </p>
-  <p style="font-size:16px;color:#52525B;margin:0;line-height:1.9;">
+  <p style="font-size:15px;color:#52525B;margin:0;line-height:1.9;">
     <span leaf="">{{风险、限制或需要人工确认的内容}}</span>
   </p>
 </section>
@@ -392,7 +392,7 @@
   <p style="font-size:12px;color:#626872;margin:0 0 6px;letter-spacing:0.02em;font-weight:500;line-height:1.5;">
     <span leaf="">NOTE</span>
   </p>
-  <p style="font-size:16px;color:#71717A;margin:0;line-height:1.9;">
+  <p style="font-size:15px;color:#71717A;margin:0;line-height:1.9;">
     <span leaf="">{{补充背景或术语解释}}</span>
   </p>
 </section>
@@ -404,7 +404,7 @@
   <p style="font-size:12px;color:#626872;margin:0 0 6px;letter-spacing:0.02em;font-weight:500;line-height:1.5;">
     <span leaf="">TIP</span>
   </p>
-  <p style="font-size:16px;color:#52525B;margin:0;line-height:1.9;">
+  <p style="font-size:15px;color:#52525B;margin:0;line-height:1.9;">
     <span leaf="">{{可执行的建议}}</span>
   </p>
 </section>
@@ -425,7 +425,7 @@
     <span style="display:inline-block;background:#27272A;color:#fff;font-size:12px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:0.02em;"><span leaf="">STEP 01</span></span>
     <span style="font-size:16px;font-weight:800;color:#27272A;"><span leaf="">{{步骤标题}}</span></span>
   </section>
-  <p style="font-size:16px;margin:0 0 16px;color:#52525B;line-height:1.9;text-align:left;">
+  <p style="font-size:15px;margin:0 0 16px;color:#52525B;line-height:1.9;text-align:left;">
     {{步骤内容}}
   </p>
 </section>
@@ -452,7 +452,7 @@
 
 ```html
 <section style="border:1px solid #E4E4E7;padding:16px 20px;margin:0 10px 24px;text-align:left;">
-  <p style="font-size:16px;color:#52525B;margin:0;line-height:1.9;">
+  <p style="font-size:15px;color:#52525B;margin:0;line-height:1.9;">
     {{条目说明内容}}
   </p>
 </section>
@@ -466,18 +466,18 @@
 ### 11a. ordered-list（石墨圆标数字编号列表）
 
 ```html
-<section style="margin-bottom:24px;text-align:left;">
+<section style="margin-bottom:20px;text-align:left;">
   <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
     <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#fff;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;"><span leaf="">1</span></span>
-    <p style="font-size:16px;color:#52525B;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
+    <p style="font-size:15px;color:#52525B;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
   </section>
   <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
     <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#fff;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;"><span leaf="">2</span></span>
-    <p style="font-size:16px;color:#52525B;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
+    <p style="font-size:15px;color:#52525B;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
   </section>
   <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
     <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#fff;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;"><span leaf="">3</span></span>
-    <p style="font-size:16px;color:#52525B;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
+    <p style="font-size:15px;color:#52525B;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
   </section>
 </section>
 
@@ -486,14 +486,14 @@
 ### 11b. bullet-list（无序列表，石墨圆点 + 正文字重）
 
 ```html
-<section style="margin-bottom:24px;text-align:left;">
+<section style="margin-bottom:20px;text-align:left;">
   <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;">
     <span style="display:inline-block;flex-shrink:0;width:5px;height:5px;background:#52525B;border-radius:50%;margin-top:13px;"><span leaf=""><br></span></span>
-    <p style="font-size:16px;color:#52525B;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
+    <p style="font-size:15px;color:#52525B;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
   </section>
   <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;">
     <span style="display:inline-block;flex-shrink:0;width:5px;height:5px;background:#52525B;border-radius:50%;margin-top:13px;"><span leaf=""><br></span></span>
-    <p style="font-size:16px;color:#52525B;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
+    <p style="font-size:15px;color:#52525B;margin:0;line-height:1.9;flex:1;"><span leaf="">{{列表项内容}}</span></p>
   </section>
 </section>
 
@@ -511,7 +511,7 @@
   </section>
   <section style="flex:1;padding-bottom:12px;">
     <p style="margin:0 0 6px;font-size:16px;font-weight:800;color:#27272A;"><span leaf="">{{节点标题}}</span></p>
-    <p style="font-size:16px;margin:0;color:#52525B;line-height:1.9;text-align:left;">{{节点内容}}</p>
+    <p style="font-size:15px;margin:0;color:#52525B;line-height:1.9;text-align:left;">{{节点内容}}</p>
   </section>
 </section>
 
@@ -566,7 +566,7 @@
 
 ```html
 <section style="margin:0 10px 24px;overflow-x:auto;text-align:left;">
-  <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:16px;line-height:1.9;">
+  <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:15px;line-height:1.9;">
     <thead>
       <tr>
         <th style="width:23%;background:#27272A;color:#fff;font-weight:700;padding:8px;text-align:left;word-break:keep-all;"><span leaf="">{{短列标题}}</span></th>
@@ -627,7 +627,7 @@
 ```html
 <section style="border:1px solid #E4E4E7;padding:4px;margin:0 10px 12px;">
   <section style="margin:0;overflow:hidden;">
-    <span leaf=""><img src="{{图片URL}}" style="max-width:100%;height:auto;display:block;margin:0 auto;"></span>
+    <span leaf=""><img src="{{图片URL}}" style="max-width:100%;height:auto;display:block;margin:0 auto;font-size:15px;line-height:1.9;"></span>
   </section>
 </section>
 
@@ -636,7 +636,7 @@
 带说明文字时，图片容器 `margin-bottom` 改 `8px`，其后加：
 
 ```html
-<p style="font-size:12px;color:#626872;text-align:center;margin:0 10px 28px;letter-spacing:0.02em;">
+<p style="font-size:14px;color:#626872;text-align:center;margin:0 10px 28px;letter-spacing:0.02em;">
   <span leaf="">— {{图片说明}}</span>
 </p>
 
@@ -672,10 +672,10 @@ GIF 动图角标改极简描边胶囊：边框与字色用石墨主色 `#52525B`
 ```html
 <section style="padding:0 10px 24px;text-align:left;">
   <section style="border-top:1px solid #E4E4E7;padding-top:28px;">
-    <p style="margin-bottom:16px;font-size:16px;line-height:1.9;color:#52525B;text-align:left;">
+    <p style="margin-bottom:20px;font-size:15px;line-height:1.9;color:#52525B;text-align:left;">
       <span leaf="">我是 {{作者名}}，{{一句话简介，如：热衷于分享 AI 观察与干货}}。</span>
     </p>
-    <p style="margin-bottom:0;font-size:16px;line-height:1.9;color:#52525B;text-align:left;">
+    <p style="margin-bottom:0;font-size:15px;line-height:1.9;color:#52525B;text-align:left;">
       <span leaf="">如果你觉得今天这篇有收获，欢迎</span>
       <strong style="color:#27272A;"><span leaf="">点赞、在看、转发</span></strong>
       <span leaf="">三连，我们下篇见。</span>
@@ -690,7 +690,7 @@ GIF 动图角标改极简描边胶囊：边框与字色用石墨主色 `#52525B`
 ## 完整文章模板骨架
 
 ```html
-<section style="max-width:677px;margin:0 auto;background:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#52525B;line-height:1.8;letter-spacing:0.02em;text-align:left;font-size:16px;">
+<section style="max-width:677px;margin:0 auto;background:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#52525B;line-height:1.9;letter-spacing:0.02em;text-align:left;font-size:15px;">
 
   <!-- 1. 开头引言卡片（组件2，纯白 + 上下细线 + 大字金句） -->
 
@@ -797,7 +797,7 @@ GIF 动图角标改极简描边胶囊：边框与字色用石墨主色 `#52525B`
 章节下的 H3、H4、H5 按原文深度选用；不自动添加标题文字。
 
 ```html
-<h3 data-part="heading-3" style="font-size:18px;font-weight:700;line-height:1.6;color:#27272A;margin:24px 0 12px;text-align:left;letter-spacing:0.02em;border-bottom:1px solid #E4E4E7;padding-bottom:8px;"><span leaf="">{{原文标题}}</span></h3>
+<h3 data-part="heading-3" style="font-size:17px;font-weight:700;line-height:1.65;color:#27272A;margin:24px 0 12px;text-align:left;letter-spacing:0.02em;border-bottom:1px solid #E4E4E7;padding-bottom:8px;"><span leaf="">{{原文标题}}</span></h3>
 ```
 
 ```html

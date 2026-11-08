@@ -15,9 +15,9 @@
 | 项 | 基线 | 守护 |
 |---|---|---|
 | 对齐 | 正文、重点与各类卡片正文一律左对齐，**不用 `text-align:justify`**。全局容器和每个组件顶层**显式写** `text-align:left`（居中组件写 `center`）：微信正文容器默认两端对齐，不写就会继承 | `component_lint.py` / `validate_gzh_html.py --publish-ready` |
-| 继承字号 | 微信正文容器默认 17px。全局容器写 `font-size:16px`（本地预览的继承值）；承载文字的块（含只装标签/胶囊的 `p`）自身或组件顶层要有 px 字号，不用 em/% 相对默认值 | `component_lint.py` |
-| 正文字号与行高 | 正文类段落 **≥15px**，行高 **1.85–2.0**；卡片里的正文同样适用。代码行（13px/1.6 等宽）、类型标签、图注、标题与居中金句不算正文 | `component_lint.py` |
-| Part 前留白 | 章节（Part）标题前留白约一行（≥24px），只用 `margin` 表达，不用空段落或连续 `<br>` | `validate_gzh_html.py --publish-ready` |
+| 继承字号 | 微信正文容器默认 17px。全局容器写 `font-size:15px;line-height:1.9`（本地预览的继承值）；承载文字的块（含只装标签/胶囊的 `p`）自身或组件顶层要有 px 字号，不用 em/% 相对默认值 | `component_lint.py` |
+| 正文字号与行高 | 正文、摘要、列表默认 **15px / 1.9**；正文段落与列表区块间距 **20px**；卡片里的正文同样适用。代码行（14px/1.6 等宽）、类型标签、图注、标题与居中金句不算正文 | `component_lint.py` |
+| Part 前留白 | 章节（Part）标题前留白 **32px**；H2 **20px / 1.5**，H3 **17px / 1.65**，H4 **16px / 1.6**，只用 `margin` 表达，不用空段落或连续 `<br>` | `validate_gzh_html.py --publish-ready` |
 | 卡片边界 | 重点、提示、行动建议、提示词卡与正文左右边界对齐：放在同一正文容器内，不另加左右外边距，也不比正文宽 | 装配后人工核对 |
 | 标签 | 重点卡没有标题就不写类型标签，不留空标签、不用撑高的空元素 | 装配后人工核对 |
 | 导读 | 全文**恰好一份**，只用原文的阅读信息、摘要（frontmatter `description`）与标签；没有摘要时整张省略，不生成空卡；主题有等价的导读/引言卡时用主题版，不重复 | 装配后人工核对 |
@@ -27,6 +27,8 @@
 摸鱼绿、摸鱼票据上游把正文定为 14px「铁律」；本 fork 按本基线统一提到 15px，偏离登记见 [fork 可读性基线偏离记录](../docs/2026-09-27-fork-readability-baseline-deviations.md)。
 
 ---
+
+正文注释与图注至少 14px，辅助元信息与标签至少 12px，普通文字对比度至少 4.5:1。
 
 ## 一、代码块组件（Markdown ``` 围栏 → 这里）
 
@@ -56,7 +58,7 @@
 ### 1b. 浅色代码块（适配浅色温和主题，如玫瑰粉/天蓝/焦糖棕）
 
 ```html
-<section style="margin:0 0 20px;border-radius:8px;overflow:hidden;background:#F6F8FA;border:1px solid #E5E7EB;border-left:3px solid #DC2626;text-align:left;font-size:16px;">
+<section style="margin:0 0 20px;border-radius:8px;overflow:hidden;background:#F6F8FA;border:1px solid #E5E7EB;border-left:3px solid #DC2626;text-align:left;font-size:15px;">
   <section style="padding:7px 14px;border-bottom:1px solid #E5E7EB;">
     <span style="font-size:12px;color:#626872;font-family:Consolas,Monaco,monospace;letter-spacing:0.02em;"><span leaf="">bash</span></span>
   </section>
@@ -89,10 +91,10 @@
 ```html
 <section style="background:#FFF;border-radius:12px;padding:6px;border:1px solid #E5E7EB;box-shadow:0 4px 12px -2px rgba(0,0,0,0.08);margin-bottom:8px;">
   <section style="margin:0;border-radius:8px;overflow:hidden;">
-    <span leaf=""><img src="图片URL" style="max-width:100%;height:auto;display:block;margin:0 auto;"></span>
+    <span leaf=""><img src="图片URL" style="max-width:100%;height:auto;display:block;margin:0 auto;font-size:15px;line-height:1.9;"></span>
   </section>
 </section>
-<p style="font-size:12px;color:#626872;text-align:center;margin:0 0 24px;">
+<p style="font-size:14px;color:#626872;text-align:center;margin:0 0 24px;">
   <span leaf="">— 图片说明文字</span>
 </p>
 
@@ -107,7 +109,7 @@
 ```html
 <section style="background:#FFF;border-radius:12px;padding:6px;border:1px solid #E5E7EB;box-shadow:0 4px 12px -2px rgba(0,0,0,0.08);margin-bottom:8px;">
   <section style="margin:0;border-radius:8px;overflow:hidden;">
-    <span leaf=""><img src="动图URL.gif" style="max-width:100%;height:auto;display:block;margin:0 auto;"></span>
+    <span leaf=""><img src="动图URL.gif" style="max-width:100%;height:auto;display:block;margin:0 auto;font-size:15px;line-height:1.9;"></span>
   </section>
 </section>
 <p style="text-align:center;margin:0 0 24px;font-size:16px;">
@@ -194,11 +196,11 @@
 ### 3e. 提示 / 旁注块（左竖条 + 类型小标签，取代旧的虚线提示框）
 
 ```html
-<section style="margin:0 0 24px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:16px;text-align:left;font-size:16px;">
+<section style="margin:0 0 24px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:16px;text-align:left;font-size:15px;">
   <p style="margin:0 0 6px;">
     <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:12px;font-weight:700;padding:2px 10px;border-radius:4px;letter-spacing:0.02em;"><span leaf="">提示</span></span>
   </p>
-  <p style="font-size:16px;color:#374151;margin:0;line-height:1.9;">
+  <p style="font-size:15px;color:#374151;margin:0;line-height:1.9;">
     <span leaf="">提示或旁注的正文内容</span>
   </p>
 </section>
@@ -218,11 +220,11 @@
 ### 4a. 导读卡（frontmatter 阅读时长 / `description` / `tags` → 这里）
 
 ```html
-<section style="margin:0 0 32px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:16px;text-align:left;font-size:16px;" data-part="intro-card">
+<section style="margin:0 0 32px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:16px;text-align:left;font-size:15px;" data-part="intro-card">
   <p style="margin:0 0 8px;font-size:12px;color:#626872;letter-spacing:0.02em;line-height:1.5;" data-part="intro-meta">
     <span leaf="">导读 · 约 6 分钟</span>
   </p>
-  <p style="margin:0;font-size:16px;color:#374151;line-height:1.9;" data-part="intro-summary">
+  <p style="margin:0;font-size:15px;color:#374151;line-height:1.9;" data-part="intro-summary">
     <span leaf="">原文摘要（frontmatter description 原样，不另编）</span>
   </p>
   <p style="margin:10px 0 0;">
@@ -238,14 +240,14 @@
 ### 4b. 行动建议卡（`> [!行动]` / `> [!ACTION]` → 这里）
 
 ```html
-<section style="margin:0 0 24px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:16px;text-align:left;font-size:16px;">
+<section style="margin:0 0 24px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:16px;text-align:left;font-size:15px;">
   <p style="margin:0 0 8px;">
     <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:12px;font-weight:700;padding:2px 10px;border-radius:4px;letter-spacing:0.02em;"><span leaf="">行动建议</span></span>
   </p>
-  <p style="margin:0 0 6px;font-size:16px;color:#374151;line-height:1.9;">
+  <p style="margin:0 0 6px;font-size:15px;color:#374151;line-height:1.9;">
     <strong style="color:#DC2626;"><span leaf="">1　</span></strong><span leaf="">第一步做什么</span>
   </p>
-  <p style="margin:0;font-size:16px;color:#374151;line-height:1.9;">
+  <p style="margin:0;font-size:15px;color:#374151;line-height:1.9;">
     <strong style="color:#DC2626;"><span leaf="">2　</span></strong><span leaf="">第二步做什么</span>
   </p>
 </section>
@@ -257,11 +259,11 @@
 ### 4c. 提示词卡（`> [!提示词]` / `> [!PROMPT]` → 这里）
 
 ```html
-<section style="margin:0 0 24px;background:#F6F8FA;border:1px solid #E5E7EB;border-left:3px solid #DC2626;border-radius:0 8px 8px 0;padding:16px;text-align:left;font-size:16px;" data-part="prompt-card">
+<section style="margin:0 0 24px;background:#F6F8FA;border:1px solid #E5E7EB;border-left:3px solid #DC2626;border-radius:0 8px 8px 0;padding:16px;text-align:left;font-size:15px;" data-part="prompt-card">
   <p style="margin:0 0 8px;">
     <span style="display:inline-block;background:#FEE2E2;color:#991B1B;font-size:12px;font-weight:700;padding:2px 10px;border-radius:4px;letter-spacing:0.02em;"><span leaf="">提示词</span></span>
   </p>
-  <p style="margin:0;font-size:16px;color:#1C1917;line-height:1.9;" data-part="prompt-body">
+  <p style="margin:0;font-size:15px;color:#1C1917;line-height:1.9;" data-part="prompt-body">
     <span leaf="">自然语言提示词原文，整段可直接复制</span>
   </p>
 </section>
@@ -274,13 +276,13 @@
 
 ```html
 <section style="margin:0 0 24px;background:#FEF2F2;border-radius:0 8px 8px 0;border-left:4px solid #DC2626;padding:16px;text-align:left;">
-  <p style="margin:0 0 8px;font-size:16px;color:#626872;line-height:1.9;">
+  <p style="margin:0 0 8px;font-size:15px;color:#626872;line-height:1.9;">
     <span style="display:inline-block;background:#E5E7EB;color:#374151;font-size:12px;font-weight:700;padding:1px 8px;border-radius:4px;margin-right:8px;"><span leaf="">原写法</span></span><span style="text-decoration:line-through;"><span leaf="">diff 里 - 开头的旧句子</span></span>
   </p>
-  <p style="margin:0 0 8px;font-size:16px;color:#1C1917;line-height:1.9;">
+  <p style="margin:0 0 8px;font-size:15px;color:#1C1917;line-height:1.9;">
     <span style="display:inline-block;background:#DC2626;color:#FFFFFF;font-size:12px;font-weight:700;padding:1px 8px;border-radius:4px;margin-right:8px;"><span leaf="">改写</span></span><strong style="color:#991B1B;"><span leaf="">diff 里 + 开头的新句子</span></strong>
   </p>
-  <p style="margin:0;font-size:16px;color:#374151;line-height:1.9;">
+  <p style="margin:0;font-size:15px;color:#374151;line-height:1.9;">
     <span leaf="">diff 里无前缀的上下文行（说明）</span>
   </p>
 </section>
@@ -297,7 +299,7 @@
 
 ```html
 <section style="margin:24px 0;overflow-x:auto;text-align:left;">
-  <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:16px;line-height:1.9;">
+  <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:15px;line-height:1.9;">
     <tbody><tr><th style="padding:10px 8px;border-bottom:2px solid #DC2626;color:#1C1917;text-align:left;"><span leaf="">列标题</span></th></tr>
     <tr><td style="padding:10px 8px;border-bottom:1px solid #E5E7EB;color:#374151;vertical-align:top;"><span leaf="">内容</span></td></tr>
   </tbody></table>
