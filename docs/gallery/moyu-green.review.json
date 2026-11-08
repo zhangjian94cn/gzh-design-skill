@@ -2,8 +2,8 @@
   "version": 1,
   "theme": "moyu-green",
   "sourceSha256": "39a612f7581a8f7fbbfef33ad34dd3900d1298f5e3856468d030b0ea5d98277f",
-  "librarySha256": "ffb314e9a82d7621f70ac9f29e12ea1ea822e45f1949e2e2fc303f60bb19fa52",
-  "htmlSha256": "f3ec0a046260ae6c63248fc968e80bdd03631b4c18ffbaec393d5ca825691d74",
+  "librarySha256": "77d9c540d40d76e3644e8aa255e1503061e04c771f48cd15337c35b50077ee49",
+  "htmlSha256": "718a73561ffe4a0fad48b5316fe4d280d521f95666e94a509f31ca18d50ece9d",
   "selections": {
     "intro": {
       "library": "common-components.md",
